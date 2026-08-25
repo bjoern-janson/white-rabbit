@@ -1,8 +1,19 @@
 # White Rabbit Recorder v0.1 — Interface Contract
 
-Status: `SPECIFIED / NOT_IMPLEMENTED / EXECUTION_NOT_AUTHORIZED`
+Status: `SPECIFICATION_FROZEN / LOCAL_IMPLEMENTATION_REPORTED / REAL_SERVER_EXECUTION_NOT_AUTHORIZED`
 
-This is a handoff contract for a future sibling component, preferably `white-rabbit-recorder`. It is intentionally non-runnable in this repository.
+This is the frozen interface contract for the isolated sibling `white-rabbit-recorder` component.
+
+A user-supplied Codex completion report records a local implementation at:
+
+```text
+version: 0.1.0
+commit: 80cddb26a7b851d218f95317cd3c5b0593acd831
+fake-upstream tests: PASS 30/30
+remote: none / local-only
+```
+
+This GitHub repository cannot independently inspect that local commit or rerun those tests. See `program/RECORDER_V0_1_MILESTONE.md` for the exact reported engineering boundary.
 
 The recorder is a microscope, not a treatment.
 
@@ -22,7 +33,7 @@ The acceptance question is:
 
 > **Can one recorded run prove exactly what HTTP body was delivered to llama-server, exactly what HTTP response body returned, which server configuration/PID processed it, and what llama.cpp explicitly reports it executed?**
 
-The recorder does not yet establish the exact post-Jinja token sequence seen by the neural network.
+The recorder does not establish the exact post-Jinja token sequence seen by the neural network.
 
 ## Topology
 
@@ -53,7 +64,9 @@ server/log.raw
 Derived conveniences may include hashes, parsed JSON/JSONL, metadata, and mechanically extracted timing fields.
 
 ```text
-RAW != PARSED != INTERPRETED
+RAW MEASUREMENT
+    -> DERIVED RECONSTRUCTION
+    -> INTERPRETATION
 ```
 
 Never reconstruct raw custody from parsed JSON.
@@ -88,9 +101,11 @@ Derived parsing may fail without affecting raw custody.
 
 Capture status, relevant headers, first-byte/final-byte timing, and body hash.
 
+The reported local implementation replaces hop-by-hop response framing with connection-close framing while preserving response-body bytes. HTTP body custody therefore does not claim raw TCP framing identity.
+
 ## Server-session custody
 
-A future launcher should be able to start the historical configuration on `:8086`:
+The launcher supports the historical configuration on `:8086`:
 
 ```powershell
 llama-server `
@@ -118,7 +133,9 @@ recorder session ID
 stdout/stderr
 ```
 
-Backend identity must be recorded from evidence, not assumption. Historical evidence showed Vulkan participation, but a future run must classify its own backend.
+Backend identity must be recorded from evidence, not assumption. Historical evidence showed Vulkan participation, but each future run must classify its own backend.
+
+The reported local implementation includes launcher/session custody machinery but remains uncalibrated against the real llama-server under the mandated stop condition.
 
 ## Backend extraction
 
@@ -145,6 +162,8 @@ If an explicit cached-prompt-token counter exists, preserve it. Otherwise `n_pro
 
 Primary measurement must not infer cached-token counts by subtraction.
 
+`f_sim_best` and `f_keep` remain distinct raw fields. LCP similarity must not be interpreted without retained-prefix size/reference population.
+
 ## Freshness/correlation firewall
 
 > **Fresh chat is not fresh compute.**
@@ -153,7 +172,9 @@ Record server session ID, PID, start time, and number of prior measured requests
 
 A new browser tab must never automatically become `COLD`, `FRESH`, or `INDEPENDENT`.
 
-Because the historical setup uses `-np 1`, v0.1 may serialize or reject concurrent measured inference requests. Correlate request-to-task mechanically. If ambiguous:
+Because the historical setup uses `-np 1`, v0.1 controls concurrent measured inference. The reported local implementation rejects concurrent measured requests with HTTP 409.
+
+Correlate request-to-task mechanically. If ambiguous:
 
 ```text
 correlation_status = AMBIGUOUS
@@ -163,7 +184,7 @@ Never guess a task ID.
 
 ## Immutable run package
 
-Suggested layout:
+Suggested/implemented layout is bounded around:
 
 ```text
 runs/<run_id>/
@@ -213,11 +234,11 @@ fine-tuning
 scientific adjudication
 ```
 
-It must not modify `white-rabbit` or `RD_HARNESS` when implemented as the sibling recorder.
+The supplied completion report states all of these remained absent, with no real Qwen or scientific comparison executed.
 
 ## Fake-upstream acceptance
 
-Implementation acceptance must use a deterministic fake upstream server. No real Qwen request is required.
+Implementation acceptance uses a deterministic fake upstream server. No real Qwen request is required or authorized.
 
 Required properties include:
 
@@ -238,15 +259,32 @@ Required properties include:
 15. concurrent measured requests are controlled;
 16. no treatment/capability/White Rabbit conclusion is emitted.
 
-The only v0.1 engineering claim ceiling should be equivalent to:
+The user-supplied Codex report records:
 
 ```text
-IMPLEMENTED
+30/30 deterministic fake-upstream tests PASS
+```
+
+The strongest recorded engineering claim remains:
+
+```text
+LOCAL IMPLEMENTATION REPORTED
 +
-FAKE-UPSTREAM BYTE-CUSTODY ACCEPTANCE PASS
+FAKE-UPSTREAM BYTE-CUSTODY ACCEPTANCE REPORTED PASS
 ```
 
 No scientific result follows.
+
+## Known reported limitations
+
+```text
+HTTP body custody does not establish TCP framing identity.
+WebSocket/HTTP Upgrade proxying is not implemented.
+Backend parsing is bounded to explicitly recognized llama.cpp log forms.
+Correlation depends on serialized requests, explicit task/slot logs, and timely log flushing.
+No post-template token IDs or exact model-visible token sequence are captured.
+Real llama-server launcher behavior is not yet calibrated through the recorder.
+```
 
 ## Stop condition
 
@@ -256,7 +294,11 @@ After fake-upstream acceptance:
 STOP
 ```
 
+That stop condition has been reached according to the supplied completion report.
+
 Do not run Qwen, `C_improve`, Cold A/B/C, a neutral prelude, or a capability comparison without a separately authorized transition.
+
+Gate 5 — real-server recorder calibration — remains unopened.
 
 ## Governing rule
 
