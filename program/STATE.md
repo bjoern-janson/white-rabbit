@@ -69,6 +69,8 @@ f_sim_best != f_keep.
 LCP similarity must not be interpreted without retained-prefix size/reference population.
 Derived cache arithmetic must not be promoted into a backend-reported cache meter.
 Treatment effects must be evaluated against independently constituted baseline variability, not one privileged baseline run.
+A capped generation is not an uncensored work measurement.
+Capability non-regression does not by itself establish capability adequacy.
 ```
 
 Current-run accounting vocabulary:
@@ -211,72 +213,92 @@ See:
 program/GATE6_COLD_CHARACTERIZATION_MILESTONE.md
 ```
 
-## Gate 7 — current transition
+## Gate 7 — constituted, under pre-open repair
 
-State:
-
-```text
-constitution authoring: AUTHORIZED
-constitution artifact: NOT YET PRESENT / NOT YET REVIEWED
-assay execution: NOT AUTHORIZED / NOT OPENED
-```
-
-Codex handoff:
-
-```text
-handoff/CODEX_G7_CONSTITUTION.md
-```
-
-Target artifact:
+Frozen constitution:
 
 ```text
 assays/G7_MATCHED_CONTEXT_ASSAY_V0_1.md
+commit: 7696bf90452cb13f86fe8e22cc860ff6e9d09dee
+status in artifact: CONSTITUTED / NOT EXECUTED / PREOPEN_TOKEN_MATCH_REQUIRED
 ```
 
-Required frozen components:
+The constitution successfully preserves:
 
 ```text
-1. capability criterion
-2. primary work currency
-3. independence criterion
-4. matched-context control
-5. replicate design
+C_improve as one candidate intervention, not the White Rabbit definition
+3 frozen mechanically graded tasks
+no LLM judge
+primary assay-local work currency N_generated
+independent cold-run requirement
+neutral matched prelude
+literal C_improve source custody
+n = 5 per condition per task
+CONSTITUTED != EXECUTED
+authority ceiling excluding White Rabbit / causal / amortization claims
 ```
 
-Intended comparison form, subject to constitution review:
+Pre-open review found two constitutional gaps before any token matching or assay execution:
 
 ```text
-B = neutral matched prelude + target
-C = literal C_improve prelude + target
+1. work censoring under max_tokens = 64
+2. capability non-regression without a separate adequacy gate
 ```
 
-The literal `C_improve` text must come from the preserved WR-OBS-002 source. The neutral prelude is a separately frozen control object whose neutrality remains a design assumption requiring review.
-
-First-assay design constraints include mechanically checkable held-out tasks, no LLM judge, primary work currency `N_generated`, independent cold backends, repeated observations, full per-run preservation, and capability non-regression before any work-reduction interpretation.
-
-A source-level matched prelude does not establish exact post-template token equality. If token equality is not mechanically established during constitution authoring, the constitution must preserve:
+Review record:
 
 ```text
-PREOPEN_TOKEN_MATCH_REQUIRED
+program/GATE7_PREOPEN_CONSTITUTION_REVIEW.md
 ```
 
-rather than guessing.
+Current Gate 7 state:
 
-Critical boundary:
+```text
+ontology / program separation: PASS
+matched-context construction: PASS
+authority boundary: PASS
+work-censoring rule: REPAIR_REQUIRED
+capability adequacy: REPAIR_REQUIRED
+pre-open token/context matching: BLOCKED
+assay execution: NOT AUTHORIZED / NOT OPENED
+```
+
+The required logical order after repair is:
+
+```text
+CONTROL ADEQUACY
+-> CAPABILITY NONREGRESSION
+-> UNCENSORED WORK COMPARISON
+```
+
+The repair must preserve the existing `max_tokens = 64` fixed budget unless a direct contradiction is reported, while making generation-length censoring explicit and ineligible to establish an uncensored work-reduction result.
+
+The repair must add a separately frozen control-adequacy gate so that relative non-regression cannot pass when both control and treatment fail the task.
+
+Authorized repair handoff:
+
+```text
+handoff/CODEX_G7_CONSTITUTION_REPAIR.md
+```
+
+Required transition:
+
+```text
+7696bf9 constitution
+-> minimal repair of censoring + adequacy
+-> run existing repository tests + validator
+-> freeze repaired constitution commit
+-> review repaired constitution
+-> only then reconsider pre-open token/context matching
+```
+
+Critical boundary remains:
 
 ```text
 CONSTITUTED != EXECUTED
 ```
 
-Codex may author the constitution text, payloads, expected answers, neutral control, grading rules, replicate plan, and result vocabulary. It may not send any Gate 7 payload to Qwen or start a Gate 7 recorder/server run.
-
-After constitution authoring:
-
-```text
-STOP
-```
-
-The artifact must survive review before any separate execution authorization is considered.
+No tokenizer preflight, llama-server, recorder, neutral prelude, C_improve payload, B run, C run, live grading, or scientific comparison is authorized by the repair transition.
 
 ## Corpus / V(q) / Qwen research integration
 
@@ -301,13 +323,19 @@ Gate 7 design doctrine:
 
 > **Constitute the counterfactual before observing the treatment.**
 
+Pre-open repair doctrine:
+
+> **Find the ambiguity before it gets to look like a result.**
+
 ## Current gate ledger
 
 ```text
 Gate 4 — fake-upstream recorder acceptance: USER_REPORTED PASS
 Gate 5 — real-server recorder calibration: USER_REPORTED PASS
 Gate 6 — five-replicate cold characterization: USER_REPORTED PASS
-Gate 7 — matched-context assay constitution: AUTHORING AUTHORIZED / NOT YET CONSTITUTED
+Gate 7 — matched-context assay constitution: CONSTITUTED AT 7696bf9
+Gate 7 — pre-open constitution review: REPAIR_REQUIRED
+Gate 7 — pre-open token/context matching: BLOCKED
 Gate 7 — execution: NOT AUTHORIZED / NOT OPENED
 White Rabbit G1-G4: NOT OPENED
 ```
@@ -315,8 +343,9 @@ White Rabbit G1-G4: NOT OPENED
 Current authorized transition only:
 
 ```text
-G6 PASS
--> Codex authors G7_MATCHED_CONTEXT_ASSAY_V0.1
--> review constitution
+repair Gate 7 constitution
+-> run existing tests + validator
+-> freeze repaired commit
+-> review
 -> STOP
 ```
