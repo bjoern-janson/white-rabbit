@@ -40,6 +40,27 @@ Every research object declares one epistemic role:
 
 These roles are not interchangeable. Deterministic transformation does not promote a derived record into evidence.
 
+## Open observations
+
+### WR-OBS-001 — post-`C_improve` reasoning-work anomaly
+
+`WR-OBS-001` is preserved as `OPEN / UNCONTROLLED_OBSERVATION / MECHANISM=UNKNOWN`.
+
+The raw custody record preserves the reported before/after Qwen UI measurements and the exact `C_improve` intervention text. The normalized research state earns only the mechanical observation that the reported `hi` reasoning-token count differed from `371` to `11` while the reported final-generation throughput was approximately unchanged at the displayed precision.
+
+The repository does **not** attribute that change to `C_improve`, session state, runtime state, KV/cache behavior, or any other mechanism. Persistence, transfer, amortization, and a White Rabbit effect remain unestablished.
+
+- [Raw observation custody](observations/WR-OBS-001/raw_observation.md)
+- [Normalized provenance state](observations/WR-OBS-001/research_state.json)
+
+Methodological constraint:
+
+> **Preserve anomaly != explain anomaly != optimize anomaly.**
+
+> **Follow the footprint. Don't manufacture a trail.**
+
+No controlled reproduction is opened by preserving this observation.
+
 ## Validation
 
 The implementation uses the Python standard library only.
