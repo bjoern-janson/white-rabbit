@@ -1,6 +1,6 @@
 # White Rabbit 🐇
 
-**White Rabbit is the search for reusable computational structure that changes the economics of reasoning.**
+**White Rabbit is the search for reusable computational structure that makes adequate intelligence cheaper.**
 
 The archetype is Fast Inverse Square Root:
 
@@ -17,61 +17,136 @@ White Rabbit asks whether an analogous move exists for reasoning:
 expensive reasoning/search
     -> discover useful computational coordinates
     -> compile reusable structure M
-    -> eliminate previously required future computation
+    -> preserve the relevant result with less required computation
 ```
 
 The research state is evidence infrastructure, not the answer.
 
 > **Spend computation changing the future computational policy, and recover more computation than was spent doing so.**
 
-> **A White Rabbit exists only when previously required computation demonstrably disappears under a valid accounting boundary.**
+> **A White Rabbit exists only when reusable structure makes previously necessary computation unnecessary without sacrificing the capability or distinctions that mattered, and the saved work repays the structure's acquisition cost.**
 
-## Current program decomposition
+---
+
+## Canonical White Rabbit definition
+
+Minimum success signature:
+
+```text
+same relevant capability, less required computation
+```
+
+Current decomposition:
 
 ```text
 C_latent != C_realized(R, q) != C_work(R, q)
 ```
 
-- `C_latent`: capability available in a fixed model/substrate; not directly observed here.
-- `C_realized(R, q)`: capability actually elicited under representation/context `R` for task `q`.
-- `C_work(R, q)`: computation expended to produce that behavior.
-
-A future candidate `M` must eventually earn both:
+General gates:
 
 ```text
-C_realized(M, q) >= C_realized(R0, q)
+G1: C_realized(M, q) >= C_realized(R0, q)
+G2: independent reproduction
+G3: C_work(M, q) < C_work(R0, q)
+G4: acquisition cost is repaid over the constituted reuse horizon
 ```
 
-and, over a constituted reuse horizon:
+Optional stronger result:
 
 ```text
-C_acquire(M) + sum_i C_work(M, q_i)
-    <
-sum_i C_work(R0, q_i)
+G1+: C_realized(M, q) > C_realized(R0, q)
 ```
 
-These are program targets, **not established results and not currently authorized experiments**.
+`G1+` is a **Capability Rabbit**. It is upside, not part of the minimum White Rabbit definition.
+
+Rejection filter:
+
+```text
+cache hit                         != White Rabbit
+one-off trick                     != White Rabbit
+answer leakage                    != White Rabbit
+better answer only                != White Rabbit
+cheaper but epistemically poorer  != White Rabbit
+reusable but uneconomic structure != White Rabbit
+```
+
+The archetypal transformation is:
+
+```text
+change representation
+    -> preserve required result
+    -> eliminate computation
+```
 
 See [program/WHITE_RABBIT.md](program/WHITE_RABBIT.md).
 
 ---
 
-## What this repository currently is
+## Measurement doctrine
+
+The evidence order is frozen as:
+
+```text
+RAW MEASUREMENT
+    -> DERIVED RECONSTRUCTION
+    -> INTERPRETATION
+```
+
+No silent promotion is allowed between layers.
+
+Current-run work is separated from reusable state:
+
+```text
+C_run = C_prompt,new + C_generation + C_other
+K_reused = previously constituted state reused by this run
+C_total = C_cache,acquire + sum_i C_run,i
+```
+
+Core instrumentation rules:
+
+> **A computation-saving claim must account for the cost of creating any reusable state that makes the saving possible.**
+
+> **Fresh chat is not fresh compute.**
+
+> **UI-visible token categories must not be assigned computational semantics without backend confirmation.**
+
+> **Never call computation eliminated until it is known who paid for it, when they paid for it, and whether it was merely cached.**
+
+> **Never interpret LCP similarity without retained-prefix size and its reference population.**
+
+Literal backend fields remain distinct:
+
+```text
+f_sim_best != f_keep
+```
+
+Arithmetic reconstruction from slot/prompt/output counters is `DERIVED`; it is not promoted into a backend-reported cached-token meter.
+
+See:
+
+- [measurement/MEASUREMENT_MODEL.md](measurement/MEASUREMENT_MODEL.md)
+- [constitution/instrumentation_invariants.md](constitution/instrumentation_invariants.md)
+
+---
+
+## What this repository is
 
 This repository is the White Rabbit **research/control plane**.
 
-It currently contains:
+It contains:
 
 ```text
 frozen research-state constitution
 mechanical provenance validator
 measurement/accounting invariants
 preserved uncontrolled observations
-program definitions and gated roadmap
-non-runnable recorder interface contract
+program definition + state ledger + gated roadmap
+recorder interface contract
+closed Codex implementation handoff
+reported recorder engineering milestone
 ```
 
-It does **not** currently contain:
+It does **not** contain:
 
 ```text
 White Rabbit treatment
@@ -83,11 +158,11 @@ retrieval/vector system
 scientific claim adjudicator
 ```
 
-The intended runnable recorder is a future isolated sibling component, not runtime code in this repository.
+The runnable recorder is a separate local sibling component, not runtime code in this repository.
 
 ## Founding authority boundary
 
-The currently constituted path is deliberately narrow:
+The constituted research-state path remains deliberately narrow:
 
 ```text
 research evidence
@@ -95,7 +170,7 @@ research evidence
     -> PROVENANCE_VALID
 ```
 
-The founding invariants are:
+Founding invariants:
 
 ```text
 SOURCE != NORMALIZED != DERIVED
@@ -109,44 +184,9 @@ validator jurisdiction = provenance validity, not scientific warrant
 
 > **The validator establishes provenance validity, not scientific warrant.**
 
-The founding constitution explicitly does not authorize corpus ingestion, task-view compilation, retrieval, model calls, representation learning, adaptive control, scientific adjudication, or compute experiments.
+The founding constitution does not authorize corpus ingestion, task-view compilation, retrieval, model calls, representation learning, adaptive control, scientific adjudication, or compute experiments.
 
 See [constitution/authority.md](constitution/authority.md).
-
----
-
-## Measurement model
-
-Current-run work is separated from reusable state:
-
-```text
-C_run = C_prompt,new + C_generation + C_other
-```
-
-```text
-K_reused = previously constituted state reused by this run
-```
-
-Across a reuse horizon:
-
-```text
-C_total = C_cache,acquire + sum_i C_run,i
-```
-
-The governing measurement rules are:
-
-> **A computation-saving claim must account for the cost of creating any reusable state that makes the saving possible.**
-
-> **Fresh chat is not fresh compute.**
-
-> **UI-visible token categories must not be assigned computational semantics without backend confirmation.**
-
-> **Never call computation eliminated until it is known who paid for it, when they paid for it, and whether it was merely cached.**
-
-See:
-
-- [measurement/MEASUREMENT_MODEL.md](measurement/MEASUREMENT_MODEL.md)
-- [constitution/instrumentation_invariants.md](constitution/instrumentation_invariants.md)
 
 ---
 
@@ -156,40 +196,31 @@ See:
 
 The original UI observation is preserved, but the interpretation of `371 -> 11` as generated reasoning-token disappearance is superseded.
 
-The backend trace establishes the narrower classification:
+Current boundary:
 
 ```text
-371 and 11 = freshly processed prompt-evaluation token counts
-full `hi` pre-generation/context length ~= 370 tokens in both runs
-later request explicitly used LCP/prefix reuse
+371 and 11 = freshly processed prompt-evaluation counts
+prefix/LCP reuse = OBSERVED
 generated tokens = 44 -> 88
 reasoning-work reduction = NOT_DEMONSTRATED
 C_improve causality = UNESTABLISHED
 White Rabbit effect = NOT_DEMONSTRATED
 ```
 
-The historical v1 state remains intact; v2 records an explicit supersession rather than rewriting history.
-
 - [Original UI custody](observations/WR-OBS-001/raw_observation.md)
 - [Original research state v1](observations/WR-OBS-001/research_state.json)
 - [Backend correction](observations/WR-OBS-001/backend_correction.md)
 - [Superseding research state v2](observations/WR-OBS-001/research_state_v2.json)
 
-### WR-OBS-002 — three fresh browser windows, persistent backend confound
+### WR-OBS-002 — fresh browser windows, persistent backend confound
 
-Three separately reported fresh browser chat windows received the same `C_improve` prompt.
-
-Backend/UI measurements preserve:
+Three reported fresh browser windows received the same `C_improve` prompt.
 
 ```text
 fresh prompt-eval tokens: 65 / 65 / 65
 generated tokens:         1246 / 995 / 1038
 generation rate:          ~13.98 / 14.14 / 13.83 tokens/s
 ```
-
-The stop-count arithmetic is consistent with the same approximate 424-token pre-generation/context length and approximately 359 tokens not requiring fresh prompt evaluation in each run.
-
-That arithmetic is not promoted into a primary cached-token meter.
 
 Current boundary:
 
@@ -213,83 +244,107 @@ Methodological constraint:
 
 ---
 
-## Open capability question
+## Task-specific Qwen analytical behavior
 
-The local Qwen setup has displayed substantially richer analytical behavior than the first trivial setup interactions revealed.
+The local Qwen setup has demonstrated substantive analysis over the White Rabbit representation.
 
-Why remains unresolved.
-
-Current competing explanations include:
+Current narrow evidence ledger:
 
 ```text
-H1: initial backend slowdown obscured capability
-H2: later tasks simply elicited capabilities early prompts never tested
-H3: C_improve provided a useful in-context computational scaffold
-H4: some combination of H1-H3
+White Rabbit representation ingested: OBSERVED
+task-specific structured analysis: OBSERVED
+authority distinctions preserved in observed task: OBSERVED
+deep continuation under inherited state: OBSERVED
+general research competence: NOT_ESTABLISHED
+C_improve causal role: UNESTABLISHED
+independent replication: UNESTABLISHED
+compute advantage: UNESTABLISHED
 ```
 
-The cache/prefill explanation for the speed anomaly does **not** by itself adjudicate the semantic capability question.
+This is capability evidence at a task-specific level, not independence or White Rabbit evidence.
 
-The sharper future hypothesis is:
+The sharper future question remains:
 
-> **Can a compact reusable meta-representation cause a fixed model to activate more of its existing reasoning capability while reducing wasted computation required to do so?**
-
-This remains an open hypothesis.
+> **Can reusable structure change the computational representation of a task so that the same useful result requires less work?**
 
 ---
 
-## Next specified engineering target
+## White Rabbit Recorder v0.1.0
 
-The next build target is **White Rabbit Recorder v0.1**: a transparent, byte-faithful inference recorder that establishes raw HTTP custody plus backend execution custody.
+The recorder specification was implemented by Codex in an isolated local repository according to a user-supplied completion report.
 
-Topology:
+Reported identity:
 
 ```text
-browser
-   -> recorder :8085
-   -> llama-server :8086
+version: 0.1.0
+local implementation commit: 80cddb26a7b851d218f95317cd3c5b0593acd831
+files added: 27
+dependencies: none / Python standard library only
+working tree: clean
+remote: none
 ```
 
-The recorder contract requires:
+Reported acceptance:
 
 ```text
-exact HTTP request-body custody
-exact response-body custody
+python -m unittest discover -s tests -v
+PASS — 30/30
+deterministic fake upstream only
+```
+
+Reported properties include:
+
+```text
+all-route transparent proxying
+byte-faithful request custody
+raw response-body custody
+streaming preservation
 server invocation/build/PID/session custody
-literal llama.cpp timing/token/LCP extraction
-no guessed defaults
+literal prompt/generated/timing extraction
+literal f_sim_best / f_keep / graphs_reused preservation
 no guessed cached-token count
 explicit ambiguous-correlation failure
+concurrent measured requests rejected with HTTP 409
 ```
 
-Its first acceptance must use a deterministic fake upstream only.
-
-Claim ceiling:
+Reported forbidden-scope state:
 
 ```text
-IMPLEMENTED
+C_improve treatment: NOT ADDED / NOT RUN
+neutral prelude: NOT ADDED
+capability evaluator: NOT ADDED
+White Rabbit policy: NOT ADDED
+real Qwen request through recorder: NOT RUN
+scientific comparison: NOT RUN
+```
+
+Important limitation:
+
+```text
+exact HTTP body custody != exact post-Jinja model-visible token sequence
+```
+
+The recorder implementation is local-only, so this GitHub repository cannot independently inspect commit `80cddb26...` or rerun its reported tests. The current claim ceiling is therefore:
+
+```text
+LOCAL IMPLEMENTATION REPORTED
 +
-FAKE-UPSTREAM BYTE-CUSTODY ACCEPTANCE PASS
+FAKE-UPSTREAM BYTE-CUSTODY ACCEPTANCE REPORTED PASS
++
+SCIENTIFIC RESULT: NONE
 ```
-
-Then:
-
-```text
-STOP
-```
-
-No real Qwen treatment is opened by the recorder specification.
 
 See:
 
-- [interfaces/WHITE_RABBIT_RECORDER_V0_1.md](interfaces/WHITE_RABBIT_RECORDER_V0_1.md)
-- [handoff/CODEX_RECORDER_BUILD.md](handoff/CODEX_RECORDER_BUILD.md)
+- [Recorder interface](interfaces/WHITE_RABBIT_RECORDER_V0_1.md)
+- [Recorder engineering milestone](program/RECORDER_V0_1_MILESTONE.md)
+- [Closed Codex handoff](handoff/CODEX_RECORDER_BUILD.md)
 
 ---
 
-## Gated path
+## Current gate position
 
-The intended dependency order is:
+The gated sequence remains:
 
 ```text
 research evidence
@@ -306,13 +361,19 @@ research evidence
 
 A stage appearing in the roadmap does not authorize it.
 
-Current next transition:
+Current position:
 
 ```text
-recorder implementation in isolated sibling
--> fake-upstream acceptance
--> STOP
+Gate 4 — recorder implementation / fake-upstream acceptance:
+    USER-REPORTED COMPLETE
+
+Gate 5 — real-server recorder calibration:
+    NOT_AUTHORIZED
 ```
+
+The recorder's mandated stop boundary has been reached according to the supplied completion report.
+
+There is currently **no authorized real-Qwen or treatment transition**.
 
 See:
 
@@ -324,16 +385,16 @@ See:
 ## Repository map
 
 ```text
-constitution/   frozen authority boundary + measurement invariants
+constitution/   frozen authority boundary + active instrumentation invariants
 corpus/         container only; ingestion not authorized
 schema/         typed research-state schemas
 validator/      deterministic provenance validator
 tests/          validator tests/fixtures
 observations/   preserved empirical/uncontrolled observation lineage
-program/        program definition, state ledger, gated roadmap
-measurement/    compute/accounting vocabulary
-interfaces/     non-runnable future-component contracts
-handoff/        implementation instructions for isolated future components
+program/        definition, state ledger, roadmap, engineering milestones
+measurement/    raw/derived/interpretation + compute/accounting vocabulary
+interfaces/     component contracts
+handoff/        closed/active implementation handoffs
 ```
 
 ## Validation
@@ -365,10 +426,12 @@ WARRANT_SUFFICIENT
 
 ## Governing rules
 
-> **Measure what ran before interpreting what it means.**
+> **Raw measurement first, derived reconstruction second, interpretation last.**
 
 > **Qwen can generate candidate structure; generation does not grant the candidate research authority.**
 
 > **Make research state mechanically trustworthy before making it computationally useful.**
+
+> **Capability preserved. Independence demonstrated. Work actually removed. Acquisition repaid.**
 
 > **Build the microscope before chasing the rabbit.**
