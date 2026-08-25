@@ -1,0 +1,214 @@
+{
+  "constitution_version": "0.1",
+  "sources": [
+    {
+      "id": "source:WR-OBS-002:raw",
+      "epistemic_role": "SOURCE",
+      "source_type": "repository_file",
+      "repository": "bjoern-janson/white-rabbit",
+      "locator": {
+        "path": "observations/WR-OBS-002/raw_observation.md",
+        "commit": "70e8c46fba0a9a070a7a0aeba5664c3f8039cecf"
+      },
+      "source_role": "uncontrolled_observation_custody"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim:WR-OBS-002:fresh-browser-windows",
+      "epistemic_role": "NORMALIZED",
+      "proposition": "The preserved report states that three separate fresh browser chat windows received the same C_improve prompt; this establishes browser/conversation separation only, not fresh backend inference state.",
+      "scope": "Literal normalization of the independence statement in WR-OBS-002 raw custody.",
+      "ceiling": "Browser-window independence only; no backend-state independence, persistence, learning, causality, or White Rabbit-effect inference.",
+      "source_ids": [
+        "source:WR-OBS-002:raw"
+      ],
+      "status_id": "status:WR-OBS-002:fresh-browser-windows"
+    },
+    {
+      "id": "claim:WR-OBS-002:runtime-measurements",
+      "epistemic_role": "NORMALIZED",
+      "proposition": "The three preserved runs each report 65 freshly processed prompt-evaluation tokens; generated-token counts are 1246, 995, and 1038; generation rates are approximately 13.98, 14.14, and 13.83 tokens/s; stop n_tokens values are 1670, 1419, and 1462.",
+      "scope": "Literal normalization of the three reported llama.cpp/UI measurement blocks.",
+      "ceiling": "Measurement transcription only; prompt-evaluation counts are not relabeled reasoning tokens and no causal or capability interpretation is made.",
+      "source_ids": [
+        "source:WR-OBS-002:raw"
+      ],
+      "status_id": "status:WR-OBS-002:runtime-measurements"
+    },
+    {
+      "id": "claim:WR-OBS-002:context-arithmetic",
+      "epistemic_role": "DERIVED",
+      "proposition": "For each preserved run, stop n_tokens minus generated tokens equals 424, and 424 minus the 65 freshly processed prompt tokens equals 359; this is arithmetic consistent with substantial retained/common prefix state but is not a primary cached-token measurement.",
+      "scope": "Deterministic arithmetic over claim:WR-OBS-002:runtime-measurements only.",
+      "ceiling": "Arithmetic consistency statement only; does not identify exact cache mechanism or promote 359 into an explicitly measured cached-token counter.",
+      "source_ids": [
+        "source:WR-OBS-002:raw"
+      ],
+      "status_id": "status:WR-OBS-002:context-arithmetic"
+    },
+    {
+      "id": "claim:WR-OBS-002:open-boundary",
+      "epistemic_role": "NORMALIZED",
+      "proposition": "WR-OBS-002 remains OPEN: backend-state independence is NOT_ESTABLISHED, C_improve causality is UNESTABLISHED, persistent policy change is UNESTABLISHED, capability improvement is NOT_DEMONSTRATED, White Rabbit effect is NOT_DEMONSTRATED, and mechanism remains OPEN.",
+      "scope": "Literal normalization of the observation boundary recorded in WR-OBS-002 raw custody.",
+      "ceiling": "Open observation boundary only; no scientific adjudication or treatment authorization.",
+      "source_ids": [
+        "source:WR-OBS-002:raw"
+      ],
+      "status_id": "status:WR-OBS-002:open-boundary"
+    }
+  ],
+  "relations": [],
+  "statuses": [
+    {
+      "id": "status:WR-OBS-002:fresh-browser-windows",
+      "epistemic_role": "NORMALIZED",
+      "subject_id": "claim:WR-OBS-002:fresh-browser-windows",
+      "value": "EARNED",
+      "scope": "The user-reported separation into three fresh browser chat windows is preserved; backend independence is excluded.",
+      "effective_commit": "70e8c46fba0a9a070a7a0aeba5664c3f8039cecf",
+      "source_ids": [
+        "source:WR-OBS-002:raw"
+      ]
+    },
+    {
+      "id": "status:WR-OBS-002:runtime-measurements",
+      "epistemic_role": "NORMALIZED",
+      "subject_id": "claim:WR-OBS-002:runtime-measurements",
+      "value": "EARNED",
+      "scope": "The literal three-run backend/UI measurements are recorded without interpretation.",
+      "effective_commit": "70e8c46fba0a9a070a7a0aeba5664c3f8039cecf",
+      "source_ids": [
+        "source:WR-OBS-002:raw"
+      ]
+    },
+    {
+      "id": "status:WR-OBS-002:context-arithmetic",
+      "epistemic_role": "NORMALIZED",
+      "subject_id": "claim:WR-OBS-002:context-arithmetic",
+      "value": "EARNED",
+      "scope": "Mechanical arithmetic over the normalized run measurements only.",
+      "effective_commit": "70e8c46fba0a9a070a7a0aeba5664c3f8039cecf",
+      "source_ids": [
+        "source:WR-OBS-002:raw"
+      ]
+    },
+    {
+      "id": "status:WR-OBS-002:open-boundary",
+      "epistemic_role": "NORMALIZED",
+      "subject_id": "claim:WR-OBS-002:open-boundary",
+      "value": "OPEN",
+      "scope": "Causal attribution, backend independence, persistent policy change, capability improvement, mechanism, and White Rabbit effect remain unestablished/open exactly as recorded.",
+      "effective_commit": "70e8c46fba0a9a070a7a0aeba5664c3f8039cecf",
+      "source_ids": [
+        "source:WR-OBS-002:raw"
+      ]
+    }
+  ],
+  "experiments": [],
+  "artifacts": [],
+  "provenance": [
+    {
+      "id": "provenance:claim:WR-OBS-002:fresh-browser-windows",
+      "subject_id": "claim:WR-OBS-002:fresh-browser-windows",
+      "subject_role": "NORMALIZED",
+      "source_refs": [
+        {
+          "source_id": "source:WR-OBS-002:raw",
+          "source_locator": "heading:Independence statement",
+          "subject_field": "proposition"
+        }
+      ],
+      "parent_normalized_ids": []
+    },
+    {
+      "id": "provenance:claim:WR-OBS-002:runtime-measurements",
+      "subject_id": "claim:WR-OBS-002:runtime-measurements",
+      "subject_role": "NORMALIZED",
+      "source_refs": [
+        {
+          "source_id": "source:WR-OBS-002:raw",
+          "source_locator": "headings:Run 1 / Run 2 / Run 3",
+          "subject_field": "proposition"
+        }
+      ],
+      "parent_normalized_ids": []
+    },
+    {
+      "id": "provenance:claim:WR-OBS-002:context-arithmetic",
+      "subject_id": "claim:WR-OBS-002:context-arithmetic",
+      "subject_role": "DERIVED",
+      "source_refs": [],
+      "parent_normalized_ids": [
+        "claim:WR-OBS-002:runtime-measurements"
+      ],
+      "derivation": "Compute 1670-1246=424, 1419-995=424, 1462-1038=424, and 424-65=359 from the normalized runtime measurements; retain 359 as derived arithmetic rather than a primary cached-token meter."
+    },
+    {
+      "id": "provenance:claim:WR-OBS-002:open-boundary",
+      "subject_id": "claim:WR-OBS-002:open-boundary",
+      "subject_role": "NORMALIZED",
+      "source_refs": [
+        {
+          "source_id": "source:WR-OBS-002:raw",
+          "source_locator": "heading:Observation boundary",
+          "subject_field": "proposition"
+        }
+      ],
+      "parent_normalized_ids": []
+    },
+    {
+      "id": "provenance:status:WR-OBS-002:fresh-browser-windows",
+      "subject_id": "status:WR-OBS-002:fresh-browser-windows",
+      "subject_role": "NORMALIZED",
+      "source_refs": [
+        {
+          "source_id": "source:WR-OBS-002:raw",
+          "source_locator": "heading:Independence statement",
+          "subject_field": "value"
+        }
+      ],
+      "parent_normalized_ids": []
+    },
+    {
+      "id": "provenance:status:WR-OBS-002:runtime-measurements",
+      "subject_id": "status:WR-OBS-002:runtime-measurements",
+      "subject_role": "NORMALIZED",
+      "source_refs": [
+        {
+          "source_id": "source:WR-OBS-002:raw",
+          "source_locator": "headings:Run 1 / Run 2 / Run 3",
+          "subject_field": "value"
+        }
+      ],
+      "parent_normalized_ids": []
+    },
+    {
+      "id": "provenance:status:WR-OBS-002:context-arithmetic",
+      "subject_id": "status:WR-OBS-002:context-arithmetic",
+      "subject_role": "NORMALIZED",
+      "source_refs": [
+        {
+          "source_id": "source:WR-OBS-002:raw",
+          "source_locator": "heading:Literal arithmetic observations",
+          "subject_field": "value"
+        }
+      ],
+      "parent_normalized_ids": []
+    },
+    {
+      "id": "provenance:status:WR-OBS-002:open-boundary",
+      "subject_id": "status:WR-OBS-002:open-boundary",
+      "subject_role": "NORMALIZED",
+      "source_refs": [
+        {
+          "source_id": "source:WR-OBS-002:raw",
+          "source_locator": "heading:Observation boundary",
+          "subject_field": "value"
+        }
+      ],
+      "parent_normalized_ids": []
+    }
+  ]
+}
