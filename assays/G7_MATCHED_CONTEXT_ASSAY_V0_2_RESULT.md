@@ -83,7 +83,7 @@ Every row traces to its run directory, recorder run ID, exact request/response h
 
 `CONTROL_ADEQUACY_FAIL`
 
-No numerical generation-work conclusion is emitted when the comparison is censored. `Delta W_gen` does not authorize a `Delta W_run` or `Delta C_H` claim. No White Rabbit claim is emitted.
+No numerical generation-work conclusion is emitted because control adequacy failed; capability non-regression, censoring, and the numerical generation-work comparison were not opened. `Delta W_gen` does not authorize a `Delta W_run` or `Delta C_H` claim. No White Rabbit claim is emitted.
 
 ## Claim ceiling
 
