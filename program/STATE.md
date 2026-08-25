@@ -8,17 +8,34 @@ This file is a human-readable orientation layer. It does not replace provenance-
 
 White Rabbit searches for reusable computational structure that changes the economics of reasoning while preserving a reachable path for correction.
 
+Canonical minimum definition:
+
+```text
+same relevant capability, less required computation
+```
+
 Current decomposition:
 
 ```text
 C_latent != C_realized(R, q) != C_work(R, q)
 ```
 
-Current scientific target remains unearned:
+General gates:
 
 ```text
-Can compact reusable structure cause a fixed model to deploy at least as much useful capability while reducing amortized required computation?
+G1: C_realized(M, q) >= C_realized(R0, q)
+G2: independent reproduction
+G3: C_work(M, q) < C_work(R0, q)
+G4: acquisition cost is repaid over reuse
 ```
+
+Optional stronger result:
+
+```text
+G1+: C_realized(M, q) > C_realized(R0, q)
+```
+
+No gate is scientifically earned yet.
 
 ## Research substrate
 
@@ -31,15 +48,26 @@ scientific warrant from validator: NONE
 
 The founding constitution currently authorizes only source custody, typed research-state construction, provenance/history representation, and mechanical validation.
 
-## Instrumentation lessons
+## Measurement doctrine
 
-Active measurement constraints include:
+Frozen evidence order:
+
+```text
+RAW MEASUREMENT
+-> DERIVED RECONSTRUCTION
+-> INTERPRETATION
+```
+
+Active constraints include:
 
 ```text
 Fresh chat is not fresh compute.
 UI-visible token categories require backend confirmation.
 Reusable-state acquisition must be charged.
 Cached work must not be called eliminated work.
+f_sim_best != f_keep.
+LCP similarity must not be interpreted without retained-prefix size/reference population.
+Derived cache arithmetic must not be promoted into a backend-reported cache meter.
 ```
 
 Current-run accounting vocabulary:
@@ -94,41 +122,60 @@ White Rabbit effect: NOT_DEMONSTRATED
 
 The repeated-window observation is useful for measurement calibration, not treatment evidence.
 
-## Capability question
+## Qwen analytical-behavior evidence
 
-The local Qwen setup has displayed substantially richer analytical behavior than the first trivial setup interactions revealed.
-
-The cause is not localized.
-
-Live competing explanations include:
+Current narrow evidence boundary:
 
 ```text
-H1: initial backend slowdown obscured capability
-H2: later tasks simply elicited capabilities the early tasks never tested
-H3: C_improve supplied a useful in-context computational scaffold
-H4: some combination of H1-H3
+White Rabbit representation ingested: OBSERVED
+task-specific structured analysis: OBSERVED
+authority distinctions preserved in the observed task: OBSERVED
+deep continuation under inherited state: OBSERVED
+general research competence: NOT_ESTABLISHED
+C_improve causal role: UNESTABLISHED
+independent replication: UNESTABLISHED
+compute advantage: UNESTABLISHED
 ```
 
-No hypothesis is promoted by this ledger.
+The observed README interactions are capability evidence at the task-specific level, not independence evidence.
 
-The capability question is deliberately separated from the cache/prefill speed explanation.
+The second README read inherited the prior slot state. Its backend reconstruction must remain derived rather than being promoted into an explicit cached-token meter.
 
 ## Recorder
 
+User-supplied Codex completion report records:
+
 ```text
-White Rabbit Recorder v0.1: SPECIFIED
-implementation: NOT_STARTED / NOT_RECORDED HERE
-real Qwen run through recorder: NOT_AUTHORIZED
-C_improve treatment through recorder: NOT_AUTHORIZED
+White Rabbit Recorder version: 0.1.0
+local repository commit: 80cddb26a7b851d218f95317cd3c5b0593acd831
+implementation: REPORTED_COMPLETE
+fake-upstream tests: REPORTED_PASS_30_OF_30
+Python dependencies: NONE / standard library only
+real Qwen run through recorder: NOT_RUN
+scientific comparison: NOT_RUN
+C_improve treatment: NOT_ADDED / NOT_RUN
+working tree: REPORTED_CLEAN
+remote: NONE
 ```
 
-The interface contract is:
+Reported engineering properties include byte-faithful request custody, exact response-body custody, literal backend timing/LCP extraction, no guessed cached-token count, explicit ambiguous-correlation failure, and concurrent measured-request rejection with HTTP 409.
+
+This GitHub repository cannot independently inspect or verify the local-only recorder commit or rerun those tests. Therefore the recorded state is:
 
 ```text
+RECORDER_IMPLEMENTATION: REPORTED
+FAKE_UPSTREAM_ACCEPTANCE: REPORTED_PASS
+REAL_SERVER_CALIBRATION: NOT_RUN
+SCIENTIFIC_RESULT: NONE
+TREATMENT: UNOPENED
+```
+
+See:
+
+```text
+program/RECORDER_V0_1_MILESTONE.md
 interfaces/WHITE_RABBIT_RECORDER_V0_1.md
 ```
-
-The intended implementation location is a sibling component/repository so this research/control-plane repository does not become the runtime instrument.
 
 ## Corpus / V(q) / Qwen research integration
 
@@ -158,18 +205,26 @@ Only the early research-state/provenance portion is presently constituted in thi
 
 > **Never call computation eliminated until it is known who paid for it, when they paid for it, and whether it was merely cached.**
 
-And the operational corollary:
+And the operational doctrine:
 
-> **Measure what ran before interpreting what it means.**
+> **Raw measurement first, derived reconstruction second, interpretation last.**
 
-## Next transition
+## Gate position
 
-The next specified engineering transition is:
+Gate 4 — recorder implementation / fake-upstream acceptance — is recorded as **reported complete** from the local Codex completion report.
+
+The original stop boundary remains active.
+
+The next unopened gate is:
 
 ```text
-implement White Rabbit Recorder v0.1 as an isolated sibling
--> fake-upstream byte-custody acceptance
--> STOP
+Gate 5 — real-server recorder calibration
 ```
 
-No treatment execution is opened by this state ledger.
+State:
+
+```text
+NOT_AUTHORIZED
+```
+
+No real Qwen request, treatment execution, capability comparison, or scientific transition is opened by this state ledger.
