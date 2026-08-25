@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "source.schema.json",
+  "title": "White Rabbit source",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "epistemic_role", "source_type", "repository", "locator", "source_role"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1, "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"},
+    "epistemic_role": {"const": "SOURCE"},
+    "source_type": {"type": "string", "minLength": 1},
+    "repository": {"type": "string", "minLength": 1},
+    "locator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "commit"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "commit": {"type": "string", "pattern": "^[0-9a-fA-F]{7,64}$"}
+      }
+    },
+    "hash": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "value"],
+      "properties": {
+        "algorithm": {"type": "string", "enum": ["sha256", "git-blob-sha1"]},
+        "value": {"type": "string", "minLength": 1}
+      }
+    },
+    "source_role": {"type": "string", "minLength": 1}
+  }
+}

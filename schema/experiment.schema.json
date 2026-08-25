@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "experiment.schema.json",
+  "title": "White Rabbit experiment record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "epistemic_role", "name", "scope", "execution_state", "result_artifact_ids", "status_ids", "claim_ids", "provenance_id"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1, "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"},
+    "epistemic_role": {"type": "string", "enum": ["NORMALIZED", "DERIVED"]},
+    "name": {"type": "string", "minLength": 1},
+    "scope": {"type": "string", "minLength": 1},
+    "preregistration_artifact_id": {"type": "string", "minLength": 1},
+    "implementation_artifact_id": {"type": "string", "minLength": 1},
+    "execution_state": {"type": "string", "minLength": 1},
+    "result_artifact_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "status_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "claim_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "provenance_id": {"type": "string", "minLength": 1}
+  }
+}

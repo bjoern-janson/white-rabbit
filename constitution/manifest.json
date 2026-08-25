@@ -1,0 +1,38 @@
+{
+  "constitution_id": "WHITE-RABBIT-RESEARCH-STATE",
+  "version": "0.1",
+  "status": "FROZEN_FOUNDING_CONSTITUTION",
+  "authorized_path": [
+    "RESEARCH_EVIDENCE",
+    "RESEARCH_STATE",
+    "PROVENANCE_VALID"
+  ],
+  "invariants": {
+    "I1": "SOURCE != NORMALIZED != DERIVED",
+    "I2": "Every NORMALIZED object resolves to SOURCE; every DERIVED object resolves through NORMALIZED to SOURCE",
+    "I3": "Status is provenance-bearing",
+    "I4": "Historical research objects are never silently overwritten",
+    "I5": "Validator jurisdiction is provenance validity, not scientific warrant"
+  },
+  "validator_outcomes": [
+    "PROVENANCE_VALID",
+    "PROVENANCE_INVALID",
+    "SCHEMA_INVALID",
+    "UNRESOLVED_SOURCE",
+    "UNRESOLVED_RELATION"
+  ],
+  "initial_status_vocabulary": [
+    "EARNED",
+    "OPEN",
+    "TERMINAL"
+  ],
+  "forbidden_validator_outcomes": [
+    "WARRANT_SUFFICIENT",
+    "SCIENTIFICALLY_VALID",
+    "TRUE",
+    "CORRECT",
+    "SUPPORTED",
+    "PROVEN"
+  ],
+  "schema_draft": "https://json-schema.org/draft/2020-12/schema"
+}
