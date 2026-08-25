@@ -37,6 +37,22 @@ G1+: C_realized(M, q) > C_realized(R0, q)
 
 White Rabbit G1-G4 are not opened by the current Gate 7 constitution work.
 
+## Conceptual architecture freeze
+
+```text
+WHITE_RABBIT_CONCEPTUAL_FREEZE_V0_1: FROZEN / DERIVED / NON_AUTHORIZING
+```
+
+Artifact:
+
+```text
+program/WHITE_RABBIT_CONCEPTUAL_FREEZE_V0_1.md
+```
+
+The freeze records the current derived program synthesis. It grants no empirical authority, changes no Gate 7 state, and must not be retroactively attributed as the explicit claim of predecessor repositories.
+
+The next meaningful scientific advance must come from an artifact, experiment, or falsification rather than another ontology expansion.
+
 ## Research substrate
 
 ```text

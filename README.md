@@ -68,6 +68,14 @@ reusable but uneconomic structure != White Rabbit
 
 See [program/WHITE_RABBIT.md](program/WHITE_RABBIT.md).
 
+The current derived program architecture is frozen, without experimental authority, in:
+
+- [program/WHITE_RABBIT_CONCEPTUAL_FREEZE_V0_1.md](program/WHITE_RABBIT_CONCEPTUAL_FREEZE_V0_1.md)
+
+```text
+WHITE_RABBIT_CONCEPTUAL_FREEZE_V0_1: FROZEN / DERIVED / NON_AUTHORIZING
+```
+
 ---
 
 ## Measurement doctrine
@@ -282,21 +290,21 @@ See [program/GATE6_COLD_CHARACTERIZATION_MILESTONE.md](program/GATE6_COLD_CHARAC
 Current state:
 
 ```text
-constitution authoring: AUTHORIZED
-constitution artifact: NOT YET CONSTITUTED / NOT YET REVIEWED
+constitution artifact: CONSTITUTED AT 7696bf9
+pre-open constitution review: REPAIR_REQUIRED
+pre-open token/context matching: BLOCKED
 assay execution: NOT AUTHORIZED / NOT OPENED
 White Rabbit G1-G4: NOT OPENED
 ```
 
-The authorized Codex task is specification authoring only:
+Constitution artifact:
 
-- [handoff/CODEX_G7_CONSTITUTION.md](handoff/CODEX_G7_CONSTITUTION.md)
+- [assays/G7_MATCHED_CONTEXT_ASSAY_V0_1.md](assays/G7_MATCHED_CONTEXT_ASSAY_V0_1.md)
 
-Target artifact:
+Pre-open review and separate repair handoff:
 
-```text
-assays/G7_MATCHED_CONTEXT_ASSAY_V0_1.md
-```
+- [program/GATE7_PREOPEN_CONSTITUTION_REVIEW.md](program/GATE7_PREOPEN_CONSTITUTION_REVIEW.md)
+- [handoff/CODEX_G7_CONSTITUTION_REPAIR.md](handoff/CODEX_G7_CONSTITUTION_REPAIR.md)
 
 The constitution must freeze:
 
@@ -341,13 +349,17 @@ CONSTITUTED != EXECUTED
 
 Creating the assay constitution does **not** authorize `C_improve`, the neutral prelude, B/C runs, recorder/server startup for Gate 7, capability comparison, Gate 8, or a White Rabbit claim.
 
-After Codex authors the constitution:
+The pre-open review found work-censoring and control-adequacy gaps. The current authorized transition is:
 
 ```text
-STOP
+repair Gate 7 constitution
+-> run existing tests + validator
+-> freeze repaired commit
+-> review repaired constitution
+-> STOP
 ```
 
-The constitution must survive review before any separate execution authorization is considered.
+Token/context matching remains blocked until the repaired constitution is separately frozen and reviewed.
 
 ---
 
@@ -357,8 +369,9 @@ The constitution must survive review before any separate execution authorization
 Gate 4 — fake-upstream recorder acceptance: USER_REPORTED PASS
 Gate 5 — real-server recorder calibration: USER_REPORTED PASS
 Gate 6 — five-replicate cold characterization: USER_REPORTED PASS
-Gate 7 — constitution authoring: AUTHORIZED
-Gate 7 — constitution: NOT YET REVIEWED / NOT YET FROZEN
+Gate 7 — matched-context assay constitution: CONSTITUTED AT 7696bf9
+Gate 7 — pre-open constitution review: REPAIR_REQUIRED
+Gate 7 — pre-open token/context matching: BLOCKED
 Gate 7 — execution: NOT AUTHORIZED / NOT OPENED
 White Rabbit G1-G4: NOT OPENED
 ```
@@ -366,9 +379,10 @@ White Rabbit G1-G4: NOT OPENED
 Current authorized transition only:
 
 ```text
-G6 PASS
--> author G7_MATCHED_CONTEXT_ASSAY_V0.1
--> review constitution
+repair Gate 7 constitution
+-> run existing tests + validator
+-> freeze repaired commit
+-> review
 -> STOP
 ```
 
@@ -392,7 +406,7 @@ program/        definition, state, roadmap, engineering/calibration milestones
 measurement/    raw/derived/interpretation + compute/accounting vocabulary
 interfaces/     component contracts
 handoff/        active bounded Codex handoffs
-assays/         future frozen assay constitutions; not created until authorized authoring completes
+assays/         frozen assay constitutions; constitution does not authorize execution
 ```
 
 ## Governing rules
