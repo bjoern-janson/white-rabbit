@@ -163,7 +163,7 @@ No treatment, neutral prelude, benchmark, or capability evaluation was run under
 
 ## Gate 7 — Matched-context capability/work assay
 
-State: `CONSTITUTION REPAIRED / AWAITS REVIEW / TOKEN MATCH BLOCKED / EXECUTION NOT AUTHORIZED`
+State: `CONSTITUTION REPAIRED / REVIEWED / PREOPEN TOKEN MISMATCH / ASSAY BLOCKED / EXECUTION NOT AUTHORIZED`
 
 Original constitution and repair authority:
 
@@ -203,7 +203,16 @@ The literal `C_improve` source must come from:
 observations/WR-OBS-002/raw_observation.md
 ```
 
-The neutral prelude must be frozen separately and reviewed. Source-level similarity does not establish model-visible token equality; the constitution must preserve a pre-open token/context-matching requirement if equality cannot be mechanically established during authoring.
+The neutral prelude is frozen separately. Source-level byte matching did not establish model-visible token equality. The exact native pre-open operation produced `PREOPEN_TOKEN_MATCH_MISMATCH`: C was three prompt tokens longer than B for Q1, Q2, and Q3.
+
+Frozen result artifacts:
+
+```text
+assays/G7_PREOPEN_TOKEN_MATCH_V0_1.md
+assays/G7_PREOPEN_TOKEN_MATCH_V0_1.json
+```
+
+This is a template/tokenization result only. It does not authorize editing either prelude, executing the assay, or emitting a capability, work, causal, or White Rabbit claim.
 
 The repaired v0.1.1 contract adds only explicit work-censoring custody and a per-task `S_B,j = 5/5` control-adequacy gate. It preserves mechanically checkable held-out tasks, no LLM judge, primary work currency `N_generated`, independently cold runs, and repeated observations rather than one B/C pair.
 
@@ -227,12 +236,12 @@ White Rabbit claim
 The next possible transition is:
 
 ```text
-review repaired constitution
--> only then consider separately authorizing pre-open token/context matching
+review frozen PREOPEN_TOKEN_MATCH_MISMATCH artifact
+-> separately decide whether reconstitution is warranted
 -> STOP
 ```
 
-Repair completion does not itself authorize token/context matching or execution.
+Neither constitution repair nor the pre-open mismatch authorizes Gate 7 execution.
 
 ## Gate 8 — White Rabbit compute economics
 
@@ -279,8 +288,8 @@ Each transition requires its own claim ceiling.
 Gate 4: USER_REPORTED PASS
 Gate 5: USER_REPORTED PASS
 Gate 6: USER_REPORTED PASS
-Gate 7 repaired constitution v0.1.1: FROZEN / AWAITS REVIEW
-Gate 7 pre-open token/context matching: BLOCKED
+Gate 7 repaired constitution v0.1.1: FROZEN / REVIEWED
+Gate 7 pre-open token/context matching: MISMATCH / ASSAY BLOCKED
 Gate 7 execution: NOT AUTHORIZED / NOT OPENED
 White Rabbit G1-G4: NOT OPENED
 ```
@@ -288,8 +297,8 @@ White Rabbit G1-G4: NOT OPENED
 Current authorized transition only:
 
 ```text
-review repaired Gate 7 constitution
--> only then consider separately authorizing pre-open token/context matching
+review frozen PREOPEN_TOKEN_MATCH_MISMATCH artifact
+-> separately decide whether reconstitution is warranted
 -> STOP
 ```
 

@@ -229,7 +229,7 @@ See:
 program/GATE6_COLD_CHARACTERIZATION_MILESTONE.md
 ```
 
-## Gate 7 — repaired constitution awaiting review
+## Gate 7 — pre-open token/context mismatch
 
 Original frozen constitution:
 
@@ -243,7 +243,7 @@ Current repaired revision:
 
 ```text
 version: G7_MATCHED_CONTEXT_ASSAY_V0.1.1
-status: CONSTITUTED / REPAIRED / NOT EXECUTED / PREOPEN_TOKEN_MATCH_REQUIRED / REVIEW_REQUIRED
+status: CONSTITUTED / REPAIRED / NOT EXECUTED / PREOPEN_TOKEN_MATCH_REQUIRED / REVIEWED
 scope: work censoring + capability adequacy only
 ```
 
@@ -281,11 +281,25 @@ Current Gate 7 state:
 ontology / program separation: PASS
 matched-context construction: PASS
 authority boundary: PASS
-work-censoring rule: REPAIRED / REVIEW_REQUIRED
-capability adequacy: REPAIRED / REVIEW_REQUIRED
-pre-open token/context matching: BLOCKED
+work-censoring rule: REPAIRED / REVIEWED
+capability adequacy: REPAIRED / REVIEWED
+pre-open token/context matching: MISMATCH / ASSAY BLOCKED
 assay execution: NOT AUTHORIZED / NOT OPENED
 ```
+
+Frozen deterministic pre-open result:
+
+```text
+artifact: assays/G7_PREOPEN_TOKEN_MATCH_V0_1.md
+machine custody: assays/G7_PREOPEN_TOKEN_MATCH_V0_1.json
+terminal result: PREOPEN_TOKEN_MATCH_MISMATCH
+Q1 delta C-B: +3 prompt tokens
+Q2 delta C-B: +3 prompt tokens
+Q3 delta C-B: +3 prompt tokens
+generation performed: NO
+```
+
+The mismatch establishes only unequal prompt-token burden under the exact frozen native template/tokenizer path. It authorizes no source repair, assay execution, capability claim, work claim, or White Rabbit claim.
 
 The repaired contract freezes the required logical order as:
 
@@ -308,9 +322,9 @@ handoff/CODEX_G7_CONSTITUTION_REPAIR.md
 Required next transition:
 
 ```text
-G7_MATCHED_CONTEXT_ASSAY_V0.1.1 repaired constitution
--> review repaired constitution
--> only then consider separately authorizing pre-open token/context matching
+PREOPEN_TOKEN_MATCH_MISMATCH
+-> separate review or reconstitution only
+-> STOP
 ```
 
 Critical boundary remains:
@@ -319,7 +333,7 @@ Critical boundary remains:
 CONSTITUTED != EXECUTED
 ```
 
-No tokenizer preflight, llama-server, recorder, neutral prelude, C_improve payload, B run, C run, live grading, or scientific comparison is authorized by the repair transition.
+The pre-open operation used a strictly non-generating native llama.cpp template/tokenizer process. No recorder, neutral-prelude inference, C_improve inference, B run, C run, live grading, or scientific comparison was executed.
 
 ## Corpus / V(q) / Qwen research integration
 
@@ -355,8 +369,8 @@ Gate 4 — fake-upstream recorder acceptance: USER_REPORTED PASS
 Gate 5 — real-server recorder calibration: USER_REPORTED PASS
 Gate 6 — five-replicate cold characterization: USER_REPORTED PASS
 Gate 7 — matched-context assay constitution: CONSTITUTED AT 7696bf9
-Gate 7 — repaired constitution v0.1.1: FROZEN / AWAITS REVIEW
-Gate 7 — pre-open token/context matching: BLOCKED
+Gate 7 — repaired constitution v0.1.1: FROZEN / REVIEWED
+Gate 7 — pre-open token/context matching: MISMATCH / ASSAY BLOCKED
 Gate 7 — execution: NOT AUTHORIZED / NOT OPENED
 White Rabbit G1-G4: NOT OPENED
 ```
@@ -364,7 +378,7 @@ White Rabbit G1-G4: NOT OPENED
 Current authorized transition only:
 
 ```text
-review repaired Gate 7 constitution
--> only then consider separately authorizing pre-open token/context matching
+review frozen PREOPEN_TOKEN_MATCH_MISMATCH artifact
+-> separately decide whether reconstitution is warranted
 -> STOP
 ```
