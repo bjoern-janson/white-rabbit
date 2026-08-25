@@ -20,7 +20,7 @@ Current decomposition:
 C_latent != C_realized(R, q) != C_work(R, q)
 ```
 
-General gates:
+General White Rabbit gates:
 
 ```text
 G1: C_realized(M, q) >= C_realized(R0, q)
@@ -35,7 +35,7 @@ Optional stronger result:
 G1+: C_realized(M, q) > C_realized(R0, q)
 ```
 
-No gate is scientifically earned yet.
+White Rabbit G1-G4 are not opened by the current Gate 7 constitution work.
 
 ## Research substrate
 
@@ -46,7 +46,7 @@ validator success ceiling: PROVENANCE_VALID
 scientific warrant from validator: NONE
 ```
 
-The founding constitution currently authorizes only source custody, typed research-state construction, provenance/history representation, and mechanical validation.
+The founding constitution authorizes source custody, typed research-state construction, provenance/history representation, and mechanical validation only.
 
 ## Measurement doctrine
 
@@ -68,6 +68,7 @@ Cached work must not be called eliminated work.
 f_sim_best != f_keep.
 LCP similarity must not be interpreted without retained-prefix size/reference population.
 Derived cache arithmetic must not be promoted into a backend-reported cache meter.
+Treatment effects must be evaluated against independently constituted baseline variability, not one privileged baseline run.
 ```
 
 Current-run accounting vocabulary:
@@ -84,8 +85,6 @@ These are measurement constraints, not a positive White Rabbit result.
 
 ### WR-OBS-001
 
-State:
-
 ```text
 original UI observation: PRESERVED
 371 -> 11 reasoning interpretation: SUPERSEDED
@@ -96,16 +95,7 @@ reasoning-work reduction: NOT_DEMONSTRATED
 White Rabbit effect: NOT_DEMONSTRATED
 ```
 
-Core correction:
-
-```text
-371 and 11 were freshly processed prompt-evaluation counts,
-not generated reasoning-token counts.
-```
-
 ### WR-OBS-002
-
-State:
 
 ```text
 three fresh browser windows: OBSERVED
@@ -137,45 +127,156 @@ independent replication: UNESTABLISHED
 compute advantage: UNESTABLISHED
 ```
 
-The observed README interactions are capability evidence at the task-specific level, not independence evidence.
+The observed README interactions are task-specific capability evidence, not independence evidence.
 
-The second README read inherited the prior slot state. Its backend reconstruction must remain derived rather than being promoted into an explicit cached-token meter.
-
-## Recorder
-
-User-supplied Codex completion report records:
+## Recorder / Gate 4
 
 ```text
 White Rabbit Recorder version: 0.1.0
 local repository commit: 80cddb26a7b851d218f95317cd3c5b0593acd831
-implementation: REPORTED_COMPLETE
-fake-upstream tests: REPORTED_PASS_30_OF_30
+implementation: USER_REPORTED_COMPLETE
+fake-upstream tests: USER_REPORTED_PASS_30_OF_30
 Python dependencies: NONE / standard library only
-real Qwen run through recorder: NOT_RUN
-scientific comparison: NOT_RUN
-C_improve treatment: NOT_ADDED / NOT_RUN
-working tree: REPORTED_CLEAN
-remote: NONE
 ```
 
-Reported engineering properties include byte-faithful request custody, exact response-body custody, literal backend timing/LCP extraction, no guessed cached-token count, explicit ambiguous-correlation failure, and concurrent measured-request rejection with HTTP 409.
-
-This GitHub repository cannot independently inspect or verify the local-only recorder commit or rerun those tests. Therefore the recorded state is:
-
-```text
-RECORDER_IMPLEMENTATION: REPORTED
-FAKE_UPSTREAM_ACCEPTANCE: REPORTED_PASS
-REAL_SERVER_CALIBRATION: NOT_RUN
-SCIENTIFIC_RESULT: NONE
-TREATMENT: UNOPENED
-```
+The recorder repository is local-only and cannot be independently inspected by this GitHub repository.
 
 See:
 
 ```text
 program/RECORDER_V0_1_MILESTONE.md
-interfaces/WHITE_RABBIT_RECORDER_V0_1.md
 ```
+
+## Gate 5 — real-server calibration
+
+State:
+
+```text
+USER_REPORTED_PASS / INSTRUMENTAL_ONLY
+```
+
+Milestone:
+
+```text
+program/GATE5_REAL_SERVER_CALIBRATION_MILESTONE.md
+```
+
+Reported run established the recorder operating against the real llama.cpp/Qwen stack under strongly evidenced cold state with exact request/response custody and unambiguous task/slot correlation.
+
+No treatment or scientific comparison was reported executed.
+
+## Gate 6 — cold baseline characterization
+
+State:
+
+```text
+USER_REPORTED_PASS / FROZEN_FIVE_REPLICATE_PROTOCOL
+```
+
+Earned statement recorded from the supplied report:
+
+> **Cold baseline operationally characterized under the frozen five-replicate protocol.**
+
+Ceiling:
+
+```text
+5 replicates characterize the protocol
+!=
+the underlying stochastic distribution is fully known
+```
+
+Reported mechanical summary:
+
+```text
+N_prompt,new: 53 in all five replicates
+N_generated: 3-43
+T_prompt: 13796.69-14667.45 ms
+T_generation: 1281.79-13686.74 ms
+T_total: 15345.59-27483.44 ms
+responses: 5 distinct raw hashes / 4 distinct visible contents
+```
+
+Literal cache/LCP boundary:
+
+```text
+f_sim_best: NOT_EXPOSED
+f_keep: NOT_EXPOSED
+explicit cached-token field: NOT_EXPOSED
+graphs_reused: literal only
+```
+
+See:
+
+```text
+program/GATE6_COLD_CHARACTERIZATION_MILESTONE.md
+```
+
+## Gate 7 — current transition
+
+State:
+
+```text
+constitution authoring: AUTHORIZED
+constitution artifact: NOT YET PRESENT / NOT YET REVIEWED
+assay execution: NOT AUTHORIZED / NOT OPENED
+```
+
+Codex handoff:
+
+```text
+handoff/CODEX_G7_CONSTITUTION.md
+```
+
+Target artifact:
+
+```text
+assays/G7_MATCHED_CONTEXT_ASSAY_V0_1.md
+```
+
+Required frozen components:
+
+```text
+1. capability criterion
+2. primary work currency
+3. independence criterion
+4. matched-context control
+5. replicate design
+```
+
+Intended comparison form, subject to constitution review:
+
+```text
+B = neutral matched prelude + target
+C = literal C_improve prelude + target
+```
+
+The literal `C_improve` text must come from the preserved WR-OBS-002 source. The neutral prelude is a separately frozen control object whose neutrality remains a design assumption requiring review.
+
+First-assay design constraints include mechanically checkable held-out tasks, no LLM judge, primary work currency `N_generated`, independent cold backends, repeated observations, full per-run preservation, and capability non-regression before any work-reduction interpretation.
+
+A source-level matched prelude does not establish exact post-template token equality. If token equality is not mechanically established during constitution authoring, the constitution must preserve:
+
+```text
+PREOPEN_TOKEN_MATCH_REQUIRED
+```
+
+rather than guessing.
+
+Critical boundary:
+
+```text
+CONSTITUTED != EXECUTED
+```
+
+Codex may author the constitution text, payloads, expected answers, neutral control, grading rules, replicate plan, and result vocabulary. It may not send any Gate 7 payload to Qwen or start a Gate 7 recorder/server run.
+
+After constitution authoring:
+
+```text
+STOP
+```
+
+The artifact must survive review before any separate execution authorization is considered.
 
 ## Corpus / V(q) / Qwen research integration
 
@@ -186,45 +287,36 @@ Qwen research-state integration: NOT_AUTHORIZED
 scientific claim adjudicator: NOT_CONSTITUTED
 ```
 
-The wider dependency remains:
+No broader corpus or retrieval transition is opened by Gate 7.
 
-```text
-research evidence
--> S_research
--> provenance validation
--> V(q)
--> Qwen candidate synthesis
--> typed claims
--> provenance/authority audit
--> future compute experiment
-```
-
-Only the early research-state/provenance portion is presently constituted in this repository.
-
-## Strongest methodological lesson so far
+## Strongest methodological lesson
 
 > **Never call computation eliminated until it is known who paid for it, when they paid for it, and whether it was merely cached.**
 
-And the operational doctrine:
+Operational doctrine:
 
 > **Raw measurement first, derived reconstruction second, interpretation last.**
 
-## Gate position
+Gate 7 design doctrine:
 
-Gate 4 — recorder implementation / fake-upstream acceptance — is recorded as **reported complete** from the local Codex completion report.
+> **Constitute the counterfactual before observing the treatment.**
 
-The original stop boundary remains active.
-
-The next unopened gate is:
+## Current gate ledger
 
 ```text
-Gate 5 — real-server recorder calibration
+Gate 4 — fake-upstream recorder acceptance: USER_REPORTED PASS
+Gate 5 — real-server recorder calibration: USER_REPORTED PASS
+Gate 6 — five-replicate cold characterization: USER_REPORTED PASS
+Gate 7 — matched-context assay constitution: AUTHORING AUTHORIZED / NOT YET CONSTITUTED
+Gate 7 — execution: NOT AUTHORIZED / NOT OPENED
+White Rabbit G1-G4: NOT OPENED
 ```
 
-State:
+Current authorized transition only:
 
 ```text
-NOT_AUTHORIZED
+G6 PASS
+-> Codex authors G7_MATCHED_CONTEXT_ASSAY_V0.1
+-> review constitution
+-> STOP
 ```
-
-No real Qwen request, treatment execution, capability comparison, or scientific transition is opened by this state ledger.
