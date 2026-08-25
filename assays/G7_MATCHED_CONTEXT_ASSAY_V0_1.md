@@ -293,6 +293,18 @@ Capability and work remain orthogonal observables.
 
 ### Frozen work-comparison eligibility
 
+The exact result-state precedence is:
+
+```text
+1. incompleteness / admissibility
+2. control adequacy
+3. capability non-regression
+4. work censoring
+5. eligible numerical work comparison
+```
+
+Each stage is evaluated only if every prior stage passes. A terminal failure or blocking state at an earlier stage prevents every later-stage result from being emitted.
+
 The exact eligibility chain is:
 
 ```text
@@ -308,13 +320,15 @@ all required work observations uncensored
 
 Anything else is incapable of emitting `WORK_REDUCTION_OBSERVED_UNDER_ASSAY_CURRENCY`.
 
-If any required work observation is censored, the work-level result is:
+No work-level result may be emitted before both `CONTROL_ADEQUACY_OBSERVED` and `CAPABILITY_NONREGRESSION_OBSERVED` have been emitted. Only after those gates pass is censoring evaluated for a work-level result.
+
+If those gates pass and any required work observation is censored, the work-level result is:
 
 ```text
 WORK_COMPARISON_CENSORED
 ```
 
-This state means the constituted work question could not be validly decided. It must not be collapsed into `WORK_REDUCTION_NOT_OBSERVED`, which means eligible uncensored work was compared and the frozen reduction rule was not satisfied.
+`WORK_COMPARISON_CENSORED` must not be emitted when the assay is incomplete, control adequacy fails, or capability non-regression fails. It means the prior gates passed but the constituted work question could not be validly decided because required work evidence was censored. It must not be collapsed into `WORK_REDUCTION_NOT_OBSERVED`, which means eligible uncensored work was compared and the frozen reduction rule was not satisfied.
 
 Work is evaluated only after the full eligibility chain passes. For each task and condition, report all five `N_generated` values plus mean, median, minimum, and maximum. Report the same descriptive summaries for `T_generation` and `T_total`, preserve every per-run secondary measurement, and surface every censoring determination with its literal evidence.
 
@@ -528,7 +542,7 @@ After all required admissible runs exist, report:
 8. literal cache/LCP fields and explicit absence where not exposed;
 9. every inadmissible run and reason;
 10. all run IDs and request/response/artifact hashes;
-11. the work-eligibility state and work label only after the frozen adequacy, non-regression, admissibility, and censoring gates.
+11. the result state under the frozen order: admissibility/incompleteness, adequacy, non-regression, censoring, then eligible numerical work comparison.
 
 No p-value, confidence interval, significance threshold, population parameter, or causal effect size is constituted in v0.1.1.
 
@@ -539,6 +553,10 @@ Before execution:
 ```text
 ASSAY_NOT_RUN
 ```
+
+The following precedence is mandatory. Later states are not evaluated or emitted unless all earlier gates pass.
+
+### 1. Incompleteness / admissibility
 
 Per-run failure:
 
@@ -552,7 +570,11 @@ Incomplete required cells:
 ASSAY_INCOMPLETE_INADMISSIBLE_RUN
 ```
 
-Control-adequacy result after all required control runs are admissible and complete:
+If any required run is inadmissible or any required cell is incomplete, the assay emits `ASSAY_INCOMPLETE_INADMISSIBLE_RUN` and stops result-state evaluation. It emits no adequacy, non-regression, censoring, or numerical work result.
+
+### 2. Control adequacy
+
+Only after every required run is admissible and every required cell is complete, evaluate:
 
 ```text
 CONTROL_ADEQUACY_FAIL
@@ -560,7 +582,11 @@ or
 CONTROL_ADEQUACY_OBSERVED
 ```
 
-Capability result after all cells are complete and only after `CONTROL_ADEQUACY_OBSERVED`:
+`CONTROL_ADEQUACY_FAIL` stops result-state evaluation. It emits no non-regression, censoring, or numerical work result.
+
+### 3. Capability non-regression
+
+Only after `CONTROL_ADEQUACY_OBSERVED`, evaluate:
 
 ```text
 CAPABILITY_NONREGRESSION_FAIL
@@ -568,13 +594,21 @@ or
 CAPABILITY_NONREGRESSION_OBSERVED
 ```
 
-Work-level censoring result when any required work observation is censored:
+`CAPABILITY_NONREGRESSION_FAIL` stops result-state evaluation. It emits no censoring or numerical work result.
+
+### 4. Work censoring
+
+Only after `CONTROL_ADEQUACY_OBSERVED` and `CAPABILITY_NONREGRESSION_OBSERVED`, evaluate required work observations for censoring. If any is censored, emit:
 
 ```text
 WORK_COMPARISON_CENSORED
 ```
 
-Eligible uncensored work result, reported only with the adequacy and capability results and primary currency:
+`WORK_COMPARISON_CENSORED` is terminal for the work question and prevents either numerical work-reduction label from being emitted.
+
+### 5. Eligible numerical work comparison
+
+Only after all prior gates pass and every required work observation is uncensored, perform the frozen numerical comparison and emit one of:
 
 ```text
 WORK_REDUCTION_NOT_OBSERVED
@@ -582,7 +616,7 @@ or
 WORK_REDUCTION_OBSERVED_UNDER_ASSAY_CURRENCY
 ```
 
-`WORK_COMPARISON_CENSORED` means no eligible uncensored work comparison was possible. `WORK_REDUCTION_NOT_OBSERVED` means the work comparison was eligible and performed mechanically, but the frozen reduction rule was not satisfied.
+`WORK_REDUCTION_NOT_OBSERVED` means the work comparison was eligible and performed mechanically, but the frozen reduction rule was not satisfied.
 
 Completion wrapper:
 
