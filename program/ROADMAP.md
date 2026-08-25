@@ -95,7 +95,7 @@ research truth
 
 ## Gate 4 — Recorder implementation
 
-State: `SPECIFIED / NOT_IMPLEMENTED`
+State: `USER_REPORTED COMPLETE / FAKE-UPSTREAM ACCEPTANCE REPORTED PASS / STOP REACHED`
 
 Contract:
 
@@ -103,17 +103,41 @@ Contract:
 interfaces/WHITE_RABBIT_RECORDER_V0_1.md
 ```
 
-The recorder must be implemented as an isolated sibling component and calibrated against a deterministic fake upstream before any real Qwen measurement.
-
-Acceptance ceiling:
+Milestone record:
 
 ```text
-IMPLEMENTED
-+
-FAKE-UPSTREAM BYTE-CUSTODY ACCEPTANCE PASS
+program/RECORDER_V0_1_MILESTONE.md
 ```
 
-After that acceptance: `STOP`.
+The supplied Codex completion report records:
+
+```text
+version: 0.1.0
+local commit: 80cddb26a7b851d218f95317cd3c5b0593acd831
+tests: 30/30 PASS
+upstream: deterministic fake only
+real Qwen request: NO
+scientific comparison: NO
+```
+
+The implementation is local-only and cannot be independently inspected or rerun by this GitHub repository. Therefore the current claim ceiling is:
+
+```text
+LOCAL IMPLEMENTATION REPORTED
++
+FAKE-UPSTREAM BYTE-CUSTODY ACCEPTANCE REPORTED PASS
+```
+
+No scientific result follows.
+
+Original gate stop condition:
+
+```text
+fake-upstream acceptance
+-> STOP
+```
+
+is active and has been reached according to the supplied report.
 
 ## Gate 5 — Real-server recorder calibration
 
@@ -128,6 +152,8 @@ prove the microscope does not bend the light
 A single ordinary real-server run would verify that the recorder survives contact with llama.cpp while preserving HTTP/backend evidence.
 
 It is not a capability comparison and not a White Rabbit treatment.
+
+No such run is authorized or recorded here.
 
 ## Gate 6 — Cold baseline characterization
 
@@ -171,13 +197,22 @@ The neutral prelude itself is not designed or authorized here.
 
 State: `NOT_AUTHORIZED`
 
-Only after a candidate representation `M` has a constituted capability assay can the program test both:
+The general White Rabbit burden is:
 
 ```text
-C_realized(M, q) >= C_realized(R0, q)
+G1: C_realized(M, q) >= C_realized(R0, q)
+G2: independent reproduction
+G3: C_work(M, q) < C_work(R0, q)
+G4: acquisition cost repaid over reuse
 ```
 
-and:
+with optional stronger result:
+
+```text
+G1+: C_realized(M, q) > C_realized(R0, q)
+```
+
+The horizon accounting is:
 
 ```text
 C_acquire(M) + sum_i C_work(M, q_i)
@@ -185,7 +220,7 @@ C_acquire(M) + sum_i C_work(M, q_i)
 sum_i C_work(R0, q_i)
 ```
 
-Reusable state acquisition must be charged. Cache reuse and computation elimination must remain distinct.
+Reusable-state acquisition must be charged. Cache reuse and computation elimination must remain distinct.
 
 ## Gate 9 — Persistence / transfer / revocability
 
@@ -205,14 +240,19 @@ retains an invalidation/revocation path
 
 Each transition requires its own claim ceiling.
 
-## Current next engineering target
-
-The next specified build is only:
+## Current gate position
 
 ```text
-White Rabbit Recorder v0.1
+Gate 4: REPORTED COMPLETE
+Gate 5: NOT_AUTHORIZED
 ```
 
-implemented outside this repository, fake-upstream calibrated, then stopped.
+There is no currently authorized real-server or treatment transition.
 
-Nothing in this roadmap authorizes treatment execution.
+The next unopened gate is only:
+
+```text
+Gate 5 — real-server recorder calibration
+```
+
+Nothing in this roadmap authorizes that gate merely by naming it.
