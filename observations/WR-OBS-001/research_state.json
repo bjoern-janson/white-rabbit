@@ -1,0 +1,166 @@
+{
+  "constitution_version": "0.1",
+  "sources": [
+    {
+      "id": "source:WR-OBS-001:raw",
+      "epistemic_role": "SOURCE",
+      "source_type": "repository_file",
+      "repository": "bjoern-janson/white-rabbit",
+      "locator": {
+        "path": "observations/WR-OBS-001/raw_observation.md",
+        "commit": "5dcda4ed350f69ed500ed5967892ab171fbbcf54"
+      },
+      "source_role": "uncontrolled_observation_custody"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim:WR-OBS-001:reported-hi-pair",
+      "epistemic_role": "NORMALIZED",
+      "proposition": "The preserved Pair A report records the `hi` reasoning display as 371 tokens, 28s, 13.04 tokens/s earlier and 11 tokens, 0.4s, 24.89 tokens/s later; final-generation throughput is recorded as 14.34 t/s earlier and 14.33 t/s later.",
+      "scope": "Literal normalization of the user-reported Pair A UI measurements preserved in WR-OBS-001 raw custody.",
+      "ceiling": "A transcription claim about reported UI measurements only; no causal, persistence, mechanism, or White Rabbit-effect inference.",
+      "source_ids": [
+        "source:WR-OBS-001:raw"
+      ],
+      "status_id": "status:WR-OBS-001:reported-hi-pair"
+    },
+    {
+      "id": "claim:WR-OBS-001:O1",
+      "epistemic_role": "DERIVED",
+      "proposition": "Within the preserved Pair A report, the displayed reasoning-token count differs by 360 tokens between the earlier and later `hi` observations, while final-generation throughput differs by 0.01 t/s at the precision displayed.",
+      "scope": "Deterministic arithmetic over claim:WR-OBS-001:reported-hi-pair only.",
+      "ceiling": "A derived arithmetic observation that reported reasoning work changed; it does not identify the cause of that change.",
+      "source_ids": [
+        "source:WR-OBS-001:raw"
+      ],
+      "status_id": "status:WR-OBS-001:O1"
+    },
+    {
+      "id": "claim:WR-OBS-001:open-boundary",
+      "epistemic_role": "NORMALIZED",
+      "proposition": "WR-OBS-001 remains OPEN: C_improve causal attribution is UNESTABLISHED, persistent policy change is UNESTABLISHED, White Rabbit effect is NOT_DEMONSTRATED, amortization is UNMEASURED, and mechanism is UNKNOWN.",
+      "scope": "Literal normalization of the observation boundary recorded in WR-OBS-001 raw custody.",
+      "ceiling": "Open-lead boundary only; no scientific adjudication of C_improve, runtime/session effects, persistence, amortization, or mechanism.",
+      "source_ids": [
+        "source:WR-OBS-001:raw"
+      ],
+      "status_id": "status:WR-OBS-001:open-boundary"
+    }
+  ],
+  "relations": [],
+  "statuses": [
+    {
+      "id": "status:WR-OBS-001:reported-hi-pair",
+      "epistemic_role": "NORMALIZED",
+      "subject_id": "claim:WR-OBS-001:reported-hi-pair",
+      "value": "EARNED",
+      "scope": "The literal Pair A transcription is recorded; scientific interpretation is excluded.",
+      "effective_commit": "5dcda4ed350f69ed500ed5967892ab171fbbcf54",
+      "source_ids": [
+        "source:WR-OBS-001:raw"
+      ]
+    },
+    {
+      "id": "status:WR-OBS-001:O1",
+      "epistemic_role": "NORMALIZED",
+      "subject_id": "claim:WR-OBS-001:O1",
+      "value": "EARNED",
+      "scope": "Mechanical arithmetic difference over the preserved Pair A measurements only.",
+      "effective_commit": "5dcda4ed350f69ed500ed5967892ab171fbbcf54",
+      "source_ids": [
+        "source:WR-OBS-001:raw"
+      ]
+    },
+    {
+      "id": "status:WR-OBS-001:open-boundary",
+      "epistemic_role": "NORMALIZED",
+      "subject_id": "claim:WR-OBS-001:open-boundary",
+      "value": "OPEN",
+      "scope": "Causal attribution, persistence, amortization, mechanism, and White Rabbit-effect status remain open or unestablished exactly as recorded.",
+      "effective_commit": "5dcda4ed350f69ed500ed5967892ab171fbbcf54",
+      "source_ids": [
+        "source:WR-OBS-001:raw"
+      ]
+    }
+  ],
+  "experiments": [],
+  "artifacts": [],
+  "provenance": [
+    {
+      "id": "provenance:claim:WR-OBS-001:reported-hi-pair",
+      "subject_id": "claim:WR-OBS-001:reported-hi-pair",
+      "subject_role": "NORMALIZED",
+      "source_refs": [
+        {
+          "source_id": "source:WR-OBS-001:raw",
+          "source_locator": "heading:Pair A — `hi`",
+          "subject_field": "proposition"
+        }
+      ],
+      "parent_normalized_ids": []
+    },
+    {
+      "id": "provenance:claim:WR-OBS-001:O1",
+      "subject_id": "claim:WR-OBS-001:O1",
+      "subject_role": "DERIVED",
+      "source_refs": [],
+      "parent_normalized_ids": [
+        "claim:WR-OBS-001:reported-hi-pair"
+      ],
+      "derivation": "Compute 371 - 11 = 360 displayed reasoning tokens and |14.34 - 14.33| = 0.01 t/s from the normalized Pair A measurements."
+    },
+    {
+      "id": "provenance:claim:WR-OBS-001:open-boundary",
+      "subject_id": "claim:WR-OBS-001:open-boundary",
+      "subject_role": "NORMALIZED",
+      "source_refs": [
+        {
+          "source_id": "source:WR-OBS-001:raw",
+          "source_locator": "heading:Observation boundary",
+          "subject_field": "proposition"
+        }
+      ],
+      "parent_normalized_ids": []
+    },
+    {
+      "id": "provenance:status:WR-OBS-001:reported-hi-pair",
+      "subject_id": "status:WR-OBS-001:reported-hi-pair",
+      "subject_role": "NORMALIZED",
+      "source_refs": [
+        {
+          "source_id": "source:WR-OBS-001:raw",
+          "source_locator": "heading:Pair A — `hi`",
+          "subject_field": "value"
+        }
+      ],
+      "parent_normalized_ids": []
+    },
+    {
+      "id": "provenance:status:WR-OBS-001:O1",
+      "subject_id": "status:WR-OBS-001:O1",
+      "subject_role": "NORMALIZED",
+      "source_refs": [
+        {
+          "source_id": "source:WR-OBS-001:raw",
+          "source_locator": "heading:Observation boundary / Earned from the supplied report only",
+          "subject_field": "value"
+        }
+      ],
+      "parent_normalized_ids": []
+    },
+    {
+      "id": "provenance:status:WR-OBS-001:open-boundary",
+      "subject_id": "status:WR-OBS-001:open-boundary",
+      "subject_role": "NORMALIZED",
+      "source_refs": [
+        {
+          "source_id": "source:WR-OBS-001:raw",
+          "source_locator": "field:Research status / heading:Observation boundary",
+          "subject_field": "value"
+        }
+      ],
+      "parent_normalized_ids": []
+    }
+  ]
+}
