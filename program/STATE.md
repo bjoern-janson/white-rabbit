@@ -229,14 +229,22 @@ See:
 program/GATE6_COLD_CHARACTERIZATION_MILESTONE.md
 ```
 
-## Gate 7 — constituted, under pre-open repair
+## Gate 7 — repaired constitution awaiting review
 
-Frozen constitution:
+Original frozen constitution:
 
 ```text
 assays/G7_MATCHED_CONTEXT_ASSAY_V0_1.md
 commit: 7696bf90452cb13f86fe8e22cc860ff6e9d09dee
 status in artifact: CONSTITUTED / NOT EXECUTED / PREOPEN_TOKEN_MATCH_REQUIRED
+```
+
+Current repaired revision:
+
+```text
+version: G7_MATCHED_CONTEXT_ASSAY_V0.1.1
+status: CONSTITUTED / REPAIRED / NOT EXECUTED / PREOPEN_TOKEN_MATCH_REQUIRED / REVIEW_REQUIRED
+scope: work censoring + capability adequacy only
 ```
 
 The constitution successfully preserves:
@@ -254,7 +262,7 @@ CONSTITUTED != EXECUTED
 authority ceiling excluding White Rabbit / causal / amortization claims
 ```
 
-Pre-open review found two constitutional gaps before any token matching or assay execution:
+The pre-open review found two constitutional gaps before any token matching or assay execution:
 
 ```text
 1. work censoring under max_tokens = 64
@@ -273,13 +281,13 @@ Current Gate 7 state:
 ontology / program separation: PASS
 matched-context construction: PASS
 authority boundary: PASS
-work-censoring rule: REPAIR_REQUIRED
-capability adequacy: REPAIR_REQUIRED
+work-censoring rule: REPAIRED / REVIEW_REQUIRED
+capability adequacy: REPAIRED / REVIEW_REQUIRED
 pre-open token/context matching: BLOCKED
 assay execution: NOT AUTHORIZED / NOT OPENED
 ```
 
-The required logical order after repair is:
+The repaired contract freezes the required logical order as:
 
 ```text
 CONTROL ADEQUACY
@@ -287,25 +295,22 @@ CONTROL ADEQUACY
 -> UNCENSORED WORK COMPARISON
 ```
 
-The repair must preserve the existing `max_tokens = 64` fixed budget unless a direct contradiction is reported, while making generation-length censoring explicit and ineligible to establish an uncensored work-reduction result.
+The repair preserves the existing `max_tokens = 64` fixed budget, makes authoritative generation-length censoring explicit, and prevents censored observations from establishing an uncensored work-reduction result.
 
-The repair must add a separately frozen control-adequacy gate so that relative non-regression cannot pass when both control and treatment fail the task.
+The repair adds a per-task `S_B,j = 5/5` control-adequacy gate so that relative non-regression cannot pass when both control and treatment fail the task.
 
-Authorized repair handoff:
+Repair authority:
 
 ```text
 handoff/CODEX_G7_CONSTITUTION_REPAIR.md
 ```
 
-Required transition:
+Required next transition:
 
 ```text
-7696bf9 constitution
--> minimal repair of censoring + adequacy
--> run existing repository tests + validator
--> freeze repaired constitution commit
+G7_MATCHED_CONTEXT_ASSAY_V0.1.1 repaired constitution
 -> review repaired constitution
--> only then reconsider pre-open token/context matching
+-> only then consider separately authorizing pre-open token/context matching
 ```
 
 Critical boundary remains:
@@ -350,7 +355,7 @@ Gate 4 — fake-upstream recorder acceptance: USER_REPORTED PASS
 Gate 5 — real-server recorder calibration: USER_REPORTED PASS
 Gate 6 — five-replicate cold characterization: USER_REPORTED PASS
 Gate 7 — matched-context assay constitution: CONSTITUTED AT 7696bf9
-Gate 7 — pre-open constitution review: REPAIR_REQUIRED
+Gate 7 — repaired constitution v0.1.1: FROZEN / AWAITS REVIEW
 Gate 7 — pre-open token/context matching: BLOCKED
 Gate 7 — execution: NOT AUTHORIZED / NOT OPENED
 White Rabbit G1-G4: NOT OPENED
@@ -359,9 +364,7 @@ White Rabbit G1-G4: NOT OPENED
 Current authorized transition only:
 
 ```text
-repair Gate 7 constitution
--> run existing tests + validator
--> freeze repaired commit
--> review
+review repaired Gate 7 constitution
+-> only then consider separately authorizing pre-open token/context matching
 -> STOP
 ```

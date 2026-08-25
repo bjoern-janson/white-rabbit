@@ -1,10 +1,21 @@
-# G7 Matched-Context Assay v0.1
+# G7 Matched-Context Assay v0.1.1
 
-Version: `G7_MATCHED_CONTEXT_ASSAY_V0.1`
+Version: `G7_MATCHED_CONTEXT_ASSAY_V0.1.1`
 
-Status: `CONSTITUTED / NOT EXECUTED / PREOPEN_TOKEN_MATCH_REQUIRED`
+Status: `CONSTITUTED / REPAIRED / NOT EXECUTED / PREOPEN_TOKEN_MATCH_REQUIRED / REVIEW_REQUIRED`
 
 Parent authority: `43717f4d77b817442a2cd13a83df61461828e365`
+
+Revision lineage:
+
+```text
+original constitution: G7_MATCHED_CONTEXT_ASSAY_V0.1
+original constitution commit: 7696bf90452cb13f86fe8e22cc860ff6e9d09dee
+conceptual freeze commit: 1d7651a6c1e302eedc6c2680f574c2989af98391
+repaired revision: G7_MATCHED_CONTEXT_ASSAY_V0.1.1
+```
+
+This revision repairs only work censoring and capability adequacy. It preserves the semantic identity and immutable history of the original v0.1 constitution rather than silently treating the repaired contract as the text that existed at commit `7696bf9`.
 
 ## Authority and claim ceiling
 
@@ -171,7 +182,36 @@ S_C,j = successful admissible C runs out of 5
 
 Also report aggregate success counts across all three tasks.
 
-Capability non-regression is observed only if:
+The capability gate order is frozen as:
+
+```text
+CONTROL ADEQUACY
+-> CAPABILITY NONREGRESSION
+-> WORK COMPARISON
+```
+
+### Frozen control-adequacy gate
+
+After all required control runs are admissible and complete, control adequacy is observed only if:
+
+```text
+for every q_j: S_B,j = 5/5
+```
+
+The threshold applies separately to every task. A pooled score cannot compensate for an inadequate control on another task.
+
+Mechanical states:
+
+```text
+CONTROL_ADEQUACY_FAIL
+CONTROL_ADEQUACY_OBSERVED
+```
+
+Any task with `S_B,j < 5/5` yields `CONTROL_ADEQUACY_FAIL`. Treatment behavior remains preserved and may be reported as a capability-effect observation under the assay vocabulary, but it cannot be interpreted as preserving an adequate baseline, cannot open the work comparison, and cannot establish an efficiency result.
+
+### Frozen treatment non-regression gate
+
+Only after `CONTROL_ADEQUACY_OBSERVED`, capability non-regression is evaluated. It is observed only if:
 
 ```text
 for every q_j: S_C,j >= S_B,j
@@ -179,7 +219,13 @@ and
 sum_j S_C,j >= sum_j S_B,j
 ```
 
-Every per-task difference must be surfaced. Improvement on one task cannot compensate for regression on another. Any per-task treatment deficit yields `CAPABILITY_NONREGRESSION_FAIL`. Work reduction cannot rescue that result.
+Because control adequacy requires `S_B,j = 5/5` for every task, `CAPABILITY_NONREGRESSION_OBSERVED` in this v0.1.1 assay effectively requires:
+
+```text
+for every q_j: S_C,j = 5/5
+```
+
+Every per-task difference must be surfaced. Improvement on one task cannot compensate for regression on another. Any per-task treatment deficit after adequacy yields `CAPABILITY_NONREGRESSION_FAIL`. Work reduction cannot rescue inadequate capability or capability regression.
 
 ## 2. Work currency
 
@@ -204,20 +250,85 @@ explicit cached-token field, only if exposed
 
 `graphs_reused` remains literal and is never renamed or converted into cached tokens. Missing fields remain absent.
 
+Literal completion and censoring custody for every run must include:
+
+```text
+finish_reason
+max_tokens = 64
+backend/server truncation or length indicator, only if explicitly exposed
+```
+
+The response value at `choices[0].finish_reason` is preserved literally when present. An explicitly exposed backend/server termination field is preserved under its source name; missing fields remain absent.
+
 The assay must not invent or estimate FLOPs, energy, reasoning effort, cached-token counts, or the exact post-template model-visible token sequence.
 
-Work is evaluated only after capability non-regression. For each task and condition, report all five `N_generated` values plus mean, median, minimum, and maximum. Report the same descriptive summaries for `T_generation` and `T_total`, and preserve every per-run secondary measurement.
+### Frozen work-censoring rule
+
+A run receives the mechanical state:
+
+```text
+WORK_CENSORED
+```
+
+only when authoritative response or backend evidence establishes termination by the frozen generation-length budget, including:
+
+```text
+finish_reason = length
+```
+
+or an explicitly equivalent exposed truncation or length condition.
+
+`N_generated = 64` alone does not establish censoring. Ordinary stop or EOS termination is not censoring unless authoritative termination evidence explicitly establishes a length condition.
+
+A work-censored run:
+
+```text
+remains preserved with all raw evidence
+does not imply an uncensored N_generated value beyond the cap
+may contribute to capability grading if a complete mechanically gradable answer exists
+must not contribute as an uncensored work observation
+```
+
+Capability and work remain orthogonal observables.
+
+### Frozen work-comparison eligibility
+
+The exact eligibility chain is:
+
+```text
+all required runs admissible
++
+CONTROL_ADEQUACY_OBSERVED
++
+CAPABILITY_NONREGRESSION_OBSERVED
++
+all required work observations uncensored
+-> WORK COMPARISON ELIGIBLE
+```
+
+Anything else is incapable of emitting `WORK_REDUCTION_OBSERVED_UNDER_ASSAY_CURRENCY`.
+
+If any required work observation is censored, the work-level result is:
+
+```text
+WORK_COMPARISON_CENSORED
+```
+
+This state means the constituted work question could not be validly decided. It must not be collapsed into `WORK_REDUCTION_NOT_OBSERVED`, which means eligible uncensored work was compared and the frozen reduction rule was not satisfied.
+
+Work is evaluated only after the full eligibility chain passes. For each task and condition, report all five `N_generated` values plus mean, median, minimum, and maximum. Report the same descriptive summaries for `T_generation` and `T_total`, preserve every per-run secondary measurement, and surface every censoring determination with its literal evidence.
 
 The label `WORK_REDUCTION_OBSERVED_UNDER_ASSAY_CURRENCY` requires all of:
 
 ```text
+WORK COMPARISON ELIGIBLE
 CAPABILITY_NONREGRESSION_OBSERVED
 for every q_j: mean(N_generated_C,j) <= mean(N_generated_B,j)
 at least one q_j has a strict mean reduction
 pooled mean(N_generated_C) < pooled mean(N_generated_B)
 ```
 
-Otherwise the work label is `WORK_REDUCTION_NOT_OBSERVED`. Medians and ranges remain mandatory context but do not silently replace this frozen decision rule. No inferential significance claim is authorized.
+If the comparison is eligible but the numerical rule is not satisfied, the work label is `WORK_REDUCTION_NOT_OBSERVED`. Medians and ranges remain mandatory context but do not silently replace this frozen decision rule. No inferential significance claim is authorized.
 
 ## 3. Independence criterion
 
@@ -391,6 +502,9 @@ correlation status and measurement-block count
 mechanical grading result
 N_prompt,new and N_generated
 T_prompt, T_generation, and T_total
+finish_reason and max_tokens
+backend/server truncation or length indicator only if explicitly exposed
+WORK_CENSORED determination and its authoritative evidence
 graphs_reused literally
 f_sim_best and f_keep only if exposed
 explicit cached-token field only if exposed
@@ -406,15 +520,17 @@ After all required admissible runs exist, report:
 
 1. per-task B/C success counts;
 2. aggregate B/C success counts;
-3. the capability label under the frozen per-task rule;
-4. all per-run `N_generated`, `T_generation`, `T_total`, and `N_prompt,new` values;
-5. per-task and pooled mean, median, minimum, and maximum by condition;
-6. literal cache/LCP fields and explicit absence where not exposed;
-7. every inadmissible run and reason;
-8. all run IDs and request/response/artifact hashes;
-9. the work label only after the capability label.
+3. the control-adequacy label under the frozen per-task `5/5` rule;
+4. the capability non-regression label only after control adequacy;
+5. all per-run `N_generated`, `T_generation`, `T_total`, and `N_prompt,new` values;
+6. every literal `finish_reason`, `max_tokens`, exposed truncation/length indicator, and `WORK_CENSORED` determination;
+7. per-task and pooled mean, median, minimum, and maximum by condition only when work comparison is eligible;
+8. literal cache/LCP fields and explicit absence where not exposed;
+9. every inadmissible run and reason;
+10. all run IDs and request/response/artifact hashes;
+11. the work-eligibility state and work label only after the frozen adequacy, non-regression, admissibility, and censoring gates.
 
-No p-value, confidence interval, significance threshold, population parameter, or causal effect size is constituted in v0.1.
+No p-value, confidence interval, significance threshold, population parameter, or causal effect size is constituted in v0.1.1.
 
 ## Mechanical result states
 
@@ -436,7 +552,15 @@ Incomplete required cells:
 ASSAY_INCOMPLETE_INADMISSIBLE_RUN
 ```
 
-Capability result after all cells are complete:
+Control-adequacy result after all required control runs are admissible and complete:
+
+```text
+CONTROL_ADEQUACY_FAIL
+or
+CONTROL_ADEQUACY_OBSERVED
+```
+
+Capability result after all cells are complete and only after `CONTROL_ADEQUACY_OBSERVED`:
 
 ```text
 CAPABILITY_NONREGRESSION_FAIL
@@ -444,13 +568,21 @@ or
 CAPABILITY_NONREGRESSION_OBSERVED
 ```
 
-Work result, reported only with the capability result and primary currency:
+Work-level censoring result when any required work observation is censored:
+
+```text
+WORK_COMPARISON_CENSORED
+```
+
+Eligible uncensored work result, reported only with the adequacy and capability results and primary currency:
 
 ```text
 WORK_REDUCTION_NOT_OBSERVED
 or
 WORK_REDUCTION_OBSERVED_UNDER_ASSAY_CURRENCY
 ```
+
+`WORK_COMPARISON_CENSORED` means no eligible uncensored work comparison was possible. `WORK_REDUCTION_NOT_OBSERVED` means the work comparison was eligible and performed mechanically, but the frozen reduction rule was not satisfied.
 
 Completion wrapper:
 
@@ -491,7 +623,7 @@ emit a White Rabbit claim
 The next possible transition is only:
 
 ```text
-constitution review
+review repaired constitution
 -> separately authorized pre-open token/context matching
 -> separately reviewed execution manifest
 -> separate execution authorization, if granted
@@ -500,7 +632,7 @@ constitution review
 Current terminal state:
 
 ```text
-G7_MATCHED_CONTEXT_ASSAY_V0.1 CONSTITUTED
+G7_MATCHED_CONTEXT_ASSAY_V0.1.1 CONSTITUTED / REPAIRED / REVIEW_REQUIRED
 ASSAY_NOT_RUN
 PREOPEN_TOKEN_MATCH_REQUIRED
 EXECUTION_NOT_AUTHORIZED

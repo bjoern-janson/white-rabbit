@@ -163,21 +163,24 @@ No treatment, neutral prelude, benchmark, or capability evaluation was run under
 
 ## Gate 7 — Matched-context capability/work assay
 
-State: `CONSTITUTION AUTHORING AUTHORIZED / EXECUTION NOT AUTHORIZED / NOT YET CONSTITUTED`
+State: `CONSTITUTION REPAIRED / AWAITS REVIEW / TOKEN MATCH BLOCKED / EXECUTION NOT AUTHORIZED`
 
-Codex handoff:
+Original constitution and repair authority:
 
 ```text
-handoff/CODEX_G7_CONSTITUTION.md
+original constitution commit: 7696bf90452cb13f86fe8e22cc860ff6e9d09dee
+original constitution version: G7_MATCHED_CONTEXT_ASSAY_V0.1
+repair handoff: handoff/CODEX_G7_CONSTITUTION_REPAIR.md
+repaired constitution version: G7_MATCHED_CONTEXT_ASSAY_V0.1.1
 ```
 
-Target constitution artifact:
+Constitution artifact:
 
 ```text
 assays/G7_MATCHED_CONTEXT_ASSAY_V0_1.md
 ```
 
-Gate 7 constitution must freeze five components before any execution can even be considered:
+The Gate 7 constitution freezes five components before any execution can even be considered:
 
 ```text
 1. capability criterion
@@ -187,7 +190,7 @@ Gate 7 constitution must freeze five components before any execution can even be
 5. replicate design
 ```
 
-Current intended assay form, subject to constitution review:
+Frozen assay form, still subject to repaired-constitution review:
 
 ```text
 B = neutral matched prelude + target
@@ -202,7 +205,7 @@ observations/WR-OBS-002/raw_observation.md
 
 The neutral prelude must be frozen separately and reviewed. Source-level similarity does not establish model-visible token equality; the constitution must preserve a pre-open token/context-matching requirement if equality cannot be mechanically established during authoring.
 
-The first assay is intended to use mechanically checkable held-out tasks, no LLM judge, primary work currency `N_generated`, independently cold runs, and repeated observations rather than one B/C pair.
+The repaired v0.1.1 contract adds only explicit work-censoring custody and a per-task `S_B,j = 5/5` control-adequacy gate. It preserves mechanically checkable held-out tasks, no LLM judge, primary work currency `N_generated`, independently cold runs, and repeated observations rather than one B/C pair.
 
 Critical boundary:
 
@@ -221,13 +224,15 @@ capability comparison
 White Rabbit claim
 ```
 
-After Codex authors the constitution and returns its audit report:
+The next possible transition is:
 
 ```text
-STOP
+review repaired constitution
+-> only then consider separately authorizing pre-open token/context matching
+-> STOP
 ```
 
-The constitution must survive review before any separate execution authorization is considered.
+Repair completion does not itself authorize token/context matching or execution.
 
 ## Gate 8 — White Rabbit compute economics
 
@@ -274,7 +279,8 @@ Each transition requires its own claim ceiling.
 Gate 4: USER_REPORTED PASS
 Gate 5: USER_REPORTED PASS
 Gate 6: USER_REPORTED PASS
-Gate 7 constitution authoring: AUTHORIZED
+Gate 7 repaired constitution v0.1.1: FROZEN / AWAITS REVIEW
+Gate 7 pre-open token/context matching: BLOCKED
 Gate 7 execution: NOT AUTHORIZED / NOT OPENED
 White Rabbit G1-G4: NOT OPENED
 ```
@@ -282,9 +288,8 @@ White Rabbit G1-G4: NOT OPENED
 Current authorized transition only:
 
 ```text
-Gate 6 PASS
--> author Gate 7 constitution
--> reviewable constitution artifact
+review repaired Gate 7 constitution
+-> only then consider separately authorizing pre-open token/context matching
 -> STOP
 ```
 
