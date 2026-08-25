@@ -1,10 +1,22 @@
 # White Rabbit Instrumentation Invariants
 
-Version: `0.1`
+Version: `0.2`
 
 Status: `ACTIVE_MEASUREMENT_BOUNDARY`
 
-This document extends the founding research-state constitution with measurement constraints learned from `WR-OBS-001`. It does not modify the frozen founding constitution and does not authorize a White Rabbit experiment.
+This document extends the founding research-state constitution with measurement constraints learned from `WR-OBS-001`, `WR-OBS-002`, and later backend trace interpretation. It does not modify the frozen founding constitution and does not authorize a White Rabbit experiment.
+
+## WR-I-LAYERS-001 — Raw measurement precedes reconstruction and interpretation
+
+> **RAW MEASUREMENT -> DERIVED RECONSTRUCTION -> INTERPRETATION.**
+
+These layers are distinct.
+
+- Raw backend fields remain literal observations.
+- Arithmetic or deterministic reconstruction is explicitly labeled derived.
+- Semantic, causal, independence, capability, or White Rabbit claims are interpretations requiring their own evidence.
+
+A derived value must never be presented as if it were backend-reported. An interpretation must never be presented as if it were a measurement.
 
 ## WR-I-CACHE-001 — Reusable-state acquisition must be charged
 
@@ -58,6 +70,31 @@ A UI/session reset is insufficient evidence of computational independence.
 
 In particular, prompt-evaluation tokens, generated tokens, reasoning-content tokens, cached-prefix tokens, and total context tokens must remain distinct unless an instrument explicitly establishes equivalence.
 
+## WR-I-LCP-001 — LCP similarity and retained-prefix fraction are distinct
+
+> **Never interpret LCP similarity without retained-prefix size and its reference population.**
+
+Literal backend fields remain separate:
+
+```text
+f_sim_best != f_keep
+```
+
+At the current evidence boundary:
+
+- `f_sim_best` is preserved as the backend-reported similarity of the incoming context to selected prior state;
+- `f_keep` is preserved as the backend-reported retained fraction associated with prior state;
+- neither value is an explicit cached-token count;
+- both must be interpreted together with the relevant incoming/prior token populations and surrounding slot/task evidence.
+
+A reconstruction such as:
+
+```text
+previous slot retained + newly processed prompt ~= pre-generation context
+```
+
+is a derived reconstruction, not a backend-reported cache meter.
+
 ## WR-I-ELIMINATION-001 — Do not misclassify cached work as eliminated work
 
 > **Never call computation eliminated until it is known who paid for it, when they paid for it, and whether it was merely cached.**
@@ -82,6 +119,8 @@ They do not establish:
 C_improve causality
 persistent computational-policy change
 representation learning
+independent replication
+computation elimination
 amortized savings
 White Rabbit effect
 ```
