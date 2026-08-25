@@ -307,12 +307,26 @@ Frozen neutral-control reconstitution contract:
 artifact: assays/G7_NEUTRAL_CONTROL_RECONSTITUTION_CONTRACT_V0_1.md
 version: G7_NEUTRAL_CONTROL_RECONSTITUTION_CONTRACT_V0.1
 status: CONSTITUTED / SEARCH_NOT_AUTHORIZED / ASSAY_BLOCKED / NON_AUTHORIZING
-candidate family: FINITE / PREDECLARED / NOT ENUMERATED
+candidate family: FINITE / PREDECLARED / EXHAUSTIVELY SEARCHED
 B1: NOT SELECTED
 N_scientific_runs: 0
 ```
 
-The contract freezes a future token-only search space and deterministic selection procedure. It does not authorize candidate enumeration, tokenization, re-match, assay revision, or execution.
+Frozen token-only search result:
+
+```text
+result: NO_ADMISSIBLE_TOKEN_MATCH / LANE_BLOCKED
+search artifact: assays/G7_NEUTRAL_CONTROL_RECONSTITUTION_SEARCH_V0_1.md
+machine artifact: assays/G7_NEUTRAL_CONTROL_RECONSTITUTION_SEARCH_V0_1.json
+source manifest: assays/G7_NEUTRAL_CONTROL_SOURCE_MANIFEST_V0_1.json
+token custody: assays/G7_NEUTRAL_CONTROL_TOKEN_CUSTODY_V0_1.jsonl
+theoretical / processed / admissible / rejected: 15625 / 15625 / 15625 / 0
+exact-match candidates: 0
+B1: NOT SELECTED
+generation: 0 tokens
+```
+
+The complete frozen family contained no candidate matching C's exact Q1/Q2/Q3 prompt-token vector. The result does not authorize family expansion, re-match, assay revision, or execution.
 
 The repaired contract freezes the required logical order as:
 
@@ -335,8 +349,8 @@ handoff/CODEX_G7_CONSTITUTION_REPAIR.md
 Required next transition:
 
 ```text
-review neutral-control reconstitution contract
--> separately authorize token-only neutral-control search
+review frozen NO_ADMISSIBLE_TOKEN_MATCH result
+-> any successor family requires a separate constitution and authorization
 -> STOP
 ```
 
@@ -384,7 +398,8 @@ Gate 6 — five-replicate cold characterization: USER_REPORTED PASS
 Gate 7 — matched-context assay constitution: CONSTITUTED AT 7696bf9
 Gate 7 — repaired constitution v0.1.1: FROZEN / REVIEWED
 Gate 7 — pre-open token/context matching: MISMATCH / ASSAY BLOCKED
-Gate 7 — neutral-control reconstitution contract: CONSTITUTED / SEARCH_NOT_AUTHORIZED
+Gate 7 — neutral-control reconstitution contract: CONSTITUTED / FROZEN
+Gate 7 — neutral-control search: NO_ADMISSIBLE_TOKEN_MATCH / LANE_BLOCKED
 Gate 7 — execution: NOT AUTHORIZED / NOT OPENED
 N_scientific_runs: 0
 White Rabbit G1-G4: NOT OPENED
@@ -393,7 +408,7 @@ White Rabbit G1-G4: NOT OPENED
 Current authorized transition only:
 
 ```text
-review neutral-control reconstitution contract
--> separately authorize token-only neutral-control search
+review frozen NO_ADMISSIBLE_TOKEN_MATCH result
+-> any successor family requires a separate constitution and authorization
 -> STOP
 ```
