@@ -2,6 +2,8 @@
 
 Type: `UNCONTROLLED_OBSERVATION`
 
+Research status: `OPEN`
+
 Custody status: literal transcription of user-reported local Qwen UI observations preserved before controlled reproduction.
 
 Scientific status: no causal attribution. No White Rabbit effect is claimed.
