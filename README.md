@@ -40,18 +40,46 @@ Every research object declares one epistemic role:
 
 These roles are not interchangeable. Deterministic transformation does not promote a derived record into evidence.
 
+## Instrumentation invariants
+
+White Rabbit now carries explicit measurement constraints learned from the first backend correction. These constraints do not open an experiment.
+
+> **A computation-saving claim must account for the cost of creating any reusable state that makes the saving possible.**
+
+> **Fresh chat is not fresh compute.**
+
+> **UI-visible token categories must not be assigned computational semantics without backend confirmation.**
+
+> **Never call computation eliminated until it is known who paid for it, when they paid for it, and whether it was merely cached.**
+
+See [constitution/instrumentation_invariants.md](constitution/instrumentation_invariants.md).
+
 ## Open observations
 
-### WR-OBS-001 — post-`C_improve` reasoning-work anomaly
+### WR-OBS-001 — UI anomaly with backend measurement correction
 
-`WR-OBS-001` is preserved as `OPEN / UNCONTROLLED_OBSERVATION / MECHANISM=UNKNOWN`.
+`WR-OBS-001` remains `OPEN / UNCONTROLLED_OBSERVATION / WHITE_RABBIT_EFFECT=NOT_DEMONSTRATED`.
 
-The raw custody record preserves the reported before/after Qwen UI measurements and the exact `C_improve` intervention text. The normalized research state earns only the mechanical observation that the reported `hi` reasoning-token count differed from `371` to `11` while the reported final-generation throughput was approximately unchanged at the displayed precision.
+The original UI custody is preserved unchanged. A later llama.cpp server trace supersedes the earlier interpretation of `371 -> 11` as generated reasoning-token disappearance.
 
-The repository does **not** attribute that change to `C_improve`, session state, runtime state, KV/cache behavior, or any other mechanism. Persistence, transfer, amortization, and a White Rabbit effect remain unestablished.
+The backend correction establishes the narrower accounting:
 
-- [Raw observation custody](observations/WR-OBS-001/raw_observation.md)
-- [Normalized provenance state](observations/WR-OBS-001/research_state.json)
+```text
+371 and 11 = freshly processed prompt-evaluation token counts
+full `hi` prompt/context ~= 370 tokens in both runs
+later request explicitly used LCP/prefix reuse
+generated tokens = 44 -> 88
+reasoning-work reduction = NOT_DEMONSTRATED
+C_improve causality = UNESTABLISHED
+White Rabbit effect = NOT_DEMONSTRATED
+```
+
+The v1 research-state object is preserved historically. The v2 state adds a provenance-bearing `SUPERSEDES` relation rather than silently rewriting the old interpretation.
+
+- [Original raw UI custody](observations/WR-OBS-001/raw_observation.md)
+- [Original normalized state v1](observations/WR-OBS-001/research_state.json)
+- [Backend measurement correction](observations/WR-OBS-001/backend_correction.md)
+- [Superseding provenance state v2](observations/WR-OBS-001/research_state_v2.json)
 
 Methodological constraint:
 
@@ -59,7 +87,7 @@ Methodological constraint:
 
 > **Follow the footprint. Don't manufacture a trail.**
 
-No controlled reproduction is opened by preserving this observation.
+No controlled reproduction is opened by preserving or correcting this observation.
 
 ## Validation
 
