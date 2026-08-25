@@ -1,6 +1,6 @@
 # White Rabbit Program Definition
 
-Status: `PROGRAM_DEFINITION / NON_AUTHORIZING`
+Status: `FROZEN_CURRENT_PROGRAM_DEFINITION / NON_AUTHORIZING`
 
 White Rabbit is the search for small, reusable computational structure that changes the economics of reasoning.
 
@@ -19,10 +19,22 @@ The White Rabbit analogue is:
 expensive reasoning/search
     -> discover useful computational coordinates or invariant
     -> compile reusable structure M
-    -> reduce future required computation
+    -> preserve the relevant result with less required future computation
 ```
 
 The program does not assume that `M` is a prompt, formula, representation, decomposition, compiler, lookup structure, canonicalization rule, or learned object. Those are candidate forms, not definitions.
+
+## Canonical definition
+
+> **White Rabbit is structure that makes adequate intelligence cheaper.**
+
+The minimum success signature is:
+
+> **same relevant capability, less required computation**
+
+A White Rabbit exists only when reusable structure makes previously necessary computation unnecessary without sacrificing the capability or distinctions that mattered, and the saved work repays the structure's acquisition cost.
+
+The defining prize is computation eliminated under a valid accounting boundary. Capability increase is optional upside, not a prerequisite.
 
 ## North star
 
@@ -32,9 +44,7 @@ A complementary formulation is:
 
 > **A better rule for what intelligence bothers computing at all.**
 
-A White Rabbit exists only when previously required computation demonstrably disappears under a valid accounting boundary.
-
-Prettier reasoning, more tokens, hidden preprocessing, uncharged caches, answer leakage, or a one-instance trick do not satisfy that criterion.
+Prettier reasoning, more tokens, hidden preprocessing, uncharged caches, answer leakage, or a one-instance trick do not satisfy the White Rabbit criterion.
 
 ## Capability/work decomposition
 
@@ -58,15 +68,24 @@ model deploys capability
 model spends less computation
 ```
 
-## Candidate White Rabbit condition
+## General White Rabbit gates
 
-For a reusable candidate structure `M`, a future scientific treatment would need to earn both sides:
+For a candidate reusable structure `M`, the general burden is sequential:
 
 ```text
-C_realized(M, q) >= C_realized(R0, q)
+G1 -> G2 -> G3 -> G4
 ```
 
-and, over a constituted reuse horizon:
+with:
+
+```text
+G1: C_realized(M, q) >= C_realized(R0, q)
+G2: the effect reproduces under independent constituted runs
+G3: C_work(M, q) < C_work(R0, q)
+G4: acquisition cost is repaid over the constituted reuse horizon
+```
+
+The horizon-level economics are:
 
 ```text
 C_acquire(M) + sum_i C_work(M, q_i)
@@ -74,7 +93,50 @@ C_acquire(M) + sum_i C_work(M, q_i)
 sum_i C_work(R0, q_i)
 ```
 
-These inequalities are program targets, not established results and not presently authorized experiments.
+A stronger optional result is:
+
+```text
+G1+: C_realized(M, q) > C_realized(R0, q)
+```
+
+This is a **Capability Rabbit**: the structure unlocks more realized capability rather than merely preserving adequate capability at lower cost.
+
+The minimum White Rabbit definition does not require `G1+`.
+
+## Rejection filter
+
+The following are insufficient by themselves:
+
+```text
+cache hit                         != White Rabbit
+one-off trick                     != White Rabbit
+answer leakage                    != White Rabbit
+better answer only                != White Rabbit
+cheaper but epistemically poorer  != White Rabbit
+reusable but uneconomic structure != White Rabbit
+```
+
+The archetypal transformation is:
+
+```text
+change representation
+    -> preserve required result
+    -> eliminate computation
+```
+
+## Measurement doctrine
+
+All White Rabbit evidence must respect:
+
+```text
+RAW MEASUREMENT
+    -> DERIVED RECONSTRUCTION
+    -> INTERPRETATION
+```
+
+No layer may silently inherit the authority of the layer before it.
+
+Literal backend measurements remain literal measurements. Arithmetic reconstruction is labeled derived. Causal/scientific meaning is a later interpretation requiring its own evidence.
 
 ## Corrigibility requirement
 
@@ -115,7 +177,7 @@ The research-state constitution controls provenance only. Any future scientific 
 
 ## Present status
 
-White Rabbit is currently a research program with evidence infrastructure and measurement requirements.
+White Rabbit is currently a research program with evidence infrastructure, a reported local recorder implementation, and frozen measurement requirements.
 
 No White Rabbit treatment is open in this repository.
 
