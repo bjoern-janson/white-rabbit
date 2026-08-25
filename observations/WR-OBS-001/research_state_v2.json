@@ -52,7 +52,7 @@
       "epistemic_role": "DERIVED",
       "proposition": "Within the preserved Pair A report, the displayed reasoning-token count differs by 360 tokens between the earlier and later `hi` observations, while final-generation throughput differs by 0.01 t/s at the precision displayed.",
       "scope": "Deterministic arithmetic over claim:WR-OBS-001:reported-hi-pair only.",
-      "ceiling": "Historical v1 interpretation preserved verbatim; this interpretation is superseded by backend evidence in research_state_v2.json.",
+      "ceiling": "A derived arithmetic observation that reported reasoning work changed; it does not identify the cause of that change.",
       "source_ids": [
         "source:WR-OBS-001:raw"
       ],
@@ -120,7 +120,7 @@
       "epistemic_role": "NORMALIZED",
       "subject_id": "claim:WR-OBS-001:O1",
       "value": "EARNED",
-      "scope": "Historical v1 arithmetic interpretation as originally recorded; later superseded by backend evidence.",
+      "scope": "Mechanical arithmetic difference over the preserved Pair A measurements only.",
       "effective_commit": "5dcda4ed350f69ed500ed5967892ab171fbbcf54",
       "source_ids": [
         "source:WR-OBS-001:raw"
@@ -195,7 +195,7 @@
       "parent_normalized_ids": [
         "claim:WR-OBS-001:reported-hi-pair"
       ],
-      "derivation": "Historical v1 arithmetic interpretation preserved verbatim: compute 371 - 11 = 360 and |14.34 - 14.33| = 0.01 from the UI-labeled Pair A measurements. Backend evidence later supersedes the computational interpretation of those UI labels."
+      "derivation": "Compute 371 - 11 = 360 displayed reasoning tokens and |14.34 - 14.33| = 0.01 t/s from the normalized Pair A measurements."
     },
     {
       "id": "provenance:claim:WR-OBS-001:open-boundary",
