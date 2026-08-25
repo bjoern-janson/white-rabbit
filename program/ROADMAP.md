@@ -2,7 +2,7 @@
 
 Status: `ROADMAP / NON_AUTHORIZING`
 
-This file describes the intended dependency order. It does not grant permission to cross a gate.
+This file describes the intended dependency order. It does not grant permission to cross a gate unless an explicit transition below says so.
 
 ## Governing dependency
 
@@ -46,16 +46,7 @@ State: `NOT_AUTHORIZED BY FOUNDING CONSTITUTION`
 
 The founding authority boundary explicitly does not authorize corpus ingestion.
 
-Before corpus population, a separate ingestion constitution must freeze:
-
-```text
-source scope
-custody rules
-hash/locator requirements
-normalization rules
-ambiguity handling
-failure behavior
-```
+Before corpus population, a separate ingestion constitution must freeze source scope, custody rules, hash/locator requirements, normalization rules, ambiguity handling, and failure behavior.
 
 No corpus-wide research state is opened by this roadmap.
 
@@ -85,17 +76,13 @@ V(q) -> Qwen -> candidate claims
 
 Qwen may synthesize and generate candidate structure. Model output does not acquire scientific authority by generation alone.
 
-The required authority firewall is:
-
 ```text
-Qwen-generated candidate
-    !=
-research truth
+Qwen-generated candidate != research truth
 ```
 
 ## Gate 4 — Recorder implementation
 
-State: `USER_REPORTED COMPLETE / FAKE-UPSTREAM ACCEPTANCE REPORTED PASS / STOP REACHED`
+State: `USER_REPORTED COMPLETE / FAKE-UPSTREAM ACCEPTANCE REPORTED PASS`
 
 Contract:
 
@@ -103,101 +90,150 @@ Contract:
 interfaces/WHITE_RABBIT_RECORDER_V0_1.md
 ```
 
-Milestone record:
+Milestone:
 
 ```text
 program/RECORDER_V0_1_MILESTONE.md
 ```
 
-The supplied Codex completion report records:
+Reported identity:
 
 ```text
 version: 0.1.0
 local commit: 80cddb26a7b851d218f95317cd3c5b0593acd831
 tests: 30/30 PASS
 upstream: deterministic fake only
-real Qwen request: NO
-scientific comparison: NO
 ```
 
-The implementation is local-only and cannot be independently inspected or rerun by this GitHub repository. Therefore the current claim ceiling is:
-
-```text
-LOCAL IMPLEMENTATION REPORTED
-+
-FAKE-UPSTREAM BYTE-CUSTODY ACCEPTANCE REPORTED PASS
-```
-
-No scientific result follows.
-
-Original gate stop condition:
-
-```text
-fake-upstream acceptance
--> STOP
-```
-
-is active and has been reached according to the supplied report.
+The recorder repository is local-only and is not independently inspectable by this GitHub repository. No scientific result follows from Gate 4.
 
 ## Gate 5 — Real-server recorder calibration
 
-State: `NOT_AUTHORIZED`
+State: `USER_REPORTED PASS / INSTRUMENTAL ONLY`
 
-Purpose only:
+Milestone:
 
 ```text
-prove the microscope does not bend the light
+program/GATE5_REAL_SERVER_CALIBRATION_MILESTONE.md
 ```
 
-A single ordinary real-server run would verify that the recorder survives contact with llama.cpp while preserving HTTP/backend evidence.
+Reported purpose achieved narrowly:
 
-It is not a capability comparison and not a White Rabbit treatment.
+```text
+prove the microscope survives contact with the real llama.cpp/Qwen stack
+while preserving the constituted evidence boundary
+```
 
-No such run is authorized or recorded here.
+The reported cold run had fresh-process evidence, one unambiguous task/slot measurement block, exact request/response custody, and no treatment/comparison.
+
+This does not establish capability, compute saving, C_improve causality, or White Rabbit effect.
 
 ## Gate 6 — Cold baseline characterization
 
-State: `NOT_AUTHORIZED`
+State: `USER_REPORTED PASS / FROZEN FIVE-REPLICATE PROTOCOL`
 
-Before a treatment comparison, a future protocol must constitute backend freshness and measure ordinary run-to-run variability.
-
-A new browser tab is insufficient:
+Milestone:
 
 ```text
-fresh chat != fresh compute
+program/GATE6_COLD_CHARACTERIZATION_MILESTONE.md
 ```
 
-No `Cold A`, `Cold B`, or `Cold C` run is authorized by this roadmap.
+Earned statement recorded from the supplied report:
 
-## Gate 7 — Matched-context capability assay
+> **Cold baseline operationally characterized under the frozen five-replicate protocol.**
 
-State: `NOT_AUTHORIZED`
-
-The naive comparison:
+Explicit ceiling:
 
 ```text
-A = target alone
-C = C_improve + target
+5 replicates characterize the frozen protocol
+!=
+the underlying stochastic distribution is fully known
 ```
 
-is not sufficient because `C` contains additional context.
+Reported Gate 6 facts include stable `N_prompt,new = 53` across all five cold replicates and material variation in generated-token count, generation time, total time, and response content.
 
-A future meaningful content comparison would require a matched control such as:
+Methodological consequence:
 
 ```text
-B = neutral prelude + target
-C = C_improve + target
+a future treatment effect must be evaluated against independently constituted baseline variability,
+not against one privileged baseline realization
 ```
 
-with frozen payload, runtime, backend freshness, compute budget, evaluation, and provenance.
+No treatment, neutral prelude, benchmark, or capability evaluation was run under Gate 6.
 
-The neutral prelude itself is not designed or authorized here.
+## Gate 7 — Matched-context capability/work assay
+
+State: `CONSTITUTION AUTHORING AUTHORIZED / EXECUTION NOT AUTHORIZED / NOT YET CONSTITUTED`
+
+Codex handoff:
+
+```text
+handoff/CODEX_G7_CONSTITUTION.md
+```
+
+Target constitution artifact:
+
+```text
+assays/G7_MATCHED_CONTEXT_ASSAY_V0_1.md
+```
+
+Gate 7 constitution must freeze five components before any execution can even be considered:
+
+```text
+1. capability criterion
+2. primary work currency
+3. independence criterion
+4. matched-context control
+5. replicate design
+```
+
+Current intended assay form, subject to constitution review:
+
+```text
+B = neutral matched prelude + target
+C = literal C_improve prelude + target
+```
+
+The literal `C_improve` source must come from:
+
+```text
+observations/WR-OBS-002/raw_observation.md
+```
+
+The neutral prelude must be frozen separately and reviewed. Source-level similarity does not establish model-visible token equality; the constitution must preserve a pre-open token/context-matching requirement if equality cannot be mechanically established during authoring.
+
+The first assay is intended to use mechanically checkable held-out tasks, no LLM judge, primary work currency `N_generated`, independently cold runs, and repeated observations rather than one B/C pair.
+
+Critical boundary:
+
+```text
+CONSTITUTED != EXECUTED
+```
+
+Creating the Gate 7 constitution does not authorize:
+
+```text
+C_improve execution
+neutral-prelude execution
+B or C runs
+llama-server / recorder startup for Gate 7
+capability comparison
+White Rabbit claim
+```
+
+After Codex authors the constitution and returns its audit report:
+
+```text
+STOP
+```
+
+The constitution must survive review before any separate execution authorization is considered.
 
 ## Gate 8 — White Rabbit compute economics
 
-State: `NOT_AUTHORIZED`
+State: `NOT_AUTHORIZED / NOT OPENED`
 
-The general White Rabbit burden is:
+The general White Rabbit burden remains:
 
 ```text
 G1: C_realized(M, q) >= C_realized(R0, q)
@@ -220,39 +256,36 @@ C_acquire(M) + sum_i C_work(M, q_i)
 sum_i C_work(R0, q_i)
 ```
 
-Reusable-state acquisition must be charged. Cache reuse and computation elimination must remain distinct.
+Gate 7 cannot directly emit a Gate 8 / White Rabbit result.
 
 ## Gate 9 — Persistence / transfer / revocability
 
-State: `NOT_AUTHORIZED`
+State: `NOT_AUTHORIZED / NOT OPENED`
 
 A positive one-task result would not establish a White Rabbit family.
 
-Later gates would separately ask whether the candidate:
-
-```text
-persists
-reuses
-amortizes
-transfers
-retains an invalidation/revocation path
-```
+Later gates would separately ask whether a candidate persists, reuses, amortizes, transfers, and retains an invalidation/revocation path.
 
 Each transition requires its own claim ceiling.
 
 ## Current gate position
 
 ```text
-Gate 4: REPORTED COMPLETE
-Gate 5: NOT_AUTHORIZED
+Gate 4: USER_REPORTED PASS
+Gate 5: USER_REPORTED PASS
+Gate 6: USER_REPORTED PASS
+Gate 7 constitution authoring: AUTHORIZED
+Gate 7 execution: NOT AUTHORIZED / NOT OPENED
+White Rabbit G1-G4: NOT OPENED
 ```
 
-There is no currently authorized real-server or treatment transition.
-
-The next unopened gate is only:
+Current authorized transition only:
 
 ```text
-Gate 5 — real-server recorder calibration
+Gate 6 PASS
+-> author Gate 7 constitution
+-> reviewable constitution artifact
+-> STOP
 ```
 
-Nothing in this roadmap authorizes that gate merely by naming it.
+Nothing in this roadmap authorizes treatment execution.
