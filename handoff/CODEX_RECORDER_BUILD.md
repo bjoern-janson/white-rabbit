@@ -1,8 +1,46 @@
 # Codex Handoff — White Rabbit Recorder v0.1
 
-Status: `IMPLEMENTATION_HANDOFF / NOT_EXECUTED / NON_SCIENTIFIC`
+Status: `HANDOFF_CLOSED / COMPLETION_REPORTED / NON_SCIENTIFIC`
 
-Codex must read first:
+This handoff has been consumed.
+
+A user-supplied Codex completion report records:
+
+```text
+White Rabbit Recorder version: 0.1.0
+local implementation commit: 80cddb26a7b851d218f95317cd3c5b0593acd831
+files added: 27
+dependencies: none / Python standard library only
+tests: 30/30 PASS
+test upstream: deterministic fake only
+real Qwen request: NO
+scientific comparison: NO
+working tree: clean
+remote: none / local-only
+```
+
+This GitHub repository cannot independently inspect that local commit or rerun the reported tests.
+
+The authoritative milestone record for current program state is:
+
+```text
+program/RECORDER_V0_1_MILESTONE.md
+```
+
+The original stop condition has been reached according to the supplied report:
+
+```text
+fake-upstream acceptance
+-> STOP
+```
+
+Gate 5 — real-server recorder calibration — remains separately unauthorized.
+
+---
+
+## Historical implementation contract
+
+Codex was instructed to read first:
 
 1. `interfaces/WHITE_RABBIT_RECORDER_V0_1.md`
 2. `measurement/MEASUREMENT_MODEL.md`
@@ -43,7 +81,9 @@ server/log.raw
 Derived artifacts may include hashes, parsed JSON/JSONL, metadata, and literal backend timing extraction.
 
 ```text
-RAW != PARSED != INTERPRETED
+RAW MEASUREMENT
+-> DERIVED RECONSTRUCTION
+-> INTERPRETATION
 ```
 
 The request body forwarded upstream must be byte-identical to the request body received by the proxy.
@@ -152,62 +192,42 @@ real Qwen comparison
 
 Do not change the White Rabbit scientific state merely because the recorder implementation succeeds.
 
-## Completion report
+## Reported completion against the contract
 
-Return:
+The supplied completion report states:
 
 ```text
-White Rabbit Recorder version:
-repository:
-parent commit:
-implementation commit:
-
-files added:
-files changed:
-
-dependencies added:
-
-test command:
-test result:
-
-all-route transparent proxy: YES/NO
-inference-route recording: YES/NO
-request raw-byte custody: YES/NO
-request forwarded byte-identically: YES/NO
-request SHA verified against fake upstream: YES/NO
-unknown fields preserved: YES/NO
-missing fields left absent: YES/NO
-malformed JSON preserved: YES/NO
-response raw-byte custody: YES/NO
-streaming response preserved: YES/NO
-response parse failure preserves raw source: YES/NO
-server invocation capture implemented: YES/NO
-server version capture implemented: YES/NO
-server PID/session capture implemented: YES/NO
-backend prompt-new extraction: YES/NO
-backend generated-token extraction: YES/NO
-backend timing extraction: YES/NO
-LCP fields preserved literally: YES/NO
-graphs-reused field preserved literally: YES/NO
-cached-token count guessed anywhere: YES/NO
-task/request correlation implemented: YES/NO
-ambiguous correlation fails explicitly: YES/NO
-concurrent measured requests controlled: YES/NO
-post-template model token stream claimed: YES/NO
-C_improve treatment added: YES/NO
-neutral prelude added: YES/NO
-capability evaluator added: YES/NO
-White Rabbit policy added: YES/NO
-white-rabbit repo modified by recorder implementation: YES/NO
-RD_HARNESS modified: YES/NO
-real Qwen request executed: YES/NO
-scientific comparison executed: YES/NO
-known limitations:
-scientific ambiguities encountered:
-working tree clean: YES/NO
+all-route transparent proxy: YES
+inference-route recording: YES
+request raw-byte custody: YES
+request forwarded byte-identically: YES
+request SHA verified against fake upstream: YES
+unknown fields preserved: YES
+missing fields left absent: YES
+malformed JSON preserved: YES
+response raw-byte custody: YES
+streaming response preserved: YES
+response parse failure preserves raw source: YES
+server invocation/version/PID/session capture: YES
+backend prompt-new/generated/timing extraction: YES
+LCP fields preserved literally: YES
+graphs-reused preserved literally: YES
+cached-token count guessed: NO
+request/task correlation: YES
+ambiguous correlation fails explicitly: YES
+concurrent measured requests: HTTP 409
+post-template model token stream claimed: NO
+C_improve treatment added: NO
+neutral prelude added: NO
+capability evaluator added: NO
+White Rabbit policy added: NO
+white-rabbit modified by recorder task: NO
+RD_HARNESS modified: NO
+real Qwen request executed: NO
+scientific comparison executed: NO
 ```
 
-Then stop.
+The reported limitations are preserved in `program/RECORDER_V0_1_MILESTONE.md`.
 
 ## Governing rule
 
