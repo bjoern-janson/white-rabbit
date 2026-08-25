@@ -1,0 +1,22 @@
+{
+  "b_star_sha256": "37e85197d6c68dcf9bc0027cc4b9e5900041af6e0f5cbe77b954a209349c5663",
+  "condition": "B*",
+  "constitution_commit": "23cd33dad0fad7e91d1a9ebe06e7cf0f28c33c99",
+  "max_tokens": 512,
+  "model": "C:\\Users\\Mewn\\Models\\Qwen3.8-27B\\Qwen3.8-27B-Q2_K.gguf",
+  "planned_observations": 15,
+  "request_sha256": {
+    "Q1": "3fa765370844bdf4c6b7ef3aa087fd5566f8387a7fcb44083273e532fc8d3abd",
+    "Q2": "c3fe1c1287cfd26885d8e99fd21d7a00366e86ae9bab765295b7c23f5bf0437b",
+    "Q3": "fe55175b4d7d48d7041c5a7cb725e7093be2787caf44da13d143a944f717e019"
+  },
+  "scientific_condition_executed": false,
+  "server": "C:\\Users\\Mewn\\Documents\\Codex\\2026-08-10\\i-t-e-v-t-h\\work\\white-rabbit-recorder\\.calibration-runtime\\llama-b10603-verified\\llama-server.exe",
+  "started_at": "2026-08-25T20:05:38.765671+00:00",
+  "task_sha256": {
+    "Q1": "eb81d8205fe0a2215a3351f3743afbc6028c73b33ddbab238e6599c298142a23",
+    "Q2": "3a2902cdad1a34cec5a1b8b1ab0684c0cf182fb867e861384d10034993c566f1",
+    "Q3": "886d0318a6702db444cac8f63947f3cdcba7f8b23f93ee91a5c5c84366bea400"
+  },
+  "version": "G7_GENERATION_BUDGET_CALIBRATION_V0.1"
+}
