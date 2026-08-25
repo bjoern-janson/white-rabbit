@@ -301,6 +301,19 @@ generation performed: NO
 
 The mismatch establishes only unequal prompt-token burden under the exact frozen native template/tokenizer path. It authorizes no source repair, assay execution, capability claim, work claim, or White Rabbit claim.
 
+Frozen neutral-control reconstitution contract:
+
+```text
+artifact: assays/G7_NEUTRAL_CONTROL_RECONSTITUTION_CONTRACT_V0_1.md
+version: G7_NEUTRAL_CONTROL_RECONSTITUTION_CONTRACT_V0.1
+status: CONSTITUTED / SEARCH_NOT_AUTHORIZED / ASSAY_BLOCKED / NON_AUTHORIZING
+candidate family: FINITE / PREDECLARED / NOT ENUMERATED
+B1: NOT SELECTED
+N_scientific_runs: 0
+```
+
+The contract freezes a future token-only search space and deterministic selection procedure. It does not authorize candidate enumeration, tokenization, re-match, assay revision, or execution.
+
 The repaired contract freezes the required logical order as:
 
 ```text
@@ -322,8 +335,8 @@ handoff/CODEX_G7_CONSTITUTION_REPAIR.md
 Required next transition:
 
 ```text
-PREOPEN_TOKEN_MATCH_MISMATCH
--> separate review or reconstitution only
+review neutral-control reconstitution contract
+-> separately authorize token-only neutral-control search
 -> STOP
 ```
 
@@ -371,14 +384,16 @@ Gate 6 — five-replicate cold characterization: USER_REPORTED PASS
 Gate 7 — matched-context assay constitution: CONSTITUTED AT 7696bf9
 Gate 7 — repaired constitution v0.1.1: FROZEN / REVIEWED
 Gate 7 — pre-open token/context matching: MISMATCH / ASSAY BLOCKED
+Gate 7 — neutral-control reconstitution contract: CONSTITUTED / SEARCH_NOT_AUTHORIZED
 Gate 7 — execution: NOT AUTHORIZED / NOT OPENED
+N_scientific_runs: 0
 White Rabbit G1-G4: NOT OPENED
 ```
 
 Current authorized transition only:
 
 ```text
-review frozen PREOPEN_TOKEN_MATCH_MISMATCH artifact
--> separately decide whether reconstitution is warranted
+review neutral-control reconstitution contract
+-> separately authorize token-only neutral-control search
 -> STOP
 ```

@@ -214,6 +214,16 @@ assays/G7_PREOPEN_TOKEN_MATCH_V0_1.json
 
 This is a template/tokenization result only. It does not authorize editing either prelude, executing the assay, or emitting a capability, work, causal, or White Rabbit claim.
 
+Frozen reconstitution contract:
+
+```text
+assays/G7_NEUTRAL_CONTROL_RECONSTITUTION_CONTRACT_V0_1.md
+status: CONSTITUTED / SEARCH_NOT_AUTHORIZED / ASSAY_BLOCKED / NON_AUTHORIZING
+N_scientific_runs: 0
+```
+
+The contract predeclares a finite neutral lexical family, mechanical source admissibility, exhaustive deterministic enumeration, exact all-task token equality, and deterministic selection. It does not enumerate the family, tokenize a candidate, select `B1`, constitute G7 v0.1.2, or authorize execution.
+
 The repaired v0.1.1 contract adds only explicit work-censoring custody and a per-task `S_B,j = 5/5` control-adequacy gate. It preserves mechanically checkable held-out tasks, no LLM judge, primary work currency `N_generated`, independently cold runs, and repeated observations rather than one B/C pair.
 
 Critical boundary:
@@ -236,8 +246,8 @@ White Rabbit claim
 The next possible transition is:
 
 ```text
-review frozen PREOPEN_TOKEN_MATCH_MISMATCH artifact
--> separately decide whether reconstitution is warranted
+review neutral-control reconstitution contract
+-> separately authorize token-only neutral-control search
 -> STOP
 ```
 
@@ -290,15 +300,17 @@ Gate 5: USER_REPORTED PASS
 Gate 6: USER_REPORTED PASS
 Gate 7 repaired constitution v0.1.1: FROZEN / REVIEWED
 Gate 7 pre-open token/context matching: MISMATCH / ASSAY BLOCKED
+Gate 7 neutral-control reconstitution contract: CONSTITUTED / SEARCH_NOT_AUTHORIZED
 Gate 7 execution: NOT AUTHORIZED / NOT OPENED
+N_scientific_runs: 0
 White Rabbit G1-G4: NOT OPENED
 ```
 
 Current authorized transition only:
 
 ```text
-review frozen PREOPEN_TOKEN_MATCH_MISMATCH artifact
--> separately decide whether reconstitution is warranted
+review neutral-control reconstitution contract
+-> separately authorize token-only neutral-control search
 -> STOP
 ```
 
