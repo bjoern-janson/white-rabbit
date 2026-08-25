@@ -280,7 +280,10 @@ STOP
 
 No real Qwen treatment is opened by the recorder specification.
 
-See [interfaces/WHITE_RABBIT_RECORDER_V0_1.md](interfaces/WHITE_RABBIT_RECORDER_V0_1.md).
+See:
+
+- [interfaces/WHITE_RABBIT_RECORDER_V0_1.md](interfaces/WHITE_RABBIT_RECORDER_V0_1.md)
+- [handoff/CODEX_RECORDER_BUILD.md](handoff/CODEX_RECORDER_BUILD.md)
 
 ---
 
@@ -330,6 +333,7 @@ observations/   preserved empirical/uncontrolled observation lineage
 program/        program definition, state ledger, gated roadmap
 measurement/    compute/accounting vocabulary
 interfaces/     non-runnable future-component contracts
+handoff/        implementation instructions for isolated future components
 ```
 
 ## Validation
