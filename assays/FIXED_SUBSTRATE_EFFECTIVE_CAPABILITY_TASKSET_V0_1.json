@@ -1,7 +1,7 @@
 {
   "schema_version": "FIXED_SUBSTRATE_EFFECTIVE_CAPABILITY_TASKSET_V0.1",
   "status": "FROZEN_TASKSET / NON_AUTHORIZING / NOT_EXECUTED",
-  "selection_rule": "Frozen before any v0.1 assay execution. Bands are prospective construction labels, not empirical difficulty claims.",
+  "selection_rule": "Frozen before any v0.1 assay execution. Bands are prospective construction labels, not empirical difficulty claims. Q01-Q03 are historically exposed G7 floor controls and are excluded from the primary frontier claim. Q04-Q12 are the primary novel frontier set and have no White Rabbit execution history at freeze.",
   "grader": {
     "trim": "leading/trailing ASCII space, tab, CR, LF only",
     "comparison": "exact UTF-8 bytes",
@@ -11,72 +11,96 @@
     {
       "id": "Q01",
       "band": 0,
+      "role": "HISTORICAL_FLOOR_CONTROL",
+      "prior_white_rabbit_exposure": true,
       "prompt": "Compute (37 × 14) - (96 ÷ 3). Return exactly one base-10 integer and nothing else.",
       "expected_output": "486"
     },
     {
       "id": "Q02",
       "band": 0,
+      "role": "HISTORICAL_FLOOR_CONTROL",
+      "prior_white_rabbit_exposure": true,
       "prompt": "Reverse the character sequence `Q7m2R9`. Return exactly the reversed six-character sequence and nothing else.",
       "expected_output": "9R2m7Q"
     },
     {
       "id": "Q03",
       "band": 0,
+      "role": "HISTORICAL_FLOOR_CONTROL",
+      "prior_white_rabbit_exposure": true,
       "prompt": "Sort the integers 17, -4, 9, 0, 12 in strictly ascending numeric order. Return exactly a comma followed by a single space between values, and nothing else.",
       "expected_output": "-4, 0, 9, 12, 17"
     },
     {
       "id": "Q04",
       "band": 1,
+      "role": "PRIMARY_NOVEL_FRONTIER",
+      "prior_white_rabbit_exposure": false,
       "prompt": "Compute ((137 × 29) - (864 ÷ 12) + 53). Return exactly one base-10 integer and nothing else.",
       "expected_output": "3954"
     },
     {
       "id": "Q05",
       "band": 1,
+      "role": "PRIMARY_NOVEL_FRONTIER",
+      "prior_white_rabbit_exposure": false,
       "prompt": "Solve the simultaneous equations 3x + 2y = 23 and x - y = 1. Return exactly `x=<integer>,y=<integer>` with no spaces and nothing else.",
       "expected_output": "x=5,y=4"
     },
     {
       "id": "Q06",
       "band": 1,
+      "role": "PRIMARY_NOVEL_FRONTIER",
+      "prior_white_rabbit_exposure": false,
       "prompt": "Start with the list 8, 3, 11, 2, 9. Replace each value v by 2v - 1, then sort the resulting values in strictly descending order. Return exactly a comma followed by a single space between values, and nothing else.",
       "expected_output": "21, 17, 15, 5, 3"
     },
     {
       "id": "Q07",
       "band": 2,
+      "role": "PRIMARY_NOVEL_FRONTIER",
+      "prior_white_rabbit_exposure": false,
       "prompt": "Find the unique integer x with 0 <= x < 315 satisfying x ≡ 2 (mod 5), x ≡ 3 (mod 7), and x ≡ 4 (mod 9). Return exactly one base-10 integer and nothing else.",
       "expected_output": "157"
     },
     {
       "id": "Q08",
       "band": 2,
+      "role": "PRIMARY_NOVEL_FRONTIER",
+      "prior_white_rabbit_exposure": false,
       "prompt": "In the directed weighted graph with edges A→B=4, A→C=2, B→D=5, B→E=10, C→B=1, C→D=8, C→E=7, D→F=3, E→F=1, find the unique minimum-cost path from A to F. Return exactly `<path>|<cost>` where the path uses hyphens between node letters and cost is a base-10 integer.",
       "expected_output": "A-C-E-F|10"
     },
     {
       "id": "Q09",
       "band": 2,
+      "role": "PRIMARY_NOVEL_FRONTIER",
+      "prior_white_rabbit_exposure": false,
       "prompt": "Five people A, B, C, D, E occupy positions 1 through 5, one person per position. C is immediately to the right of A. B is immediately to the right of E. D is not at either end. A is left of D, and D is left of B. Return the unique left-to-right order exactly as comma-separated letters with no spaces.",
       "expected_output": "A,C,D,E,B"
     },
     {
       "id": "Q10",
       "band": 3,
+      "role": "PRIMARY_NOVEL_FRONTIER",
+      "prior_white_rabbit_exposure": false,
       "prompt": "Solve the system: 2x1 + x2 - x3 + 3x5 = 0; x1 - 2x2 + 2x4 + x5 = 12; 3x1 + 2x3 - x4 - 2x5 = 8; x2 + x3 + 3x4 - x5 = 14; 2x1 - x2 + 3x3 + x4 = 18. Return exactly `x1=<integer>,x2=<integer>,x3=<integer>,x4=<integer>,x5=<integer>` with no spaces and nothing else.",
       "expected_output": "x1=2,x2=-1,x3=3,x4=4,x5=0"
     },
     {
       "id": "Q11",
       "band": 3,
+      "role": "PRIMARY_NOVEL_FRONTIER",
+      "prior_white_rabbit_exposure": false,
       "prompt": "Six people A, B, C, D, E, F occupy positions 1 through 6, one person per position. C is immediately after A. F is exactly two positions after C. B is not at either end. D is before A. E is after B. E is not in position 5. Return the unique left-to-right order exactly as comma-separated letters with no spaces.",
       "expected_output": "D,A,C,B,F,E"
     },
     {
       "id": "Q12",
       "band": 3,
+      "role": "PRIMARY_NOVEL_FRONTIER",
+      "prior_white_rabbit_exposure": false,
       "prompt": "From the set {5, 8, 11, 14, 17, 23, 26, 31}, choose exactly four distinct numbers whose sum is 80. Return the unique solution in strictly ascending order exactly as comma-separated integers with no spaces.",
       "expected_output": "14,17,23,26"
     }
