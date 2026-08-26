@@ -18,11 +18,11 @@ The historical custody record is preserved in:
 
 Those records select the phenomenon. They do not supply causal authority.
 
-The backend correction established that a major part of the visible `371 -> 11` prompt-work change was consistent with longest-common-prefix / KV reuse, while a separate low-throughput runtime regime remained unexplained. Therefore this assay prospectively separates a reproducible runtime-reuse path from the candidate structured path instead of treating the original anecdote as a causal result.
+The backend correction established that a major part of the visible `371 -> 11` prompt-work change was consistent with longest-common-prefix / KV reuse, while a separate low-throughput runtime regime remained unexplained. Therefore this assay prospectively separates a reproducible warm/reusable runtime-state path from the candidate structured path instead of treating the original anecdote as a causal result.
 
 The scientific question is deliberately operational:
 
-> **Does the candidate move the useful-capability frontier of the fixed machine beyond what is explained by prospectively created reusable runtime state alone?**
+> **Does the candidate move the useful-capability frontier of the fixed machine beyond what is explained by prospectively created warm/reusable runtime state alone?**
 
 ## 2. Frozen upstream objects
 
@@ -58,11 +58,11 @@ Path:
 
 Freeze commit:
 
-`f63cf1d873c4fe73fcdec14ffc29bc4481caa8d3`
+`2f59f58a476937b66e1fe55cde418634ad8cb66c`
 
 Git blob:
 
-`af8afbf2d14353ac88bd3830abd8007cc71b2949`
+`f069be6b5de80b386de897c05105a9057124583f`
 
 This file is the sole machine-readable authority for B/R/C construction.
 
@@ -83,10 +83,10 @@ B = COLD_NEUTRAL_BASELINE
 - no retained pre-request prefix/KV state;
 - measured request is the first inference request.
 
-### R — warm neutral runtime-reuse control
+### R — warm neutral runtime-state control
 
 ```text
-R = WARM_NEUTRAL_RUNTIME_REUSE_CONTROL
+R = WARM_NEUTRAL_RUNTIME_STATE_CONTROL
 ```
 
 - same canonical neutral `B*` prelude as B;
@@ -101,9 +101,9 @@ Thus the intended contrast:
 R - B
 ```
 
-changes reusable runtime state while holding measured neutral content fixed.
+changes prospectively created warm/reusable runtime state while holding measured neutral content fixed.
 
-It is the direct control for the known prefix/KV-reuse confound exposed by the historical observation.
+This is a generic execution-state control for the historical runtime confound. Prefix/KV reuse is one expected component, but `R-B` may also include thermal, JIT, allocator, or other backend warm-state consequences. It is not a pure-cache estimand.
 
 ### C — warm candidate structured path
 
@@ -122,7 +122,7 @@ The intended contrast:
 C - R
 ```
 
-asks whether the candidate path changes practical capability beyond the neutral path under the same runtime-reuse protocol.
+asks whether the candidate path changes practical capability beyond the neutral path under the same acquisition/reuse protocol.
 
 This is not strengthened into a pure semantic-content effect at fixed token burden. Realized prompt length, prompt work, and reuse fields are measured consequences.
 
@@ -202,7 +202,7 @@ Acquisition responses are custody/runtime observations only. They are not graded
 
 ## 6. Runtime-state realization gate
 
-The assay is specifically intended to distinguish cold from prospectively reusable runtime state.
+The assay is specifically intended to distinguish cold from prospectively created warm/reusable runtime state.
 
 Therefore B is admissible only if the measured request is the first inference request on a fresh backend/session.
 
@@ -396,7 +396,7 @@ F_R(tau) - F_B(tau)
 F_B(tau) - F_R(tau)
 ```
 
-A runtime-reuse frontier shift is observed at `tau` only if:
+A warm-runtime-state frontier shift is observed at `tau` only if:
 
 ```text
 F_B(tau) is a proper subset of F_R(tau)
@@ -413,16 +413,16 @@ at least one novel task becomes feasible under R that was not feasible under B
 Possible descriptive terminal:
 
 ```text
-RUNTIME_REUSE_FRONTIER_SHIFT_OBSERVED_AT_FROZEN_BUDGET
+WARM_RUNTIME_STATE_FRONTIER_SHIFT_OBSERVED_AT_FROZEN_BUDGET
 ```
 
 or:
 
 ```text
-RUNTIME_REUSE_FRONTIER_SHIFT_NOT_OBSERVED
+WARM_RUNTIME_STATE_FRONTIER_SHIFT_NOT_OBSERVED
 ```
 
-This result concerns the prospectively constituted reusable runtime state only. It does not explain the historical unknown low-throughput regime.
+This result concerns the full prospectively constituted warm/reusable runtime state. It does not isolate prefix/KV reuse from every other warm-state effect and does not explain the historical unknown low-throughput regime.
 
 ## 11. Candidate effective-capability result
 
@@ -539,7 +539,7 @@ The known Q01-Q03 G7 history is explicitly exposed and excluded from the primary
 
 A positive result may establish only:
 
-> Under the exact frozen Qwen/3080-Ti substrate, B/R/C condition contract, novel task set, runtime-state protocol, and frozen wall-clock budgets, the candidate structured path expanded the set of mechanically verified tasks that were practically feasible relative to the warm neutral runtime-reuse control.
+> Under the exact frozen Qwen/3080-Ti substrate, B/R/C condition contract, novel task set, runtime-state protocol, and frozen wall-clock budgets, the candidate structured path expanded the set of mechanically verified tasks that were practically feasible relative to the warm neutral runtime-state control.
 
 It does **not** establish:
 
