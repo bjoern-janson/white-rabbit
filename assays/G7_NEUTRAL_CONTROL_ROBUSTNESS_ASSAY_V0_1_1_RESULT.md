@@ -1,70 +1,137 @@
 # Gate 7 Neutral-Control Robustness Assay v0.1.1 Result
 
-Status: ROBUST_CONTROL_REALIZATION_ADVANTAGE_NOT_OBSERVED
+## CURRENT SCIENTIFIC AUTHORITY
 
-Parent constitution: 0b41a175fcf047ff3d0ec313cdb0e11485f12741
-Verification correction: 90dbdadbbb5d2c974707787b83d865b72f6c599c
+```text
+PANEL_SCIENTIFIC_AUTHORITY_WITHDRAWN
+HISTORICAL_RESULT_PRESERVED
+CURRENT_USE = DIAGNOSTIC / TARGET_SELECTION / FORENSIC ONLY
+```
 
-Original observations attempted: 105/105
-Admissible: 105; inadmissible: 0; replacements: 0
+Authority checkpoint: `WR_AUTHORITY_2026_08_26_V1`
 
-Raw archive SHA-256: 1f7772de7754c754b6df37d227453e6e71d0dbe16f4ab17156971ca91a1f7617
+Historical result blob before authority withdrawal notice:
 
-## Frozen precedence
+```text
+b2863253d355d9aee40c2f7cbbca16506114749b
+```
 
-1. Completeness/admissibility: PASS
-2. Panel control adequacy: PANEL_CONTROL_ADEQUACY_OBSERVED
-3. C capability: CAPABILITY_NONREGRESSION_OBSERVED
-4. Censoring: NO_REQUIRED_WORK_CENSORING_OBSERVED
-5. Pairwise comparisons opened: YES
+The historical analyzer output was:
 
-## Per-condition/task summaries
-
-| Condition | Task | Values | Mean | Median | Min | Max |
-| --- | --- | --- | ---: | ---: | ---: | ---: |
-| B0 | Q1 | [128, 138, 136, 135, 111] | 129.6 | 135 | 111 | 138 |
-| B0 | Q2 | [48, 73, 79, 81, 92] | 74.6 | 79 | 48 | 92 |
-| B0 | Q3 | [145, 103, 145, 127, 147] | 133.4 | 145 | 103 | 147 |
-| B1 | Q1 | [104, 117, 108, 188, 147] | 132.8 | 117 | 104 | 188 |
-| B1 | Q2 | [84, 113, 83, 109, 121] | 102 | 109 | 83 | 121 |
-| B1 | Q3 | [146, 141, 85, 160, 128] | 132 | 141 | 85 | 160 |
-| B2 | Q1 | [149, 196, 161, 154, 188] | 169.6 | 161 | 149 | 196 |
-| B2 | Q2 | [75, 79, 115, 122, 85] | 95.2 | 85 | 75 | 122 |
-| B2 | Q3 | [111, 154, 104, 119, 97] | 117 | 111 | 97 | 154 |
-| B3 | Q1 | [109, 125, 122, 121, 200] | 135.4 | 122 | 109 | 200 |
-| B3 | Q2 | [108, 107, 118, 77, 85] | 99 | 107 | 77 | 118 |
-| B3 | Q3 | [110, 92, 123, 184, 111] | 124 | 111 | 92 | 184 |
-| B4 | Q1 | [160, 186, 151, 121, 146] | 152.8 | 151 | 121 | 186 |
-| B4 | Q2 | [78, 84, 92, 91, 126] | 94.2 | 91 | 78 | 126 |
-| B4 | Q3 | [120, 113, 108, 87, 170] | 119.6 | 113 | 87 | 170 |
-| B5 | Q1 | [110, 110, 170, 143, 115] | 129.6 | 115 | 110 | 170 |
-| B5 | Q2 | [102, 110, 127, 101, 67] | 101.4 | 102 | 67 | 127 |
-| B5 | Q3 | [115, 94, 133, 94, 173] | 121.8 | 115 | 94 | 173 |
-| C | Q1 | [118, 113, 86, 104, 137] | 111.6 | 113 | 86 | 137 |
-| C | Q2 | [185, 126, 147, 92, 78] | 125.6 | 126 | 78 | 185 |
-| C | Q3 | [102, 98, 124, 127, 91] | 108.4 | 102 | 91 | 127 |
-
-## Pairwise robustness
-
-| Control | Task differences C-Bi | Pooled difference | PASS |
-| --- | --- | ---: | --- |
-| B0 | {'Q1': -18.0, 'Q2': 51.0, 'Q3': -25.0} | 2.6666666666666714 | FAIL |
-| B1 | {'Q1': -21.200000000000017, 'Q2': 23.599999999999994, 'Q3': -23.599999999999994} | -7.066666666666663 | FAIL |
-| B2 | {'Q1': -58.0, 'Q2': 30.39999999999999, 'Q3': -8.599999999999994} | -12.066666666666663 | FAIL |
-| B3 | {'Q1': -23.80000000000001, 'Q2': 26.599999999999994, 'Q3': -15.599999999999994} | -4.266666666666666 | FAIL |
-| B4 | {'Q1': -41.20000000000002, 'Q2': 31.39999999999999, 'Q3': -11.199999999999989} | -7.0 | FAIL |
-| B5 | {'Q1': -18.0, 'Q2': 24.19999999999999, 'Q3': -13.399999999999991} | -2.3999999999999915 | FAIL |
-
-K / 6: 0/6
-
-## FINAL TERMINAL STATE
-
+```text
 ROBUST_CONTROL_REALIZATION_ADVANTAGE_NOT_OBSERVED
+```
 
-All 105 observations are fresh. No historical observation was reused. Delta W_gen does not authorize Delta W_run or Delta C_H. No White Rabbit claim is emitted.
+That terminal is **not a current panel-level scientific conclusion**.
 
-Literal secondary fields, run IDs, hashes, PIDs, and checks are in observations/G7-neutral-control-robustness-v0.1.1/derived-results.json. Missing fields remain missing.
+## Why authority was withdrawn
 
-## Claim ceiling
+The panel's B4/B5 condition identity failed at the constituted-object boundary.
 
-Any positive result is conditional on the exact six-control structural panel, frozen tasks, executor, cold-run protocol, and N_generated currency. It does not establish robustness across all 729 controls, a family-average effect, other tasks/models, persistent learning, whole-run compute reduction, lifecycle economics, or White Rabbit.
+The frozen tuple/hash authority and the displayed “exact source” disagreed about Stage-3 wording.
+The executor followed the displayed source branch, so for B4/B5:
+
+```text
+H_executed != H_frozen
+```
+
+This invalidates panel-level scientific authority even though the observations themselves remain
+preserved.
+
+The relevant general lesson is:
+
+```text
+marginal lexical balance != exact condition identity
+```
+
+## Historical execution snapshot
+
+The historical execution remains preserved as data:
+
+```text
+original observations attempted: 105/105
+historically classified admissible: 105
+replacements: 0
+historical panel control adequacy: OBSERVED
+historical C capability non-regression: OBSERVED
+historical censoring state: NO_REQUIRED_WORK_CENSORING_OBSERVED
+historical K / 6: 0/6
+```
+
+Historical per-task means:
+
+| Condition | Q1 | Q2 | Q3 |
+| --- | ---: | ---: | ---: |
+| B0 | 129.6 | 74.6 | 133.4 |
+| B1 | 132.8 | 102.0 | 132.0 |
+| B2 | 169.6 | 95.2 | 117.0 |
+| B3 | 135.4 | 99.0 | 124.0 |
+| B4 | 152.8 | 94.2 | 119.6 |
+| B5 | 129.6 | 101.4 | 121.8 |
+| C | 111.6 | 125.6 | 108.4 |
+
+B0 diagnostic differences `C-B0`:
+
+```text
+Q1: -18.0
+Q2: +51.0
+Q3: -25.0
+```
+
+These values may be used for target selection/diagnosis. They are not evidence of a valid six-control
+robustness comparison because panel identity was not established.
+
+## Raw custody
+
+Historical observation directory:
+
+`observations/G7-neutral-control-robustness-v0.1.1/`
+
+The committed historical raw-custody checksum is preserved. The third-pass audit found no evidence
+that the currently committed archive drifted.
+
+However, the historical analyzer's archive builder is non-idempotent under rerun because it can
+recursively ingest previously generated derived artifacts and archive metadata is not normalized.
+
+Therefore:
+
+```text
+DO NOT REGENERATE RAW CUSTODY WITH tools/g7_analyze_robustness_v011.py
+```
+
+Deterministic engineering successor:
+
+`tools/g7_analyze_robustness_v012.py`
+
+The successor does not restore panel scientific authority; it only repairs future archive-generation
+semantics.
+
+## Current claim ceiling
+
+The robustness panel currently establishes **no** valid panel-level conclusion about whether the C
+realization advantage is robust across the six controls.
+
+It does not establish:
+
+- robust generation-work reduction;
+- robust absence of generation-work reduction;
+- family-average effects;
+- whole-run compute reduction;
+- lifecycle economics;
+- White Rabbit.
+
+## Authority propagation
+
+This file is intentionally a current authority surface rather than a silent copy of the historical
+terminal.
+
+```text
+new evidence
+-> panel authority withdrawn
+-> rendered result updated
+```
+
+See:
+
+- `program/AUTHORITY_PROPAGATION_INVENTORY_V0_1.md`
+- `program/CURRENT_AUTHORITY_STATE.json`
