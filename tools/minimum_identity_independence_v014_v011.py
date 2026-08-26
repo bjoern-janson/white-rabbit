@@ -91,6 +91,7 @@ class Cost:
         }
     )
 
+    # T1 -> T2 projection-side instruments only. This object is never passed to chi_i.
     def capture(self, data: bytes) -> bytes:
         self.C_capture_bytes += len(data)
         return bytes(data)
@@ -123,6 +124,12 @@ class ArchitectureDelta:
 
 
 class _ArchitectureMeter:
+    """Fresh T2->T3 write-only meter state local to one architecture call.
+
+    It is created inside the architecture function, starts at zero, receives no
+    T1->T2 ledger state, and is not passed in from the harness.
+    """
+
     __slots__ = ("_sha256_ops", "_extract_ops", "_identity_compare_ops")
 
     def __init__(self) -> None:
@@ -325,6 +332,7 @@ def prepare(chi: str, case: Case, root: Path) -> Prepared:
     handle = secrets.token_hex(32)
     if not HEX64.fullmatch(handle):
         raise ConformanceError("handle")
+
     life.mark(Life.ORDER[1])
     cost = Cost()
     store = Store(root, cost)
@@ -346,7 +354,10 @@ def prepare(chi: str, case: Case, root: Path) -> Prepared:
         store.write("executed.raw", cost.capture(case.executed_bytes))
         raw = store.read("executed.raw")
         view["executed_raw_bytes_utf8"] = raw.decode()
-        view["custody_reported_executed_sha256"] = case.custody_override or cost.projection_sha(raw)
+        view["custody_reported_executed_sha256"] = (
+            case.custody_override or cost.projection_sha(raw)
+        )
+
     names = [x[0] for x in SCHEMAS[chi]["fields_in_order"]]
     view = {name: view[name] for name in names}
     data = serialize(chi, view)
@@ -369,14 +380,22 @@ class ArchitectureResult:
 
 
 def chi_0(view_bytes: bytes) -> ArchitectureResult:
+    """Architecture boundary: exact V_0 bytes are the only case-bearing input."""
     view = parse("chi_0", view_bytes)
     meter = _ArchitectureMeter()
     value = view["convenience_identity_match"]
-    terminal = "IDENTITY_PASS" if value is True else "IDENTITY_MISMATCH" if value is False else "IDENTITY_UNRESOLVED"
+    terminal = (
+        "IDENTITY_PASS"
+        if value is True
+        else "IDENTITY_MISMATCH"
+        if value is False
+        else "IDENTITY_UNRESOLVED"
+    )
     return ArchitectureResult(terminal, meter.freeze())
 
 
 def chi_1(view_bytes: bytes) -> ArchitectureResult:
+    """Architecture boundary: exact V_1 bytes are the only case-bearing input."""
     view = parse("chi_1", view_bytes)
     meter = _ArchitectureMeter()
     if not meter.compare(view["frozen_sha256"], view["materialized_sha256"]):
@@ -385,21 +404,33 @@ def chi_1(view_bytes: bytes) -> ArchitectureResult:
 
 
 def chi_2(view_bytes: bytes) -> ArchitectureResult:
+    """Architecture boundary: exact V_2 bytes are the only case-bearing input."""
     view = parse("chi_2", view_bytes)
     meter = _ArchitectureMeter()
     if not meter.compare(view["frozen_sha256"], view["materialized_sha256"]):
         return ArchitectureResult("IDENTITY_MISMATCH", meter.freeze())
-    terminal = "IDENTITY_PASS" if meter.compare(view["materialized_sha256"], view["custody_reported_executed_sha256"]) else "IDENTITY_MISMATCH"
+    terminal = (
+        "IDENTITY_PASS"
+        if meter.compare(
+            view["materialized_sha256"], view["custody_reported_executed_sha256"]
+        )
+        else "IDENTITY_MISMATCH"
+    )
     return ArchitectureResult(terminal, meter.freeze())
 
 
 def chi_3(view_bytes: bytes) -> ArchitectureResult:
+    """Architecture boundary: exact V_3 bytes are the only case-bearing input."""
     view = parse("chi_3", view_bytes)
     meter = _ArchitectureMeter()
     if not meter.compare(view["frozen_sha256"], view["materialized_sha256"]):
         return ArchitectureResult("IDENTITY_MISMATCH", meter.freeze())
     executed_hash = meter.sha(meter.extract(view["executed_raw_bytes_utf8"]))
-    terminal = "IDENTITY_PASS" if meter.compare(view["materialized_sha256"], executed_hash) else "IDENTITY_MISMATCH"
+    terminal = (
+        "IDENTITY_PASS"
+        if meter.compare(view["materialized_sha256"], executed_hash)
+        else "IDENTITY_MISMATCH"
+    )
     return ArchitectureResult(terminal, meter.freeze())
 
 
@@ -407,6 +438,7 @@ _ARCHITECTURES = {"chi_0": chi_0, "chi_1": chi_1, "chi_2": chi_2, "chi_3": chi_3
 
 
 def evaluate(chi: str, view_bytes: bytes) -> ArchitectureResult:
+    """Dispatches to a one-argument architecture function; no ledger is passed in."""
     try:
         fn = _ARCHITECTURES[chi]
     except KeyError as exc:
@@ -427,6 +459,7 @@ def run(chi: str, prepared: Prepared) -> Frozen:
     output = json.dumps({"terminal": result.terminal}, separators=(",", ":")).encode()
     frozen = Frozen(result.terminal, output, shared_sha(output))
     prepared.life.mark(Life.ORDER[3])
+    # Snapshot/merge architecture-local T2->T3 operation deltas only after output freeze.
     prepared.cost.merge_architecture_delta(result.delta)
     return frozen
 
@@ -454,5 +487,8 @@ def pareto(vectors: Mapping[str, tuple[int, ...]]) -> set[str]:
     return {
         name
         for name, vector in vectors.items()
-        if not any(other != name and dominates(other_vector, vector) for other, other_vector in vectors.items())
+        if not any(
+            other != name and dominates(other_vector, vector)
+            for other, other_vector in vectors.items()
+        )
     }
