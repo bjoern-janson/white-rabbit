@@ -57,13 +57,13 @@
       "measured_request": "neutral prelude + frozen task"
     },
     "R": {
-      "label": "WARM_NEUTRAL_RUNTIME_REUSE_CONTROL",
+      "label": "WARM_NEUTRAL_RUNTIME_STATE_CONTROL",
       "prelude": "B_neutral",
       "initial_backend_state": "fresh process / fresh recorder session",
       "acquisition_request": true,
       "acquisition_rule": "issue exactly one frozen neutral-prelude warmup request; preserve its full cost; then issue exactly one measured request without backend restart",
       "measured_request": "byte-identical to B measured request for the same task",
-      "required_interpretation": "R-B estimates the effect of prospectively created reusable runtime state on the same neutral computational path; no semantic-treatment difference exists between B and R"
+      "required_interpretation": "R-B estimates the effect of prospectively created warm/reusable runtime state on the same neutral computational path. It may include prefix/KV reuse plus other warm-state consequences such as thermal, JIT, allocator, or backend-state effects; it is not a pure-cache estimand."
     },
     "C": {
       "label": "WARM_CANDIDATE_STRUCTURED_PATH",
@@ -106,6 +106,7 @@
     "historical_floor_controls": ["Q01", "Q02", "Q03"]
   },
   "explicit_nonclaims": [
+    "R-B isolates prefix/KV cache from all other warm-state effects",
     "the unknown historical 1.37-to-14 tokens/s runtime regime is reproduced",
     "C_improve causally explains WR-OBS-001",
     "reuse amortizes its acquisition cost",
