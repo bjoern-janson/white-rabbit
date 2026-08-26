@@ -38,10 +38,16 @@ class T(unittest.TestCase):
                 "SECRET": {"bytes": B.decode(), "sha256": hashlib.sha256(B).hexdigest()},
             },
             "critical_clean_controls": [],
-            "critical_failures": [{
-                "id": "E", "frozen": "R", "materialized": "R", "executed": "SECRET",
-                "declared_condition": "ALPHA", "convenience_identity_match": True,
-            }],
+            "critical_failures": [
+                {
+                    "id": "E",
+                    "frozen": "R",
+                    "materialized": "R",
+                    "executed": "SECRET",
+                    "declared_condition": "ALPHA",
+                    "convenience_identity_match": True,
+                }
+            ],
             "diagnostic_cases": [],
         }
         case = resolve_case(oracle, "E")
@@ -73,6 +79,7 @@ class T(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             prepared = prepare("chi_3", c(), Path(td))
             view = prepared.view_bytes
+            # Two deliberately different hidden pre-dispatch ledgers; neither is passed to chi_3.
             hidden_a = Cost(C_view_bytes=1, C_sha256_ops=2, C_persist_bytes=7)
             hidden_b = Cost(C_view_bytes=999, C_sha256_ops=123, C_persist_bytes=4567)
             hidden_a.complete["C_view_bytes"] = True
