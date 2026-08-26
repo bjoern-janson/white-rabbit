@@ -1,7 +1,0 @@
-{
-  "assay": "G7_NEUTRAL_CONTROL_ROBUSTNESS_ASSAY_V0.1.1",
-  "parent_commit": "0b41a175fcf047ff3d0ec313cdb0e11485f12741",
-  "correction_commit": "90dbdadbbb5d2c974707787b83d865b72f6c599c",
-  "slots": 105,
-  "started_at": "2026-08-26T07:42:22.103794+00:00"
-}
