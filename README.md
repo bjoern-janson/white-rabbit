@@ -1,86 +1,186 @@
 # White Rabbit 🐇
 
-**White Rabbit is the search for reusable computational structure that makes adequate intelligence cheaper.**
+**White Rabbit is the search for reusable computational structure that makes adequate intelligence cheaper without compressing away correctability.**
 
-The archetype is Fast Inverse Square Root:
+Authority checkpoint: `WR_AUTHORITY_2026_08_26_V1`
 
-```text
-expensive general operation
-    -> discover representation-dependent structure
-    -> compile reusable rule
-    -> cheap repeated execution
-```
+> This README is an orientation surface. Current authority is defined by
+> [`program/CURRENT_AUTHORITY_STATE.json`](program/CURRENT_AUTHORITY_STATE.json)
+> and checked by [`tools/validate_authority_propagation.py`](tools/validate_authority_propagation.py).
 
-White Rabbit asks whether an analogous move exists for reasoning:
+## Canonical target
 
-```text
-expensive reasoning/search
-    -> discover useful computational structure M
-    -> preserve the relevant result
-    -> require less future computation
-```
-
-> **A White Rabbit exists only when reusable structure makes previously necessary computation unnecessary without sacrificing the capability or distinctions that mattered, and the saved work repays the structure's acquisition cost.**
-
----
-
-## Canonical definition
-
-Minimum success signature:
+Minimum White Rabbit signature:
 
 ```text
 same relevant capability, less required computation
 ```
 
-Current decomposition:
+Canonical economic gates remain:
 
 ```text
-C_latent != C_realized(R, q) != C_work(R, q)
+G1: capability preserved
+G2: independently reproduced
+G3: less required work
+G4: acquisition cost repaid over the constituted reuse horizon
 ```
 
-General White Rabbit gates:
+The derived conceptual freeze remains frozen and non-authorizing:
+
+- [`program/WHITE_RABBIT.md`](program/WHITE_RABBIT.md)
+- [`program/WHITE_RABBIT_CONCEPTUAL_FREEZE_V0_1.md`](program/WHITE_RABBIT_CONCEPTUAL_FREEZE_V0_1.md)
+- [`program/WHITE_RABBIT_CONCEPTUAL_FREEZE_V0_1_ERRATA.md`](program/WHITE_RABBIT_CONCEPTUAL_FREEZE_V0_1_ERRATA.md)
+
+No current result establishes a White Rabbit.
+
+## Current scientific / engineering state
+
+### Gate 7 v0.3
+
+Historical local observation:
 
 ```text
-G1: C_realized(M, q) >= C_realized(R0, q)
-G2: independent reproduction
-G3: C_work(M, q) < C_work(R0, q)
-G4: acquisition cost is repaid over the constituted reuse horizon
+B* pooled mean N_generated = 117.5333...
+C  pooled mean N_generated = 98.7333...
+historical terminal = GENERATION_WORK_REDUCTION_OBSERVED_UNDER_ASSAY_CURRENCY
 ```
 
-Optional stronger result:
+Current authority is narrower than the original rendered result:
 
 ```text
-G1+: C_realized(M, q) > C_realized(R0, q)
+HISTORICAL_LOCAL_OBSERVATION
+PROSPECTIVE_EXECUTION_PROVENANCE_LIMIT
 ```
 
-`G1+` is capability-unlocking upside, not part of the minimum definition.
+The numerical observation is preserved, but v0.3 lacked an intervening independently frozen
+review/execution-authorization artifact, did not establish the later
+`H_frozen = H_materialized = H_executed` identity gate, and under-custodied concrete executor/model identity.
 
-Rejection filter:
+See [`assays/G7_MATCHED_CONTEXT_ASSAY_V0_3_RESULT.md`](assays/G7_MATCHED_CONTEXT_ASSAY_V0_3_RESULT.md).
+
+### Neutral-control robustness panel
+
+Current panel-level scientific authority:
 
 ```text
-cache hit                         != White Rabbit
-one-off trick                     != White Rabbit
-answer leakage                    != White Rabbit
-better answer only                != White Rabbit
-cheaper but epistemically poorer  != White Rabbit
-reusable but uneconomic structure != White Rabbit
+WITHDRAWN
 ```
 
-See [program/WHITE_RABBIT.md](program/WHITE_RABBIT.md).
+The historical 105-observation panel remains preserved, but B4/B5 violated exact constituted
+condition identity. The old terminal `ROBUST_CONTROL_REALIZATION_ADVANTAGE_NOT_OBSERVED` is historical
+analyzer output only and is not a current panel conclusion.
 
-The current derived program architecture is frozen, without experimental authority, in:
+See [`assays/G7_NEUTRAL_CONTROL_ROBUSTNESS_ASSAY_V0_1_1_RESULT.md`](assays/G7_NEUTRAL_CONTROL_ROBUSTNESS_ASSAY_V0_1_1_RESULT.md).
 
-- [program/WHITE_RABBIT_CONCEPTUAL_FREEZE_V0_1.md](program/WHITE_RABBIT_CONCEPTUAL_FREEZE_V0_1.md)
+### Q2 provenance
+
+Repository state:
 
 ```text
-WHITE_RABBIT_CONCEPTUAL_FREEZE_V0_1: FROZEN / DERIVED / NON_AUTHORIZING
+Q2_SOURCE_STATUS = SOURCE_UNRESOLVED_IN_THIS_REPOSITORY
 ```
 
----
+Q1/Q3 historically referenced a fresh Q2 replication, but the current repository contains no
+resolvable Q2 constitution/result/custody object. That premise has therefore been downgraded to
+unresolved motivation and supplies no authority or observations to Q1/Q3.
+
+Current successors:
+
+- [`assays/G7_Q1_REPLICATION_ASSAY_V0_1_1.md`](assays/G7_Q1_REPLICATION_ASSAY_V0_1_1.md)
+- [`assays/G7_Q3_REPLICATION_ASSAY_V0_1_1.md`](assays/G7_Q3_REPLICATION_ASSAY_V0_1_1.md)
+
+Both remain:
+
+```text
+CONSTITUTED / NOT_EXECUTED / REVIEW_REQUIRED / NON_AUTHORIZING
+```
+
+### Minimum Identity Independence (MII)
+
+Implementation status:
+
+```text
+CONSTITUTION_REVIEW: PASS
+MECHANICAL_IMPLEMENTATION_REVIEW: PASS
+FULL_RUNTIME_CONFORMANCE: PASS
+IMPLEMENTATION_REVIEW: PASS
+```
+
+Exact non-assay runtime lineage:
+
+```text
+v013 ... v022
+122 / 122 tests PASS
+10 / 10 fixture files exit 0
+N_assay = 0
+```
+
+Scientific assay execution remains separately unauthorized.
+
+See [`assays/MINIMUM_IDENTITY_INDEPENDENCE_IMPLEMENTATION_V0_1_12_RUNTIME_REVIEW.md`](assays/MINIMUM_IDENTITY_INDEPENDENCE_IMPLEMENTATION_V0_1_12_RUNTIME_REVIEW.md).
+
+## Current repository-integrity frontier
+
+The live repository finding is:
+
+```text
+Delta evidence -> Delta authority
+does not automatically imply
+Delta downstream system
+```
+
+The current bounded object is an **authority-propagation inventory**, not a propagation engine:
+
+- [`program/AUTHORITY_PROPAGATION_INVENTORY_V0_1.md`](program/AUTHORITY_PROPAGATION_INVENTORY_V0_1.md)
+- [`constitution/authority_propagation.md`](constitution/authority_propagation.md)
+
+The four inventory cases are:
+
+```text
+result authority    -> rendered scientific claim
+state authority     -> README / STATE / ROADMAP
+evidence authority  -> dependent claim
+execution authority -> operative transition
+```
+
+No universal propagation primitive is claimed.
+
+## Execution authority
+
+Current machine-readable execution dispositions live under:
+
+```text
+authority/execution/
+```
+
+Current open scientific lanes are explicitly `authorized: false`.
+
+Repository checks:
+
+```text
+python tools/validate_authority_propagation.py
+python -m unittest tests.test_authority_propagation tests.test_g7_analyze_robustness_v012
+```
+
+A GitHub Actions workflow is provided at `.github/workflows/authority-propagation.yml`.
+
+### Platform-enforcement residual
+
+GitHub `main` is currently unprotected and the repository currently has no rulesets. Therefore the
+repository can detect an authority violation, but GitHub itself still permits a direct push that
+bypasses the check.
+
+```text
+DECLARED/MACHINE-CHECKED AUTHORITY != PLATFORM-ENFORCED AUTHORITY
+```
+
+To close that final infrastructure gap, GitHub branch protection/rulesets must require the
+`authority-propagation` check and review before merge/direct update. This repository records that
+residual explicitly rather than pretending it is already enforced.
 
 ## Measurement doctrine
 
-The evidence order is frozen as:
+Evidence order remains:
 
 ```text
 RAW MEASUREMENT
@@ -88,326 +188,40 @@ RAW MEASUREMENT
     -> INTERPRETATION
 ```
 
-No silent promotion is allowed between layers.
-
 Core constraints:
-
-> **A computation-saving claim must account for the cost of creating any reusable state that makes the saving possible.**
 
 > **Fresh chat is not fresh compute.**
 
-> **Never call computation eliminated until it is known who paid for it, when they paid for it, and whether it was merely cached.**
+> **A computation-saving claim must account for the cost of creating reusable state.**
 
-> **Never interpret LCP similarity without retained-prefix size and its reference population.**
+> **Capability preservation does not compensate for identity failure.**
 
-Literal backend fields remain distinct:
+> **Prove identity at the layer that carries authority before promoting the record downstream.**
 
-```text
-f_sim_best != f_keep
-```
-
-Arithmetic reconstruction is `DERIVED`; it is not promoted into a backend-reported cached-token meter.
-
-Gate 6 adds another active constraint:
-
-> **Treatment effects must be evaluated against independently constituted baseline variability, not against one privileged baseline run.**
-
-See:
-
-- [measurement/MEASUREMENT_MODEL.md](measurement/MEASUREMENT_MODEL.md)
-- [constitution/instrumentation_invariants.md](constitution/instrumentation_invariants.md)
-
----
-
-## Research/control-plane boundary
-
-This repository is the White Rabbit **research/control plane**.
-
-It contains:
-
-```text
-frozen research-state constitution
-mechanical provenance validator
-measurement/accounting invariants
-preserved uncontrolled observations
-program definition + state ledger + gated roadmap
-recorder interface contract + reported engineering milestones
-Gate 7 constitution-authoring handoff
-```
-
-It does **not** contain or authorize by default:
-
-```text
-White Rabbit treatment
-adaptive policy
-representation learner
-open-ended capability judge
-Qwen treatment runner
-retrieval/vector system
-scientific claim adjudicator
-```
-
-The founding research-state path remains:
-
-```text
-research evidence
-    -> typed research state
-    -> PROVENANCE_VALID
-```
-
-with:
-
-```text
-SOURCE != NORMALIZED != DERIVED
-provenance validity != scientific warrant
-```
-
-See [constitution/authority.md](constitution/authority.md).
-
----
-
-## Observation boundary
-
-### WR-OBS-001
-
-```text
-371 -> 11 reasoning interpretation: SUPERSEDED
-371 / 11: prompt-evaluation counts
-prefix/LCP reuse: OBSERVED
-reasoning-work reduction: NOT_DEMONSTRATED
-C_improve causality: UNESTABLISHED
-White Rabbit effect: NOT_DEMONSTRATED
-```
-
-### WR-OBS-002
-
-```text
-three fresh browser windows: OBSERVED
-backend-state independence: NOT_ESTABLISHED
-C_improve causality: UNESTABLISHED
-persistent policy change: UNESTABLISHED
-capability improvement: NOT_DEMONSTRATED
-White Rabbit effect: NOT_DEMONSTRATED
-```
-
-The literal `C_improve` intervention text is preserved in:
-
-- [observations/WR-OBS-002/raw_observation.md](observations/WR-OBS-002/raw_observation.md)
-
-### Task-specific Qwen analytical behavior
-
-Current narrow evidence:
-
-```text
-White Rabbit representation ingested: OBSERVED
-task-specific structured analysis: OBSERVED
-authority distinctions preserved: OBSERVED
-deep continuation under inherited state: OBSERVED
-general research competence: NOT_ESTABLISHED
-C_improve causal role: UNESTABLISHED
-independent replication: UNESTABLISHED
-compute advantage: UNESTABLISHED
-```
-
----
-
-## Recorder and calibration ladder
-
-### Gate 4 — recorder implementation / fake-upstream acceptance
-
-State:
-
-```text
-USER_REPORTED PASS
-```
-
-Reported recorder identity:
-
-```text
-White Rabbit Recorder v0.1.0
-local implementation commit: 80cddb26a7b851d218f95317cd3c5b0593acd831
-fake-upstream tests: 30/30 PASS
-real Qwen during implementation acceptance: NO
-scientific comparison: NO
-```
-
-The recorder repository is local-only; this GitHub repository does not independently verify that implementation commit or test run.
-
-See [program/RECORDER_V0_1_MILESTONE.md](program/RECORDER_V0_1_MILESTONE.md).
-
-### Gate 5 — real-server recorder calibration
-
-State:
-
-```text
-USER_REPORTED PASS / INSTRUMENTAL ONLY
-```
-
-The supplied report records a strongly evidenced cold real-server run with exact request/response custody and unambiguous task/slot correlation.
-
-No treatment or capability comparison followed.
-
-See [program/GATE5_REAL_SERVER_CALIBRATION_MILESTONE.md](program/GATE5_REAL_SERVER_CALIBRATION_MILESTONE.md).
-
-### Gate 6 — five-replicate cold characterization
-
-State:
-
-```text
-USER_REPORTED PASS / FROZEN FIVE-REPLICATE PROTOCOL
-```
-
-Earned statement recorded from the supplied report:
-
-> **Cold baseline operationally characterized under the frozen five-replicate protocol.**
-
-Ceiling:
-
-```text
-5 replicates characterize the frozen protocol
-!=
-the underlying stochastic distribution is fully known
-```
-
-Reported mechanical envelope:
-
-```text
-N_prompt,new: 53 in all 5 runs
-N_generated: 3-43
-T_generation: 1281.79-13686.74 ms
-T_total: 15345.59-27483.44 ms
-responses: 5 distinct raw hashes / 4 distinct visible contents
-```
-
-No `f_sim_best`, `f_keep`, or explicit cached-token field was exposed. `graphs_reused` remains literal only.
-
-See [program/GATE6_COLD_CHARACTERIZATION_MILESTONE.md](program/GATE6_COLD_CHARACTERIZATION_MILESTONE.md).
-
----
-
-## Gate 7 — matched-context assay constitution
-
-Current state:
-
-```text
-constitution artifact: CONSTITUTED AT 7696bf9
-pre-open constitution review: REPAIR_REQUIRED
-pre-open token/context matching: BLOCKED
-assay execution: NOT AUTHORIZED / NOT OPENED
-White Rabbit G1-G4: NOT OPENED
-```
-
-Constitution artifact:
-
-- [assays/G7_MATCHED_CONTEXT_ASSAY_V0_1.md](assays/G7_MATCHED_CONTEXT_ASSAY_V0_1.md)
-
-Pre-open review and separate repair handoff:
-
-- [program/GATE7_PREOPEN_CONSTITUTION_REVIEW.md](program/GATE7_PREOPEN_CONSTITUTION_REVIEW.md)
-- [handoff/CODEX_G7_CONSTITUTION_REPAIR.md](handoff/CODEX_G7_CONSTITUTION_REPAIR.md)
-
-The constitution must freeze:
-
-```text
-1. capability criterion
-2. work currency
-3. independence criterion
-4. matched-context control
-5. replicate design
-```
-
-Intended assay form, subject to constitution review:
-
-```text
-B = neutral matched prelude + target
-C = literal C_improve prelude + target
-```
-
-First-assay design constraints include:
-
-```text
-mechanically checkable held-out tasks
-no LLM judge
-primary assay-local work currency = N_generated
-new cold backend for every observation
-n = 5 per condition per task
-full per-run preservation
-capability non-regression before work-reduction interpretation
-```
-
-The neutral prelude's neutrality is a design assumption requiring review. Source-level matching does not establish post-template token equality; if equality is not established during constitution authoring, the spec must preserve:
-
-```text
-PREOPEN_TOKEN_MATCH_REQUIRED
-```
-
-Critical boundary:
-
-```text
-CONSTITUTED != EXECUTED
-```
-
-Creating the assay constitution does **not** authorize `C_improve`, the neutral prelude, B/C runs, recorder/server startup for Gate 7, capability comparison, Gate 8, or a White Rabbit claim.
-
-The pre-open review found work-censoring and control-adequacy gaps. The current authorized transition is:
-
-```text
-repair Gate 7 constitution
--> run existing tests + validator
--> freeze repaired commit
--> review repaired constitution
--> STOP
-```
-
-Token/context matching remains blocked until the repaired constitution is separately frozen and reviewed.
-
----
-
-## Current gate ledger
-
-```text
-Gate 4 — fake-upstream recorder acceptance: USER_REPORTED PASS
-Gate 5 — real-server recorder calibration: USER_REPORTED PASS
-Gate 6 — five-replicate cold characterization: USER_REPORTED PASS
-Gate 7 — matched-context assay constitution: CONSTITUTED AT 7696bf9
-Gate 7 — pre-open constitution review: REPAIR_REQUIRED
-Gate 7 — pre-open token/context matching: BLOCKED
-Gate 7 — execution: NOT AUTHORIZED / NOT OPENED
-White Rabbit G1-G4: NOT OPENED
-```
-
-Current authorized transition only:
-
-```text
-repair Gate 7 constitution
--> run existing tests + validator
--> freeze repaired commit
--> review
--> STOP
-```
-
-See:
-
-- [program/STATE.md](program/STATE.md)
-- [program/ROADMAP.md](program/ROADMAP.md)
-
----
+> **A primary cost unit becomes authoritative only at the causal/semantic boundary where that unit actually occurs.**
 
 ## Repository map
 
 ```text
-constitution/   authority boundary + active instrumentation invariants
-corpus/         container only; ingestion not authorized
-schema/         typed research-state schemas
-validator/      deterministic provenance validator
-tests/          validator tests/fixtures
-observations/   preserved uncontrolled observation lineage
-program/        definition, state, roadmap, engineering/calibration milestones
-measurement/    raw/derived/interpretation + compute/accounting vocabulary
-interfaces/     component contracts
-handoff/        active bounded Codex handoffs
-assays/         frozen assay constitutions; constitution does not authorize execution
+constitution/   founding authority + later bounded authority constitutions
+authority/      machine-readable execution dispositions
+program/        current state, roadmap, conceptual program, propagation inventory
+measurement/    raw/derived/interpretation accounting doctrine
+interfaces/     recorder/component contracts
+assays/         constitutions, results, reviews, current authority index
+observations/   preserved raw/derived execution lineage
+tools/          analyzers, execution helpers, authority validators
+tests/          deterministic engineering/conformance tests
+schema/         typed research-state + authorization schemas
+validator/      founding provenance validator
 ```
+
+Start with:
+
+1. [`program/STATE.md`](program/STATE.md)
+2. [`assays/README.md`](assays/README.md)
+3. [`program/CURRENT_AUTHORITY_STATE.json`](program/CURRENT_AUTHORITY_STATE.json)
+4. [`program/ROADMAP.md`](program/ROADMAP.md)
 
 ## Governing rules
 
@@ -415,6 +229,8 @@ assays/         frozen assay constitutions; constitution does not authorize exec
 
 > **Constitute the counterfactual before observing the treatment.**
 
-> **Capability preserved. Independence demonstrated. Work actually removed. Acquisition repaid.**
+> **Historical result does not imply current authority.**
 
-> **Build the microscope before chasing the rabbit.**
+> **A corrected authority state must not leave a dependent surface silently CURRENT.**
+
+> **Measure the topology before inventing the mechanism.**
