@@ -1,0 +1,125 @@
+{
+  "version": "MINIMUM_IDENTITY_INDEPENDENCE_ORACLE_V0.1",
+  "status": "FROZEN_ORACLE / NON_EXECUTED / NON_AUTHORIZING",
+  "encoding": "UTF-8",
+  "line_endings": "LF",
+  "terminal_lf_in_identity_bytes": false,
+  "objects": {
+    "ALPHA": {
+      "bytes": "identity-fixture:v1\ncondition=ALPHA\npayload=AAAA",
+      "sha256": "af15e44f970db761f2b43f96a5aea2264ca07a9782a397d5ec6c707277be19a6"
+    },
+    "ALPHA_MUT": {
+      "bytes": "identity-fixture:v1\ncondition=ALPHA\npayload=AAAB",
+      "sha256": "8394cbe5ec5308d2d797756ebf6cfd902f56b205eb4a721f71a116e6f555cd3a"
+    },
+    "BETA": {
+      "bytes": "identity-fixture:v1\ncondition=BETA\npayload=BBBB",
+      "sha256": "58b0773887dc2daa110d4751a5d3b4998669c60052337372f51f68dc628e6b01"
+    }
+  },
+  "critical_clean_controls": [
+    {
+      "id": "C0_ALPHA_CLEAN",
+      "frozen": "ALPHA",
+      "materialized": "ALPHA",
+      "executed": "ALPHA",
+      "declared_condition": "ALPHA",
+      "convenience_identity_match": true,
+      "oracle_mismatch": false,
+      "oracle_class": "IDENTITY_PASS"
+    },
+    {
+      "id": "C1_BETA_CLEAN",
+      "frozen": "BETA",
+      "materialized": "BETA",
+      "executed": "BETA",
+      "declared_condition": "BETA",
+      "convenience_identity_match": true,
+      "oracle_mismatch": false,
+      "oracle_class": "IDENTITY_PASS"
+    }
+  ],
+  "critical_failures": [
+    {
+      "id": "E1_FROZEN_MATERIALIZED_MISMATCH",
+      "frozen": "ALPHA",
+      "materialized": "ALPHA_MUT",
+      "executed": "ALPHA_MUT",
+      "declared_condition": "ALPHA",
+      "convenience_identity_match": true,
+      "oracle_mismatch": true,
+      "oracle_class": "FROZEN_MATERIALIZED_MISMATCH"
+    },
+    {
+      "id": "E2_MATERIALIZED_EXECUTED_MISMATCH",
+      "frozen": "ALPHA",
+      "materialized": "ALPHA",
+      "executed": "ALPHA_MUT",
+      "declared_condition": "ALPHA",
+      "convenience_identity_match": true,
+      "oracle_mismatch": true,
+      "oracle_class": "MATERIALIZED_EXECUTED_MISMATCH"
+    },
+    {
+      "id": "E3_CROSS_OBJECT_SUBSTITUTION",
+      "frozen": "ALPHA",
+      "materialized": "ALPHA",
+      "executed": "BETA",
+      "declared_condition": "ALPHA",
+      "convenience_identity_match": true,
+      "oracle_mismatch": true,
+      "oracle_class": "EXECUTED_OBJECT_IDENTITY_MISMATCH"
+    },
+    {
+      "id": "E4_LYING_CONVENIENCE_PREDICATE",
+      "frozen": "ALPHA",
+      "materialized": "ALPHA",
+      "executed": "ALPHA_MUT",
+      "declared_condition": "ALPHA",
+      "convenience_identity_match": true,
+      "oracle_mismatch": true,
+      "oracle_class": "EXECUTED_OBJECT_IDENTITY_MISMATCH"
+    }
+  ],
+  "diagnostic_cases": [
+    {
+      "id": "D1_MISSING_CONVENIENCE_FIELD",
+      "frozen": "ALPHA",
+      "materialized": "ALPHA",
+      "executed": "ALPHA",
+      "declared_condition": "ALPHA",
+      "convenience_identity_match": null,
+      "oracle_mismatch": false,
+      "oracle_class": "IDENTITY_PASS"
+    },
+    {
+      "id": "D2_IRRELEVANT_METADATA_CHANGE",
+      "frozen": "ALPHA",
+      "materialized": "ALPHA",
+      "executed": "ALPHA",
+      "declared_condition": "ALPHA",
+      "convenience_identity_match": true,
+      "irrelevant_metadata": "changed-but-non-authoritative",
+      "oracle_mismatch": false,
+      "oracle_class": "IDENTITY_PASS"
+    },
+    {
+      "id": "D3_CORRUPTED_RECORDED_HASH_RAW_BYTES_CLEAN",
+      "frozen": "ALPHA",
+      "materialized": "ALPHA",
+      "executed": "ALPHA",
+      "declared_condition": "ALPHA",
+      "convenience_identity_match": true,
+      "recorder_reported_executed_sha256": "8394cbe5ec5308d2d797756ebf6cfd902f56b205eb4a721f71a116e6f555cd3a",
+      "oracle_mismatch": false,
+      "oracle_class": "IDENTITY_PASS"
+    }
+  ],
+  "primary_scoring": {
+    "critical_case_correct": "1 iff architecture reports MISMATCH for every oracle_mismatch=true case and PASS for every oracle_mismatch=false critical clean control; IDENTITY_UNRESOLVED scores 0",
+    "critical_sufficiency": "all critical failures detected AND all critical clean controls accepted",
+    "exact_failure_class": "secondary diagnostic only"
+  },
+  "authority_rule": "The oracle manifest is never supplied to chi_0..chi_3 during evaluation. Architecture outputs are frozen before the referee compares them to this manifest."
+}
