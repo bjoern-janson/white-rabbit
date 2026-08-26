@@ -1,0 +1,16 @@
+{
+  "schema_version": "WHITE_RABBIT_EXECUTION_AUTHORIZATION_V0.1",
+  "assay_id": "G7_Q1_REPLICATION_ASSAY_V0.1.1",
+  "status": "REVIEW_REQUIRED / EXECUTION_NOT_AUTHORIZED",
+  "authorized": false,
+  "target_constitution": "assays/G7_Q1_REPLICATION_ASSAY_V0_1_1.md",
+  "target_implementation": null,
+  "review_artifact": null,
+  "scope": [
+    "Q1",
+    "B0/B* versus C",
+    "20 + 20 independently cold observations"
+  ],
+  "authority_checkpoint": "WR_AUTHORITY_2026_08_26_V1",
+  "reason": "Successor constitution exists only to repair Q2 provenance. Independent review and separate execution authorization remain required."
+}
