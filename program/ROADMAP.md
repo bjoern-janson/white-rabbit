@@ -2,331 +2,308 @@
 
 Status: `ROADMAP / NON_AUTHORIZING`
 
-This file describes the intended dependency order. It does not grant permission to cross a gate unless an explicit transition below says so.
+Authority checkpoint: `WR_AUTHORITY_2026_08_26_V1`
 
-## Governing dependency
+Machine-readable current state: `program/CURRENT_AUTHORITY_STATE.json`
 
-```text
-research evidence
-    -> S_research
-    -> provenance validation
-    -> V(q)
-    -> model-visible state
-    -> Qwen reasoning
-    -> measurement apparatus
-    -> controlled compute comparison
-    -> candidate White Rabbit claim
-```
+This roadmap describes dependency order. It does not grant permission to cross any scientific gate.
 
-A later stage may not be treated as authorized merely because it appears in this roadmap.
-
-## Gate 0 — Research-state constitution
-
-State: `IMPLEMENTED`
-
-Purpose:
+## 0. Governing rule
 
 ```text
-SOURCE != NORMALIZED != DERIVED
-```
-
-with provenance-bearing statuses and explicit historical revision relations.
-
-Successful validator outcome:
-
-```text
-PROVENANCE_VALID
-```
-
-This is structural provenance validity only, not scientific warrant.
-
-## Gate 1 — Evidence population
-
-State: `NOT_AUTHORIZED BY FOUNDING CONSTITUTION`
-
-The founding authority boundary explicitly does not authorize corpus ingestion.
-
-Before corpus population, a separate ingestion constitution must freeze source scope, custody rules, hash/locator requirements, normalization rules, ambiguity handling, and failure behavior.
-
-No corpus-wide research state is opened by this roadmap.
-
-## Gate 2 — Deterministic task-view compilation V(q)
-
-State: `NOT_AUTHORIZED`
-
-Future target:
-
-```text
-V(q) = smallest source-backed, evidence-complete state required for operation q
-```
-
-The compiler must be deterministic and mechanical. It may select source-backed facts; it may not invent scientific answers, repair ambiguous evidence, or silently adjudicate contradictions.
-
-No retrieval/vector/embedding system is authorized here.
-
-## Gate 3 — Qwen integration
-
-State: `NOT_AUTHORIZED`
-
-Future role:
-
-```text
-V(q) -> Qwen -> candidate claims
-```
-
-Qwen may synthesize and generate candidate structure. Model output does not acquire scientific authority by generation alone.
-
-```text
-Qwen-generated candidate != research truth
-```
-
-## Gate 4 — Recorder implementation
-
-State: `USER_REPORTED COMPLETE / FAKE-UPSTREAM ACCEPTANCE REPORTED PASS`
-
-Contract:
-
-```text
-interfaces/WHITE_RABBIT_RECORDER_V0_1.md
-```
-
-Milestone:
-
-```text
-program/RECORDER_V0_1_MILESTONE.md
-```
-
-Reported identity:
-
-```text
-version: 0.1.0
-local commit: 80cddb26a7b851d218f95317cd3c5b0593acd831
-tests: 30/30 PASS
-upstream: deterministic fake only
-```
-
-The recorder repository is local-only and is not independently inspectable by this GitHub repository. No scientific result follows from Gate 4.
-
-## Gate 5 — Real-server recorder calibration
-
-State: `USER_REPORTED PASS / INSTRUMENTAL ONLY`
-
-Milestone:
-
-```text
-program/GATE5_REAL_SERVER_CALIBRATION_MILESTONE.md
-```
-
-Reported purpose achieved narrowly:
-
-```text
-prove the microscope survives contact with the real llama.cpp/Qwen stack
-while preserving the constituted evidence boundary
-```
-
-The reported cold run had fresh-process evidence, one unambiguous task/slot measurement block, exact request/response custody, and no treatment/comparison.
-
-This does not establish capability, compute saving, C_improve causality, or White Rabbit effect.
-
-## Gate 6 — Cold baseline characterization
-
-State: `USER_REPORTED PASS / FROZEN FIVE-REPLICATE PROTOCOL`
-
-Milestone:
-
-```text
-program/GATE6_COLD_CHARACTERIZATION_MILESTONE.md
-```
-
-Earned statement recorded from the supplied report:
-
-> **Cold baseline operationally characterized under the frozen five-replicate protocol.**
-
-Explicit ceiling:
-
-```text
-5 replicates characterize the frozen protocol
+historical artifact
 !=
-the underlying stochastic distribution is fully known
+current authority
+!=
+execution authorization
 ```
 
-Reported Gate 6 facts include stable `N_prompt,new = 53` across all five cold replicates and material variation in generated-token count, generation time, total time, and response content.
-
-Methodological consequence:
+Current repository integrity requirement:
 
 ```text
-a future treatment effect must be evaluated against independently constituted baseline variability,
-not against one privileged baseline realization
+identity
+-> authority acquisition
+-> authority propagation
+-> operative revision
 ```
 
-No treatment, neutral prelude, benchmark, or capability evaluation was run under Gate 6.
+A downstream surface whose assumed authority no longer matches its source may not silently remain
+`CURRENT`.
 
-## Gate 7 — Matched-context capability/work assay
+## 1. Founding research-state substrate
 
-State: `CONSTITUTION REPAIRED / REVIEWED / PREOPEN TOKEN MISMATCH / ASSAY BLOCKED / EXECUTION NOT AUTHORIZED`
-
-Original constitution and repair authority:
+State:
 
 ```text
-original constitution commit: 7696bf90452cb13f86fe8e22cc860ff6e9d09dee
-original constitution version: G7_MATCHED_CONTEXT_ASSAY_V0.1
-repair handoff: handoff/CODEX_G7_CONSTITUTION_REPAIR.md
-repaired constitution version: G7_MATCHED_CONTEXT_ASSAY_V0.1.1
+FROZEN_FOUNDING_CONSTITUTION
+validator implemented
+success ceiling = PROVENANCE_VALID
 ```
 
-Constitution artifact:
+Artifacts:
+
+- `constitution/authority.md`
+- `validator/validate.py`
+
+This layer validates structural provenance only. It does not grant scientific warrant.
+
+## 2. White Rabbit program burden
+
+Canonical minimum:
 
 ```text
-assays/G7_MATCHED_CONTEXT_ASSAY_V0_1.md
+same relevant capability, less required computation
 ```
 
-The Gate 7 constitution freezes five components before any execution can even be considered:
+Economic gate family:
 
 ```text
-1. capability criterion
-2. primary work currency
-3. independence criterion
-4. matched-context control
-5. replicate design
+G1 capability preserved
+G2 independent reproduction
+G3 work reduction
+G4 amortization
 ```
 
-Frozen assay form, still subject to repaired-constitution review:
+Correctability burden family in the conceptual freeze:
 
 ```text
-B = neutral matched prelude + target
-C = literal C_improve prelude + target
+G_S semantic sufficiency
+G_C challenge sufficiency
+G_R operative revision
 ```
 
-The literal `C_improve` source must come from:
+These burden families are not yet composed into one authoritative conjunctive decision rule.
+See `program/WHITE_RABBIT_CONCEPTUAL_FREEZE_V0_1_ERRATA.md`.
+
+White Rabbit remains unestablished.
+
+## 3. Historical Gate 7 evidence
+
+### v0.3
+
+State:
 
 ```text
-observations/WR-OBS-002/raw_observation.md
+HISTORICAL_LOCAL_OBSERVATION
+PROSPECTIVE_EXECUTION_PROVENANCE_LIMIT
 ```
 
-The neutral prelude is frozen separately. Source-level byte matching did not establish model-visible token equality. The exact native pre-open operation produced `PREOPEN_TOKEN_MATCH_MISMATCH`: C was three prompt tokens longer than B for Q1, Q2, and Q3.
-
-Frozen result artifacts:
+Use:
 
 ```text
-assays/G7_PREOPEN_TOKEN_MATCH_V0_1.md
-assays/G7_PREOPEN_TOKEN_MATCH_V0_1.json
+local observation / target-selection / context
 ```
 
-This is a template/tokenization result only. It does not authorize editing either prelude, executing the assay, or emitting a capability, work, causal, or White Rabbit claim.
+Do not upgrade it to the authority of a prospectively reviewed and separately authorized replication.
 
-Frozen reconstitution contract:
+### Robustness panel
+
+State:
 
 ```text
-assays/G7_NEUTRAL_CONTROL_RECONSTITUTION_CONTRACT_V0_1.md
-status: CONSTITUTED / SEARCH_NOT_AUTHORIZED / ASSAY_BLOCKED / NON_AUTHORIZING
-N_scientific_runs: 0
+PANEL_SCIENTIFIC_AUTHORITY_WITHDRAWN
 ```
 
-The contract predeclared a finite neutral lexical family, mechanical source admissibility, exhaustive deterministic enumeration, exact all-task token equality, and deterministic selection.
+The B4/B5 identity contradiction invalidates panel-level scientific authority. Historical raw data
+remain preserved.
 
-Frozen search result:
+The old analyzer's raw-custody builder is deprecated for regeneration. A deterministic successor is:
+
+`tools/g7_analyze_robustness_v012.py`
+
+## 4. Q1 / Q3 replication lane
+
+Q2 repository support:
 
 ```text
-assays/G7_NEUTRAL_CONTROL_RECONSTITUTION_SEARCH_V0_1.md
-assays/G7_NEUTRAL_CONTROL_RECONSTITUTION_SEARCH_V0_1.json
-status: NO_ADMISSIBLE_TOKEN_MATCH / LANE_BLOCKED
-theoretical / processed / admissible / rejected: 15625 / 15625 / 15625 / 0
-exact-match candidates: 0
-B1: NOT SELECTED
-N_scientific_runs: 0
+SOURCE_UNRESOLVED_IN_THIS_REPOSITORY
 ```
 
-The complete frozen family was searched using exact native non-generating template/tokenizer operations. No candidate matched C's exact token-count vector across all three tasks. This does not authorize expanding the family, selecting another control, constituting G7 v0.1.2, independently re-matching, or executing Gate 7.
+Current effective Q1 constitution:
 
-The repaired v0.1.1 contract adds only explicit work-censoring custody and a per-task `S_B,j = 5/5` control-adequacy gate. It preserves mechanically checkable held-out tasks, no LLM judge, primary work currency `N_generated`, independently cold runs, and repeated observations rather than one B/C pair.
+`assays/G7_Q1_REPLICATION_ASSAY_V0_1_1.md`
 
-Critical boundary:
+Current effective Q3 constitution:
+
+`assays/G7_Q3_REPLICATION_ASSAY_V0_1_1.md`
+
+Current state:
 
 ```text
-CONSTITUTED != EXECUTED
+Q1: REVIEW_REQUIRED / NOT_EXECUTED / authorized=false
+Q3: REVIEW_REQUIRED / NOT_EXECUTED / authorized=false
 ```
 
-Creating the Gate 7 constitution does not authorize:
+Required transition:
 
 ```text
-C_improve execution
-neutral-prelude execution
-B or C runs
-llama-server / recorder startup for Gate 7
-capability comparison
-White Rabbit claim
+independent constitution review
+-> freeze review result
+-> create explicit execution authorization bound to exact reviewed target
+-> authority validator PASS
+-> scientific execution
 ```
 
-The next possible transition is:
+Any earlier failure:
 
 ```text
-review frozen NO_ADMISSIBLE_TOKEN_MATCH result
--> any successor family requires a separate constitution and authorization
--> STOP
+STOP
+later gates NOT_OPENED
 ```
 
-Neither constitution repair nor the pre-open mismatch authorizes Gate 7 execution.
+No task-heterogeneity or interaction claim is opened before fresh Q1/Q3 outcomes exist.
 
-## Gate 8 — White Rabbit compute economics
+## 5. Minimum Identity Independence lane
 
-State: `NOT_AUTHORIZED / NOT OPENED`
-
-The general White Rabbit burden remains:
+Current implementation state:
 
 ```text
-G1: C_realized(M, q) >= C_realized(R0, q)
-G2: independent reproduction
-G3: C_work(M, q) < C_work(R0, q)
-G4: acquisition cost repaid over reuse
+IMPLEMENTATION_REVIEW_PASS
+FULL_RUNTIME_CONFORMANCE_PASS
+122/122 non-assay tests PASS
+N_assay=0
 ```
 
-with optional stronger result:
+Current scientific execution authority:
 
 ```text
-G1+: C_realized(M, q) > C_realized(R0, q)
+authorized=false
 ```
 
-The horizon accounting is:
+Required transition:
 
 ```text
-C_acquire(M) + sum_i C_work(M, q_i)
-    <
-sum_i C_work(R0, q_i)
+separate MII assay authorization
+-> bind exact constitution/oracle/implementation/runtime target
+-> authority validator PASS
+-> 36-case assay execution
 ```
 
-Gate 7 cannot directly emit a Gate 8 / White Rabbit result.
+The implementation pass does not itself authorize the assay.
 
-## Gate 9 — Persistence / transfer / revocability
-
-State: `NOT_AUTHORIZED / NOT OPENED`
-
-A positive one-task result would not establish a White Rabbit family.
-
-Later gates would separately ask whether a candidate persists, reuses, amortizes, transfers, and retains an invalidation/revocation path.
-
-Each transition requires its own claim ceiling.
-
-## Current gate position
+Claim ceiling remains:
 
 ```text
-Gate 4: USER_REPORTED PASS
-Gate 5: USER_REPORTED PASS
-Gate 6: USER_REPORTED PASS
-Gate 7 repaired constitution v0.1.1: FROZEN / REVIEWED
-Gate 7 pre-open token/context matching: MISMATCH / ASSAY BLOCKED
-Gate 7 neutral-control reconstitution contract: CONSTITUTED / FROZEN
-Gate 7 neutral-control search: NO_ADMISSIBLE_TOKEN_MATCH / LANE_BLOCKED
-Gate 7 execution: NOT AUTHORIZED / NOT OPENED
-N_scientific_runs: 0
-White Rabbit G1-G4: NOT OPENED
+contract-relative evidence-authority sufficiency
+!= globally minimal architecture
+chi_3 independent recomputation from shared custody
+!= independent world observation
 ```
 
-Current authorized transition only:
+## 6. Repository authority-propagation lane
+
+Current bounded experiment:
+
+`program/AUTHORITY_PROPAGATION_INVENTORY_V0_1.md`
+
+The four live cases are:
 
 ```text
-review frozen NO_ADMISSIBLE_TOKEN_MATCH result
--> any successor family requires a separate constitution and authorization
--> STOP
+result authority    -> rendered result
+state authority     -> orientation
+evidence authority  -> dependent claim
+execution authority -> operative transition
 ```
 
-Nothing in this roadmap authorizes treatment execution.
+Current purpose:
+
+```text
+enumerate source authority
+enumerate dependents
+apply/observe known authority revisions
+record actual downstream state
+```
+
+Explicitly forbidden at this stage:
+
+```text
+universal propagation engine
+automatic mutation of all artifacts
+assumption that all four failures share one cause
+new scientific execution
+```
+
+Terminal question:
+
+```text
+common failure topology
+OR
+materially distinct propagation failures
+```
+
+Only the first can earn a shared architecture.
+
+## 7. Machine authority checks
+
+Current checkpoint:
+
+`program/CURRENT_AUTHORITY_STATE.json`
+
+Execution dispositions:
+
+`authority/execution/*.json`
+
+Validator:
+
+`tools/validate_authority_propagation.py`
+
+Tests:
+
+```text
+tests/test_authority_propagation.py
+tests/test_g7_analyze_robustness_v012.py
+```
+
+CI:
+
+`.github/workflows/authority-propagation.yml`
+
+## 8. Platform enforcement residual
+
+Current observed GitHub state:
+
+```text
+main protected = false
+required checks = off
+rulesets = none
+```
+
+Therefore:
+
+```text
+repository check exists
+but
+direct-push bypass remains possible
+```
+
+The final infrastructure transition required to make authorization operative is external GitHub
+configuration:
+
+```text
+protect main
+require pull request review
+require authority-propagation status check
+block direct bypass
+```
+
+Until that platform state exists, label the execution-governance layer:
+
+```text
+MACHINE_CHECKED / PLATFORM_BYPASSABLE
+```
+
+not `OPERATIVELY_ENFORCED`.
+
+## 9. Current frontier
+
+```text
+White Rabbit theory: frozen; no new ontology required
+Gate 7: Q1/Q3 review frontier
+MII: implementation PASS; scientific authorization pending
+Repository integrity: authority-propagation inventory
+```
+
+The next repository move is to verify the inventory and current authority checkpoint, not to invent
+another conceptual layer.
+
+> **Measure the topology before inventing the mechanism.**
