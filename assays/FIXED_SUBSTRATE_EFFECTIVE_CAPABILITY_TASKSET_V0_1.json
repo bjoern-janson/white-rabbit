@@ -1,1 +1,84 @@
-{"grader":{"comparison":"exact UTF-8 bytes","internal_normalization":"none","trim":"leading/trailing ASCII space, tab, CR, LF only"},"schema_version":"FIXED_SUBSTRATE_EFFECTIVE_CAPABILITY_TASKSET_V0.1","selection_rule":"Frozen before any v0.1 assay execution. Bands are prospective construction labels, not empirical difficulty claims.","status":"FROZEN_TASKSET / NON_AUTHORIZING / NOT_EXECUTED","tasks":[{"band":0,"expected_output":"486","expected_sha256":"86b700fab5db37977a73700b53a0654b21bdad0896d6425849204a530d11f1ae","id":"Q01","prompt":"Compute (37 × 14) - (96 ÷ 3). Return exactly one base-10 integer and nothing else.","prompt_sha256":"eb81d8205fe0a2215a3351f3743afbc6028c73b33ddbab238e6599c298142a23"},{"band":0,"expected_output":"9R2m7Q","expected_sha256":"e4da3b7fbbce2345d7772b0674a318d5a9187ef4662383ed5aaa4b620d489f2d","id":"Q02","prompt":"Reverse the character sequence `Q7m2R9`. Return exactly the reversed six-character sequence and nothing else.","prompt_sha256":"3a2902cdad1a34cec5a1b8b1ab0684c0cf182fb867e861384d10034993c566f1"},{"band":0,"expected_output":"-4, 0, 9, 12, 17","expected_sha256":"0d2e53d31ab51c729d9fc2dfbf69c5060e6f5ba84f1039149391971469d01bc2","id":"Q03","prompt":"Sort the integers 17, -4, 9, 0, 12 in strictly ascending numeric order. Return exactly a comma followed by a single space between values, and nothing else.","prompt_sha256":"886d0318a6702db444cac8f63947f3cdcba7f8b23f93ee91a5c5c84366bea400"},{"band":1,"expected_output":"3954","expected_sha256":"303c691c4b6d858be95f1d4d620a92a5d075a42a030483f15556d8079d4bfc23","id":"Q04","prompt":"Compute ((137 × 29) - (864 ÷ 12) + 53). Return exactly one base-10 integer and nothing else.","prompt_sha256":"bf203283becb396224981e7951d75de5e5a49df4620576131d0ea9bf3c7e9b89"},{"band":1,"expected_output":"x=5,y=4","expected_sha256":"12e1f6fc30d01c12f2f8c5445a62338f6d1507673cc557c4dd84b379716eb76b","id":"Q05","prompt":"Solve the simultaneous equations 3x + 2y = 23 and x - y = 1. Return exactly `x=<integer>,y=<integer>` with no spaces and nothing else.","prompt_sha256":"eab3c3f09895d5ec989e1b2e06857c3ac6f8fa234ecef57ef780e6d9f9019d12"},{"band":1,"expected_output":"21, 17, 15, 5, 3","expected_sha256":"4ae42e7f691fac0a9a670e73650731f6dc0be5692762962d806d586150259cac","id":"Q06","prompt":"Start with the list 8, 3, 11, 2, 9. Replace each value v by 2v - 1, then sort the resulting values in strictly descending order. Return exactly a comma followed by a single space between values, and nothing else.","prompt_sha256":"b288f0739a476e94ac9439f729094cf7b76eef389868a4912e76bd5f4889d7c1"},{"band":2,"expected_output":"157","expected_sha256":"1dac3e6f3286bd023a3b992638f203142cb095cf1f30e4eb8dc28d2655c8a81c","id":"Q07","prompt":"Find the unique integer x with 0 <= x < 315 satisfying x ≡ 2 (mod 5), x ≡ 3 (mod 7), and x ≡ 4 (mod 9). Return exactly one base-10 integer and nothing else.","prompt_sha256":"d1a68876e392fe611349433547f06905354f097539375c23f0e4dde0d5ca2080"},{"band":2,"expected_output":"A-C-E-F|10","expected_sha256":"3e1a1409625f7a89012f49fceca942574008946094a09f1cb9ac1c1ab091dd15","id":"Q08","prompt":"In the directed weighted graph with edges A→B=4, A→C=2, B→D=5, B→E=10, C→B=1, C→D=8, C→E=7, D→F=3, E→F=1, find the unique minimum-cost path from A to F. Return exactly `<path>|<cost>` where the path uses hyphens between node letters and cost is a base-10 integer.","prompt_sha256":"ec100fe2bf1e34b2755a484309868572e4a2b2d2f51e402c7aa87933ef1a6ddf"},{"band":2,"expected_output":"A,C,D,E,B","expected_sha256":"2cb6360ed71c9691108209f6ba8b9af55e7dffce012038dc58f3e4e715db4780","id":"Q09","prompt":"Five people A, B, C, D, E occupy positions 1 through 5, one person per position. C is immediately to the right of A. B is immediately to the right of E. D is not at either end. A is left of D, and D is left of B. Return the unique left-to-right order exactly as comma-separated letters with no spaces.","prompt_sha256":"a34dc5799b419b1fbcaaeb16348a1dbf12a8ba17f6664415200385c11f80a294"},{"band":3,"expected_output":"x1=2,x2=-1,x3=3,x4=4,x5=0","expected_sha256":"01364c5f15e040d462f033fe535ffb397b54d90b8872723547306188fa9560f4","id":"Q10","prompt":"Solve the system: 2x1 + x2 - x3 + 3x5 = 0; x1 - 2x2 + 2x4 + x5 = 12; 3x1 + 2x3 - x4 - 2x5 = 8; x2 + x3 + 3x4 - x5 = 14; 2x1 - x2 + 3x3 + x4 = 18. Return exactly `x1=<integer>,x2=<integer>,x3=<integer>,x4=<integer>,x5=<integer>` with no spaces and nothing else.","prompt_sha256":"c655bca240378aff6e91b87db1cadbc20dcb98563981655aa5dde2f38e0d571f"},{"band":3,"expected_output":"D,A,C,B,F,E","expected_sha256":"5773980d0826137bbb70d20b70d188a3e76c367e3c82d7ef8b8f74af3d1f1128","id":"Q11","prompt":"Six people A, B, C, D, E, F occupy positions 1 through 6, one person per position. C is immediately after A. F is exactly two positions after C. B is not at either end. D is before A. E is after B. E is not in position 5. Return the unique left-to-right order exactly as comma-separated letters with no spaces.","prompt_sha256":"36690397ddc7f0cd80f799989290b83e7a7f850bdfb6d982b6e245cf5577bc29"},{"band":3,"expected_output":"14,17,23,26","expected_sha256":"b7632caa9f071bf0f34d54406440adef265bcb6e86c864106d2996caf685e9aa","id":"Q12","prompt":"From the set {5, 8, 11, 14, 17, 23, 26, 31}, choose exactly four distinct numbers whose sum is 80. Return the unique solution in strictly ascending order exactly as comma-separated integers with no spaces.","prompt_sha256":"79410380488a14ee21c74afe75444a2a329b827d759771d4a638922321ad5acf"}]}
+{
+  "schema_version": "FIXED_SUBSTRATE_EFFECTIVE_CAPABILITY_TASKSET_V0.1",
+  "status": "FROZEN_TASKSET / NON_AUTHORIZING / NOT_EXECUTED",
+  "selection_rule": "Frozen before any v0.1 assay execution. Bands are prospective construction labels, not empirical difficulty claims.",
+  "grader": {
+    "trim": "leading/trailing ASCII space, tab, CR, LF only",
+    "comparison": "exact UTF-8 bytes",
+    "internal_normalization": "none"
+  },
+  "tasks": [
+    {
+      "id": "Q01",
+      "band": 0,
+      "prompt": "Compute (37 × 14) - (96 ÷ 3). Return exactly one base-10 integer and nothing else.",
+      "expected_output": "486"
+    },
+    {
+      "id": "Q02",
+      "band": 0,
+      "prompt": "Reverse the character sequence `Q7m2R9`. Return exactly the reversed six-character sequence and nothing else.",
+      "expected_output": "9R2m7Q"
+    },
+    {
+      "id": "Q03",
+      "band": 0,
+      "prompt": "Sort the integers 17, -4, 9, 0, 12 in strictly ascending numeric order. Return exactly a comma followed by a single space between values, and nothing else.",
+      "expected_output": "-4, 0, 9, 12, 17"
+    },
+    {
+      "id": "Q04",
+      "band": 1,
+      "prompt": "Compute ((137 × 29) - (864 ÷ 12) + 53). Return exactly one base-10 integer and nothing else.",
+      "expected_output": "3954"
+    },
+    {
+      "id": "Q05",
+      "band": 1,
+      "prompt": "Solve the simultaneous equations 3x + 2y = 23 and x - y = 1. Return exactly `x=<integer>,y=<integer>` with no spaces and nothing else.",
+      "expected_output": "x=5,y=4"
+    },
+    {
+      "id": "Q06",
+      "band": 1,
+      "prompt": "Start with the list 8, 3, 11, 2, 9. Replace each value v by 2v - 1, then sort the resulting values in strictly descending order. Return exactly a comma followed by a single space between values, and nothing else.",
+      "expected_output": "21, 17, 15, 5, 3"
+    },
+    {
+      "id": "Q07",
+      "band": 2,
+      "prompt": "Find the unique integer x with 0 <= x < 315 satisfying x ≡ 2 (mod 5), x ≡ 3 (mod 7), and x ≡ 4 (mod 9). Return exactly one base-10 integer and nothing else.",
+      "expected_output": "157"
+    },
+    {
+      "id": "Q08",
+      "band": 2,
+      "prompt": "In the directed weighted graph with edges A→B=4, A→C=2, B→D=5, B→E=10, C→B=1, C→D=8, C→E=7, D→F=3, E→F=1, find the unique minimum-cost path from A to F. Return exactly `<path>|<cost>` where the path uses hyphens between node letters and cost is a base-10 integer.",
+      "expected_output": "A-C-E-F|10"
+    },
+    {
+      "id": "Q09",
+      "band": 2,
+      "prompt": "Five people A, B, C, D, E occupy positions 1 through 5, one person per position. C is immediately to the right of A. B is immediately to the right of E. D is not at either end. A is left of D, and D is left of B. Return the unique left-to-right order exactly as comma-separated letters with no spaces.",
+      "expected_output": "A,C,D,E,B"
+    },
+    {
+      "id": "Q10",
+      "band": 3,
+      "prompt": "Solve the system: 2x1 + x2 - x3 + 3x5 = 0; x1 - 2x2 + 2x4 + x5 = 12; 3x1 + 2x3 - x4 - 2x5 = 8; x2 + x3 + 3x4 - x5 = 14; 2x1 - x2 + 3x3 + x4 = 18. Return exactly `x1=<integer>,x2=<integer>,x3=<integer>,x4=<integer>,x5=<integer>` with no spaces and nothing else.",
+      "expected_output": "x1=2,x2=-1,x3=3,x4=4,x5=0"
+    },
+    {
+      "id": "Q11",
+      "band": 3,
+      "prompt": "Six people A, B, C, D, E, F occupy positions 1 through 6, one person per position. C is immediately after A. F is exactly two positions after C. B is not at either end. D is before A. E is after B. E is not in position 5. Return the unique left-to-right order exactly as comma-separated letters with no spaces.",
+      "expected_output": "D,A,C,B,F,E"
+    },
+    {
+      "id": "Q12",
+      "band": 3,
+      "prompt": "From the set {5, 8, 11, 14, 17, 23, 26, 31}, choose exactly four distinct numbers whose sum is 80. Return the unique solution in strictly ascending order exactly as comma-separated integers with no spaces.",
+      "expected_output": "14,17,23,26"
+    }
+  ]
+}
