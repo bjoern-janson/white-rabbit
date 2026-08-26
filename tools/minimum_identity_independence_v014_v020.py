@@ -139,13 +139,9 @@ def _write_exact_view_account_and_mark_t2(
                 or written < 0
                 or written > len(payload) - total
             ):
-                # The transfer measurement itself is unusable; do not invent a
-                # byte count for the current write attempt.
                 cost._view_unknown()
                 raise ConformanceError("invalid view dispatch write count")
             if written == 0:
-                # Zero is a known result. Preserve any previously transferred
-                # prefix, but do not promote it to an exact-view dispatch.
                 cost._view_known_partial(total)
                 raise ConformanceError("view dispatch incomplete")
 
@@ -223,6 +219,11 @@ def _spawn(
                 )
                 proc.stdin = None
                 out, err = proc.communicate(timeout=5)
+        except ConformanceError:
+            if proc.poll() is None:
+                proc.kill()
+            proc.wait(timeout=2)
+            raise
         except subprocess.TimeoutExpired as exc:
             proc.kill()
             proc.wait(timeout=2)
