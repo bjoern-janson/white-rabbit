@@ -1,0 +1,168 @@
+name: MII v0.1.12 PR Runtime Conformance
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  conformance:
+    if: github.head_ref == 'mii-v012-runtime-conformance'
+    runs-on: ubuntu-24.04
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      EVIDENCE: mii-v012-runtime-conformance-evidence.txt
+    steps:
+      - name: Checkout exact PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 1
+
+      - name: Runtime identity and custody preflight
+        id: preflight
+        shell: bash
+        run: |
+          set +e
+          : > "$EVIDENCE"
+          {
+            echo 'MII_V0_1_12_NON_ASSAY_RUNTIME_CONFORMANCE'
+            echo "UTC=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "EVENT_PR_HEAD=${{ github.event.pull_request.head.sha }}"
+            echo "HEAD=$(git rev-parse HEAD)"
+            echo "UNAME_A=$(uname -a)"
+            echo "UNAME_M=$(uname -m)"
+            echo "PYTHON=$(python3 --version 2>&1)"
+            echo "UNSHARE=$(command -v unshare || true)"
+            unshare --version 2>&1 || true
+            echo 'OS_RELEASE_BEGIN'
+            cat /etc/os-release
+            echo 'OS_RELEASE_END'
+            echo 'N_ASSAY=0'
+          } | tee -a "$EVIDENCE"
+
+          status=0
+          [[ "$(uname -s)" == "Linux" && "$(uname -m)" == "x86_64" ]] || status=1
+          command -v unshare >/dev/null 2>&1 || status=1
+
+          declare -A expected
+          expected[tools/minimum_identity_independence_v014_v011.py]=cb3021b8fbc0c8528402780a99fe8c9b1b1df013
+          expected[tools/minimum_identity_independence_v014_v012.py]=d7da53b96b6eda28a5a8132a0c910ff548b2fcac
+          expected[tools/minimum_identity_independence_v014_v013.py]=11957b8b90c68cd45c40a9a2e2161a40d06cb91f
+          expected[tools/minimum_identity_independence_v014_v014.py]=6da915ec0ee71e41e52e6383e296ac1afd921516
+          expected[tools/minimum_identity_independence_v014_v015.py]=a3e63142f512e4cc1570ac722e2eda60febe01ad
+          expected[tools/minimum_identity_independence_v014_v016.py]=685d01034a4fa8bb40471e9656caebf1a818f5cf
+          expected[tools/minimum_identity_independence_v014_v017.py]=0640b93e82277315b3016329a62fd94a4854df88
+          expected[tools/minimum_identity_independence_v014_v018.py]=030c2b35055755cb44cd8e56c2af99d7852b8eea
+          expected[tools/minimum_identity_independence_v014_v019.py]=8be4d8cf409079a243a6dfe6fabc60bfd2283c1d
+          expected[tools/minimum_identity_independence_v014_v020.py]=c9e01cc0abb592bf5417784c6881787590e6f5a3
+          expected[tools/minimum_identity_independence_v014_v021.py]=c957a06286d31efd8014c879437af5d035fa38d4
+          expected[tools/minimum_identity_independence_v014_v022.py]=e490035c0ce68e0d39066a07ba337c2a3671a36f
+          expected[tests/test_minimum_identity_independence_v014_v012.py]=fe7442b67c6cef21d3a0e14f9918e73e1fa77353
+          expected[tests/test_minimum_identity_independence_v014_v013.py]=e8ea93a37b3443577dda11d754837ff9c31da042
+          expected[tests/test_minimum_identity_independence_v014_v014.py]=0207c03cc787b910bac53f9a327d694a90ddf9c5
+          expected[tests/test_minimum_identity_independence_v014_v015.py]=e5bc224dd273a9faf5ad6d57ef0614bc34731b0f
+          expected[tests/test_minimum_identity_independence_v014_v016.py]=47b88d2ab7df629b11813fd890cd60ab923a1cc9
+          expected[tests/test_minimum_identity_independence_v014_v017.py]=5ad94541e07148fa62d94a7998c1dc3dae533c33
+          expected[tests/test_minimum_identity_independence_v014_v018.py]=57eaf9d646250507d4c1247510d3b74e4b0f70ac
+          expected[tests/test_minimum_identity_independence_v014_v019.py]=596d9ebc87392bbb5c9f0fdae0bfe3d918653881
+          expected[tests/test_minimum_identity_independence_v014_v020.py]=659408eef189089823ed97df9ae54b151ba9ae90
+          expected[tests/test_minimum_identity_independence_v014_v021.py]=89e5d28b2732325daad6868f4b9961cb65cf97ef
+          expected[tests/test_minimum_identity_independence_v014_v022.py]=c68a4cda465d573d9d3cae538c674c69b9112b99
+
+          echo 'BLOB_IDENTITY_BEGIN' | tee -a "$EVIDENCE"
+          for path in "${!expected[@]}"; do
+            got=$(git hash-object "$path" 2>/dev/null || true)
+            echo "$path expected=${expected[$path]} actual=$got" | tee -a "$EVIDENCE"
+            [[ "$got" == "${expected[$path]}" ]] || status=1
+          done
+          echo 'BLOB_IDENTITY_END' | tee -a "$EVIDENCE"
+
+          sha256sum tools/minimum_identity_independence_v014_v022.py tests/test_minimum_identity_independence_v014_v022.py | tee -a "$EVIDENCE"
+
+          fixture_files=(
+            tests/test_minimum_identity_independence_v014_v012.py
+            tests/test_minimum_identity_independence_v014_v013.py
+            tests/test_minimum_identity_independence_v014_v014.py
+            tests/test_minimum_identity_independence_v014_v015.py
+            tests/test_minimum_identity_independence_v014_v016.py
+            tests/test_minimum_identity_independence_v014_v017.py
+            tests/test_minimum_identity_independence_v014_v018.py
+            tests/test_minimum_identity_independence_v014_v019.py
+            tests/test_minimum_identity_independence_v014_v020.py
+            tests/test_minimum_identity_independence_v014_v021.py
+            tests/test_minimum_identity_independence_v014_v022.py
+          )
+          if grep -nE '\b(C0_|C1_|E[1-4]_|D[1-3]_)' "${fixture_files[@]}" | tee -a "$EVIDENCE"; then
+            echo 'ASSAY_CASE_GUARD_FAIL' | tee -a "$EVIDENCE"
+            status=1
+          else
+            echo 'ASSAY_CASE_GUARD_PASS' | tee -a "$EVIDENCE"
+          fi
+
+          [[ -z "$(git diff --name-only)" ]] || status=1
+          echo "preflight_status=$status" >> "$GITHUB_OUTPUT"
+          echo "PREFLIGHT_STATUS=$status" | tee -a "$EVIDENCE"
+          exit 0
+
+      - name: Execute exact non-assay conformance lineage fixtures
+        id: suite
+        if: steps.preflight.outputs.preflight_status == '0'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          files=(
+            tests/test_minimum_identity_independence_v014_v012.py
+            tests/test_minimum_identity_independence_v014_v013.py
+            tests/test_minimum_identity_independence_v014_v014.py
+            tests/test_minimum_identity_independence_v014_v015.py
+            tests/test_minimum_identity_independence_v014_v016.py
+            tests/test_minimum_identity_independence_v014_v017.py
+            tests/test_minimum_identity_independence_v014_v018.py
+            tests/test_minimum_identity_independence_v014_v019.py
+            tests/test_minimum_identity_independence_v014_v020.py
+            tests/test_minimum_identity_independence_v014_v021.py
+            tests/test_minimum_identity_independence_v014_v022.py
+          )
+          status=0
+          echo 'CONFORMANCE_EXECUTION_BEGIN' | tee -a "$EVIDENCE"
+          for f in "${files[@]}"; do
+            echo "FIXTURE_BEGIN $f" | tee -a "$EVIDENCE"
+            python3 "$f" 2>&1 | tee -a "$EVIDENCE"
+            rc=${PIPESTATUS[0]}
+            echo "FIXTURE_EXIT $f $rc" | tee -a "$EVIDENCE"
+            [[ $rc -eq 0 ]] || status=1
+          done
+          echo "CONFORMANCE_SUITE_EXIT_STATUS=$status" | tee -a "$EVIDENCE"
+          echo "suite_status=$status" >> "$GITHUB_OUTPUT"
+          exit $status
+
+      - name: Post-run custody check
+        if: always()
+        shell: bash
+        run: |
+          echo "POST_HEAD=$(git rev-parse HEAD)" | tee -a "$EVIDENCE"
+          echo "POST_IMPL_BLOB=$(git hash-object tools/minimum_identity_independence_v014_v022.py)" | tee -a "$EVIDENCE"
+          echo "POST_FIXTURE_BLOB=$(git hash-object tests/test_minimum_identity_independence_v014_v022.py)" | tee -a "$EVIDENCE"
+          sha256sum "$EVIDENCE" | tee mii-v012-runtime-conformance-evidence.sha256
+
+      - name: Upload runtime evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mii-v012-runtime-conformance-evidence
+          path: |
+            mii-v012-runtime-conformance-evidence.txt
+            mii-v012-runtime-conformance-evidence.sha256
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Enforce result
+        if: always()
+        shell: bash
+        run: |
+          [[ '${{ steps.preflight.outputs.preflight_status }}' == '0' && '${{ steps.suite.outputs.suite_status }}' == '0' ]]
