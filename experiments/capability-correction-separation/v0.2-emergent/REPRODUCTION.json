@@ -1,0 +1,16 @@
+{
+  "status": "EXECUTION_CUSTODY_REPRODUCTION_PASS",
+  "runner_sha256": "b271aecbcdca315da85437d3f8f6a73b00d98fee31aaabc5d48813c52e59fc30",
+  "contract_sha256": "5039d8531015c32c396e85d98332d62cc9024d7e6375d987f3f6886c897e2616",
+  "surprise_group": "G6",
+  "V_s0": 333,
+  "V_sP": 653,
+  "V_sC": 552,
+  "Cstar_P": 8,
+  "Cstar_C": 1,
+  "delta_Cstar_P_minus_C": 7,
+  "all_scientific_quantity_checks_match_original": true,
+  "both_minimum_paths_match_original": true,
+  "both_endpoint_validations_pass": true,
+  "note": "Successor reproduction of the frozen v0.2 contract. This does not retroactively make the original notebook execution prospectively byte-custodied."
+}

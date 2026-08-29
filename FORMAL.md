@@ -23,6 +23,14 @@ branch: fixed-substrate-effective-capability-v0-1
 PR: #3
 ```
 
+A separate synthetic experiment lineage on capability–correction separation is preserved at:
+
+```text
+experiments/capability-correction-separation/
+```
+
+That lineage does not establish White Rabbit, a general compression result, or an effect in real AI systems.
+
 Earlier Gate-7, identity, provenance, authority, and measurement machinery remains recoverable from Git history. It is not part of the active hunt surface.
 
 ## Reopen this lane when

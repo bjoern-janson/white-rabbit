@@ -1,0 +1,9 @@
+state,lambda,V_present,memory_used,n_compiled,mean_Cstar,max_Cstar,min_Cstar,n_surprises_Cstar_gt_1,all_validated
+P,,653,80,8,4.5,8,1,8,True
+C_lambda_0,0,653,80,8,1.5,2,1,8,True
+C_lambda_1,1,552,74,6,1.375,2,1,6,True
+C_lambda_2,2,552,80,6,1.375,2,1,6,True
+C_lambda_3,3,507,77,5,1.3125,2,1,5,True
+C_lambda_4,4,465,72,4,1.25,2,1,4,True
+C_lambda_6,6,465,80,4,1.25,2,1,4,True
+C_lambda_8,8,427,74,3,1.1875,2,1,3,True

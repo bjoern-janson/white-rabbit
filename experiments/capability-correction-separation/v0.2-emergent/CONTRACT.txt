@@ -1,0 +1,20 @@
+EXPERIMENTAL_CONTRACT_V0.2
+QUESTION=Can an ordinary useful accumulation process, without access to the future defeater, spontaneously increase minimum validated correction cost?
+N_GROUPS=16
+LEAVES_PER_GROUP=8
+SOURCE_RULE_MEMORY=2
+COMPILED_GROUP_MEMORY=8
+MEMORY_BUDGET=80
+RULE_QUERY_COST=3
+COMPILED_QUERY_COST=1
+PRODUCTIVE_BUDGET=1000
+WORKLOAD_WEIGHTS=16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1
+A_P=maximize current weighted query throughput under memory budget; compiled groups need not retain source rule
+A_C=same optimizer/objective/budget; preservation constraint requires source rule to remain when a group is compiled
+SURPRISE_FAMILY=one prospective rule flip for each G0..G15
+SURPRISE_SELECTION=sha256(this exact contract) mod 16
+INTERVENTION_LANGUAGE=SET_RULE(existing only,cost1); COMPILE_GROUP(existing rule only,cost1); PATCH_LEAF(cost1)
+CORRECTION_BUDGET=8
+VALIDATION=all 128 leaves must match hidden post-surprise truth
+PRIMARY_COST=number of correction actions
+TERMINAL_PRECEDENCE=identity_fail>capability_gate_fail>surprise_invalid>validation_fail>both_fail>no_separation>productive_cheaper>separation_observed

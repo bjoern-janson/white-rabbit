@@ -1,0 +1,26 @@
+PRESERVATION_COST_SWEEP_V0.1
+STATUS=FROZEN_BEFORE_EXECUTION
+PRIOR_RESULT_BOUNDARY=Experimental Contract v0.2 established a synthetic emergent correction-cost separation under productive optimization.
+QUESTION=Does the correction-cost separation persist across a preservation-cost sweep?
+N_GROUPS=16
+LEAVES_PER_GROUP=8
+BASE_SOURCE_RULE_MEMORY=2
+COMPILED_GROUP_MEMORY=8
+MEMORY_BUDGET=80
+RULE_QUERY_COST=3
+COMPILED_QUERY_COST=1
+PRODUCTIVE_BUDGET=1000
+WORKLOAD_WEIGHTS=16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1
+P_ANCHOR=compiled groups may replace source rules; source-retention cost not paid
+C_LAMBDA=compiled groups must retain source rules; retained-rule memory cost=lambda
+LAMBDA_VALUES=0,1,2,3,4,6,8
+ACCUMULATION_OBJECTIVE=maximize current weighted query throughput under memory budget
+ACCUMULATION_TIEBREAK=higher workload weight first, then lower group index
+SURPRISE_FAMILY=all 16 prospective one-rule flips G0..G15
+INTERVENTION_LANGUAGE=SET_RULE(existing only,cost1); COMPILE_GROUP(existing rule only,cost1); PATCH_LEAF(existing compiled leaf,cost1)
+CORRECTION_BUDGET=8
+VALIDATION=all 128 leaves must match the selected post-surprise hidden truth
+PRIMARY_COST=number of correction actions
+PRIMARY_SWEEP_OUTPUTS=V_present; Cstar for every lambda x surprise; mean_Cstar; max_Cstar; sensitive_count
+IDENTITY_RULE=hash frozen contract, manifest, runner, validator, states, and result inputs before/after execution
+CLAIM_CEILING=Synthetic local frontier only. No claim about real AI systems or general corrective debt.
