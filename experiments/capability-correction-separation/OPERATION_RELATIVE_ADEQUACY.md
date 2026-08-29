@@ -64,6 +64,38 @@ then
 
 A representation may therefore be adequate when constructed and become inadequate for a later operation without itself changing.
 
+### Native exact operation contract
+
+For a fixed representation `q`, define its exact operation contract as
+
+```math
+\boxed{
+\mathcal O_q
+=
+\{e:\ker q\subseteq\ker e\}.
+}
+```
+
+This is the family of exact operations that can be realized without recovering distinctions discarded by `q`.
+
+For an operation outside `\mathcal O_q`, the possibilities are not exhausted by representation failure. The operation may instead require:
+
+```text
+additional retained structure
+reconstruction
+external reacquisition
+approximation
+or failure
+```
+
+Therefore preserve the methodological rule:
+
+```math
+\boxed{\text{failure to factor}\neq\text{causal diagnosis}.}
+```
+
+Failure to factor identifies an incompatibility between the declared operation and the retained representation. It does not by itself identify why that incompatibility arose or why the operation is unavailable in practice.
+
 ## 2. Hard boundary on unrestricted future adequacy
 
 If the admissible future operation family can distinguish every pair of distinct states, then
@@ -172,13 +204,17 @@ Keep the failure loci separate:
 
 ```math
 \boxed{
-\text{expressibility}
+\text{state-space}
+\rightarrow
+\text{representation}
 \rightarrow
 \text{factorization}
 \rightarrow
-\text{reachability}
+\text{recovery}
 \rightarrow
-\text{authority}
+\text{resource reachability}
+\rightarrow
+\text{intervention}
 \rightarrow
 \text{validation}
 }
@@ -187,12 +223,28 @@ Keep the failure loci separate:
 Ask, in order:
 
 1. **Does the relevant operation exist on `X`?**
-2. **If yes, does it descend through `q`?**
-3. **If yes, is its realization reachable within the declared resources and interface?**
-4. **If reachable, can it legitimately alter the operative system?**
-5. **If altered, does the result survive independent validation?**
+2. **What representation actually survived?**
+3. **Does the operation descend through that representation?**
+4. **If not directly, can the missing distinction be reconstructed or reacquired through an independently available channel?**
+5. **Is that realization reachable within the declared resources, access conditions, and interface?**
+6. **If reachable, can it legitimately alter the operative system when intervention is required?**
+7. **If altered, does the result survive independent validation?**
 
 These questions are not interchangeable.
+
+When an operation fails or appears unavailable, competing native explanations can include:
+
+```text
+state-space construction
+representation loss
+recovery failure
+resource limit
+access failure
+intervention failure
+implementation defect
+```
+
+The factorization test does not choose among these causes automatically.
 
 In particular:
 
@@ -200,6 +252,7 @@ In particular:
 factorization != intelligence
 factorization != corrigibility
 factorization != interface discovery
+factorization != reachability
 factorization != authority
 factorization != validation
 ```
@@ -289,5 +342,39 @@ The unsolved frontier begins one layer earlier:
 ```
 
 **OPEN.**
+
+## 8. Adversarial portability phase
+
+The next phase is not to accumulate confirming analogies.
+
+```math
+\boxed{\textbf{DON'T PROVE PORTABILITY. TRY TO DESTROY IT.}}
+```
+
+For a mature external system, preserve its native terminology and select a real operation that the system independently has reason to support. Then ask:
+
+```text
+What operation is actually promised or required?
+What representation actually survived?
+Does that operation factor through what survived?
+If not, what native recovery or reacquisition path exists?
+If the operation remains unavailable, what is the native causal explanation?
+```
+
+The highest-value adversarial specimen is one where an operation initially appears not to factor through the retained representation, but native evidence shows that the actual failure lies elsewhere—for example in access, resources, intervention machinery, state-space construction, or implementation.
+
+A confirming example is lower-value than a case that forces the diagnostic instrument to sharpen or admit a boundary.
+
+The objective is therefore not:
+
+```text
+Where else does this framework fit?
+```
+
+It is:
+
+```math
+\boxed{\textbf{Where does this instrument stop working?}}
+```
 
 Do not extend this note by vocabulary alone. Reopen it only under a real operation class, an external counterexample, or a failure that forces revision.
