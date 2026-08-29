@@ -1,0 +1,17 @@
+{
+  "base_source_rule_memory": 2,
+  "claim_ceiling": "Synthetic local frontier only; no claim about real AI systems or general corrective debt.",
+  "compiled_group_memory": 8,
+  "compiled_query_cost": 1,
+  "contract_sha256": "c96064ce808af9cdfe8108e402f8a5c567caf6f288fd98b0d5f2e86aef335cbb",
+  "correction_budget": 8,
+  "lambda_values": [0,1,2,3,4,6,8],
+  "leaves_per_group": 8,
+  "memory_budget": 80,
+  "n_groups": 16,
+  "productive_budget": 1000,
+  "rule_query_cost": 3,
+  "schema": "PRESERVATION_COST_SWEEP_V0.1",
+  "surprise_family": ["G0","G1","G2","G3","G4","G5","G6","G7","G8","G9","G10","G11","G12","G13","G14","G15"],
+  "workload_weights": [16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1]
+}

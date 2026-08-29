@@ -1,0 +1,17 @@
+{
+  "claim_ceiling": "Synthetic local result only; no claim that real AI accumulation creates corrective debt.",
+  "compiled_group_memory": 8,
+  "compiled_query_cost": 1,
+  "contract_sha256": "5039d8531015c32c396e85d98332d62cc9024d7e6375d987f3f6886c897e2616",
+  "correction_budget": 8,
+  "implementation_repair": "Search minimum path in-process; independently validate only discovered endpoints.",
+  "leaves_per_group": 8,
+  "memory_budget": 80,
+  "n_groups": 16,
+  "productive_budget": 1000,
+  "rule_query_cost": 3,
+  "schema": "EXPERIMENTAL_CONTRACT_V0.2",
+  "source_rule_memory": 2,
+  "surprise_selection": "int(sha256(CONTRACT),16) % 16",
+  "workload_weights": [16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1]
+}
