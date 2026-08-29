@@ -1,9 +1,5 @@
 # White Rabbit 🐇⚡
 
-White Rabbit started with a simple anomaly:
-
-> On the same local RTX 3080 Ti, Qwen went from slow and not very useful to surprisingly capable reasoning at a usable pace.
-
 The project asks one question:
 
 **What changed in the computational path that made the same machine dramatically more useful?**
