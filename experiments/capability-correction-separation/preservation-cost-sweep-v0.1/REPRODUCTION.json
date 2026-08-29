@@ -1,0 +1,20 @@
+{
+  "status": "EXECUTION_CUSTODY_REPRODUCTION_PASS",
+  "runner_sha256": "bb2665a6cc06e74198db01cf3e0453f50bc2bbd04b115ce16b973247c13ada0d",
+  "contract_sha256": "c96064ce808af9cdfe8108e402f8a5c567caf6f288fd98b0d5f2e86aef335cbb",
+  "n_evaluations": 128,
+  "all_validations_pass": true,
+  "all_checked_sweep_quantities_match_original": true,
+  "matched_fields_per_state": [
+    "lambda",
+    "V_present",
+    "memory_used",
+    "n_compiled",
+    "mean_Cstar",
+    "max_Cstar",
+    "min_Cstar",
+    "n_surprises_Cstar_gt_1",
+    "all_validated"
+  ],
+  "note": "Successor reproduction of the frozen sweep contract. This does not retroactively make the original notebook execution prospectively byte-custodied."
+}
