@@ -1,0 +1,18 @@
+{
+  "all_independent_validations_pass": true,
+  "dormant_reads_during_present_inference": 0,
+  "identity_checks": {
+    "contract": true,
+    "defeaters": true,
+    "manifest": true,
+    "runner": true,
+    "validator": true
+  },
+  "identity_pass": true,
+  "note_on_hashes": "File hashes differ only if formatting differs; execution additionally records canonical operative-content equality.",
+  "operative_hash_C": "850fa4b0961d327bae8426398b246eb8f28fd72f98cfeda5a04b8abedfc19852",
+  "operative_hash_D": "850fa4b0961d327bae8426398b246eb8f28fd72f98cfeda5a04b8abedfc19852",
+  "present_use_invisibility_gate_pass": true,
+  "runner_frozen_before_execution": true,
+  "terminal": "DORMANT_RECOVERABILITY_RESCUE_OBSERVED"
+}

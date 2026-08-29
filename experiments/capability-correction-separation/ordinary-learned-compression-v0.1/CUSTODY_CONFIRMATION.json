@@ -1,0 +1,28 @@
+{
+  "all_exact_reproduction_checks_pass": true,
+  "checks": {
+    "compressed_accuracy": true,
+    "compressed_slots": true,
+    "contract": true,
+    "local_deltas": true,
+    "mean_delta_local": true,
+    "mean_delta_structural": true,
+    "n_compressed_objects": true,
+    "n_reference_objects": true,
+    "object_sizes": true,
+    "reference_accuracy": true,
+    "reference_slots": true,
+    "structural_deltas": true,
+    "validations": true
+  },
+  "confirmation_manifest": {
+    "confirmation_runner_sha256": "826e6cdcf80a9fee471cfaa1159bd07dcb37ae702c10a41a3ae81ef99af2fd77",
+    "contract_sha256": "00ed56a0d3a0299db795c3edadf453b191d78a6400ccf33b4188a4f7e0ebdd2b",
+    "defeaters_sha256": "70789e294e4d5b2988f4c6ea59ca39ec73e2a0e0ad089dc40d76fa74a94744e5",
+    "manifest_sha256": "14726b06cdb31f62e51b2deee31427353fb3da679c3601932002fd21f42622aa",
+    "status": "FROZEN_BEFORE_CONFIRMATION_EXECUTION",
+    "validator_sha256": "ee38cc624fa694dddd8e9769cf96ddae9e685581b494b62cf9ad58a5a4fdf380"
+  },
+  "note": "The initial notebook execution was not prospectively byte-custodied. This separate confirmation runner was hashed before execution and exactly reproduced the measured scientific endpoints from the already-frozen contract.",
+  "status": "PROSPECTIVE_EXECUTABLE_CONFIRMATION_PASS"
+}

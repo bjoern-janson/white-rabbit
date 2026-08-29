@@ -1,0 +1,20 @@
+{
+  "all_independent_validations_pass": true,
+  "audited_terminal": "CROSS_COMPRESSOR_REPLICATION_PASS",
+  "compressors_received_correction_objective": false,
+  "compressors_received_future_defeaters": false,
+  "compressors_received_only_present_learned_reward_vectors": true,
+  "contract_was_frozen_before_learning": true,
+  "defeater_targets_and_rule_frozen_before_learning": true,
+  "identity_checks": {"contract": true, "defeaters": true, "manifest": true, "runner": true, "validator": true},
+  "identity_pass": true,
+  "matches_execution_terminal": true,
+  "runner_sha256": "02be6afceadc8c03cfdd6d074731ecac03c6b1e1c906af21f4a354caadc81e57",
+  "runner_was_frozen_before_execution": true,
+  "same_correction_budget": true,
+  "same_correction_language": true,
+  "same_independent_validator": true,
+  "same_object_budget": true,
+  "same_present_training_data": true,
+  "same_reference": true
+}
