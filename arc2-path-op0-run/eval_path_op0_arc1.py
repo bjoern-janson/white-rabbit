@@ -84,13 +84,14 @@ def build_conservative(task, path_cands=None, include_path=False):
     fallback=r0.solve_task(task)
     for ti,_ in enumerate(task['test']):
         arr=[]; seen=set()
+        sources=[]
         streams=[r0_route_outputs(task,ti), r1_route_outputs(task,ti)]
         if include_path:
             streams.append(path_route_outputs(task,ti,path_cands))
         for stream in streams:
             for y,meta in stream:
                 if y in seen: continue
-                seen.add(y); arr.append((y,meta))
+                seen.add(y); arr.append((y,meta)); sources.append(meta['source'])
                 if len(arr)>=2: break
             if len(arr)>=2: break
         # schema-safe fallback only after admitted route sources are exhausted
@@ -98,7 +99,7 @@ def build_conservative(task, path_cands=None, include_path=False):
             for a in fallback['predictions'][ti]['attempts']:
                 y=r0.to_grid(a['output'])
                 if y in seen: continue
-                seen.add(y); arr.append((y,{'source':'FALLBACK'}))
+                seen.add(y); arr.append((y,{'source':'FALLBACK'})); sources.append('FALLBACK')
                 if len(arr)>=2: break
         if len(arr)==1: arr.append(arr[0])
         result.append(arr[:2])
@@ -124,6 +125,7 @@ def main():
         operationalized=pdiag['operationalized_representations']>0
         executable=len(path_cands)>0
 
+        # Pure PATH top2 and oracle-within-family.
         path_attempts=[]
         for ti in range(len(ts)):
             path_attempts.append(path_route_outputs(task,ti,path_cands)[:2])
