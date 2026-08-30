@@ -1,0 +1,119 @@
+{
+  "contract": "white-rabbit-arc-agent-submission1-scoped-authority-public-ab",
+  "baseline": {
+    "hidden_score": 0.19,
+    "leaderboard_rank_snapshot": "1690/2628",
+    "repo_commit": "845dbbc3c9838b4e41d1bef84cab791197204720",
+    "agent_blob_sha": "57c65e72434912efbd9a2f1480b7efdb604bec10",
+    "agent_sha256": "c83abedf42bbee51dfc13e493f0879da086a73e794f388b5efba385dc3a339cd",
+    "public_aggregate_score": 1.3756373256373253
+  },
+  "intervention": {
+    "name": "context-scoped consequence authority",
+    "s1_agent_sha256": "b24e1290f33085d824ecc3ceafe643792f4e682a8ca49032ec725622af18f383",
+    "context": "existing decision-time-visible state_key = level + BLAKE2(frame bytes)",
+    "hierarchy": [
+      "exact state/action",
+      "earned level promotion",
+      "earned global promotion",
+      "unknown"
+    ],
+    "level_promotion": "at least 2 distinct states, all local dominant outcomes compatible",
+    "global_promotion": "at least 2 promoted levels with same outcome and no contrary observed local dominant outcome"
+  },
+  "microscope_inertness": {
+    "public_aggregate_without_wrapper": 1.3756373256373253,
+    "public_aggregate_with_wrapper": 1.3756373256373253,
+    "environment_actions_compared": 4450,
+    "action_trace_mismatches": 0
+  },
+  "s0_microscope": {
+    "records": 4425,
+    "predictions": 2925,
+    "contradictions": 468,
+    "cross_context_predictions": 2753,
+    "cross_context_false_transfers": 424,
+    "repeat_exact_context_action": 173,
+    "noop": 732,
+    "local": 2519,
+    "global": 1119,
+    "death": 50,
+    "level": 5,
+    "contradiction_rate": 0.16,
+    "cross_context_false_transfer_rate": 0.15401380312386487
+  },
+  "s0_prediction_scopes": {
+    "unknown": 1500,
+    "action_global": 2925
+  },
+  "s0_recovery": {
+    "contradictions": 468,
+    "resolved_on_later_same_action_use": 170,
+    "unresolved_before_run_end": 298,
+    "median_intervening_action_gap_when_resolved": 16.0,
+    "mean_intervening_action_gap_when_resolved": 29.21764705882353,
+    "mean_persistent_same_prediction_reuses_when_resolved": 5.2176470588235295,
+    "max_persistent_same_prediction_reuses_when_resolved": 39
+  },
+  "s1_public": {
+    "aggregate_score": 1.3756373256373253,
+    "microscope": {
+      "records": 4425,
+      "predictions": 1446,
+      "contradictions": 76,
+      "cross_context_predictions": 1274,
+      "cross_context_false_transfers": 38,
+      "repeat_exact_context_action": 173,
+      "noop": 732,
+      "local": 2519,
+      "global": 1119,
+      "death": 50,
+      "level": 5,
+      "contradiction_rate": 0.05255878284923928,
+      "cross_context_false_transfer_rate": 0.029827315541601257
+    },
+    "prediction_scopes": {
+      "unknown": 2979,
+      "level": 1274,
+      "local": 172
+    },
+    "recovery": {
+      "contradictions": 76,
+      "resolved_on_later_same_action_use": 76,
+      "unresolved_before_run_end": 0,
+      "median_intervening_action_gap_when_resolved": 4.0,
+      "mean_intervening_action_gap_when_resolved": 6.0,
+      "mean_persistent_same_prediction_reuses_when_resolved": 0.10526315789473684,
+      "max_persistent_same_prediction_reuses_when_resolved": 8
+    },
+    "action_trace_differences_vs_s0": [
+      {
+        "game": "lf52",
+        "first_divergence_index_zero_based": 74,
+        "s0_action": [
+          6,
+          {
+            "game_id": "",
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "s1_action": [
+          6,
+          {
+            "game_id": "",
+            "x": 31,
+            "y": 37
+          }
+        ],
+        "s0_length": 221,
+        "s1_length": 221
+      }
+    ]
+  },
+  "claim_ceiling": [
+    "Public aggregate score is unchanged; this is not evidence of hidden improvement.",
+    "The authority intervention changed the public action trajectory only where existing policy consumed consequence priors; observed first divergence was lf52.",
+    "No hidden S1 score has been measured yet."
+  ]
+}
