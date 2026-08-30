@@ -41,7 +41,8 @@ jobs:
 
       - name: Run frozen prospective comparison
         run: |
-          python arc2-joint-xt-run/eval_joint_xt_1darc.py /tmp/1D-ARC/dataset --out arc2-joint-xt-run/joint_xt_1darc_results.json | tee arc2-joint-xt-run/joint_xt_1darc_stdout.txt
+          set -o pipefail
+          PYTHONPATH="$GITHUB_WORKSPACE" python arc2-joint-xt-run/eval_joint_xt_1darc.py /tmp/1D-ARC/dataset --out arc2-joint-xt-run/joint_xt_1darc_results.json | tee arc2-joint-xt-run/joint_xt_1darc_stdout.txt
 
       - uses: actions/upload-artifact@v4
         with:
