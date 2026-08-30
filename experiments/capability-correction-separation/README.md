@@ -166,3 +166,13 @@ DORMANT-RECOVERABILITY ISOLATION    PASS
 **CURRENT STATE: FROZEN.**
 
 Do not add another conceptual layer here. The next experiment must justify itself by attacking a genuinely new empirical burden rather than polishing this substrate.
+
+## External pressure continuation
+
+The synthetic assay above remains frozen. A separate lineage carries its operation-relative boundary into synthetic reopening instruments and real ARC-AGI-3 pressure tests without retroactively changing this claim ceiling:
+
+[`../arc-reopening-lineage/README.md`](../arc-reopening-lineage/README.md)
+
+That continuation currently ends at an untouched prospective negative: generic candidate-partition search failed one layer upstream because the inherited state constructor produced no admissible partitionable units on a new ARC environment.
+
+The continuation does not upgrade the synthetic result into a general claim about real AI systems; it records where the instrument next stopped working.
