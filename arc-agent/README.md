@@ -4,6 +4,28 @@
 >
 > This directory is deliberately separate from `experiments/`. Changes here do **not** change the frozen White Rabbit research claims.
 
+## Submit from Kaggle
+
+The ready-to-run competition notebook is committed at:
+
+```text
+notebooks/submission.ipynb
+```
+
+The intended submission workflow is simply:
+
+```text
+Kaggle
+-> Import Notebook
+-> select notebooks/submission.ipynb
+-> Save Version / Run All
+-> Submit to Competition
+```
+
+No local machine setup is required. Do **not** run `make setup` inside Kaggle.
+
+The notebook is self-contained for the competition rerun: it embeds Submission-0, uses the competition-provided offline wheel directory and ARC agent framework, runs with internet disabled and CPU only, and lets the ARC gateway produce `submission.parquet`.
+
 ## Submission-0
 
 Submission-0 converts already-earned engineering lessons into an offline Kaggle agent:
@@ -44,54 +66,23 @@ generic explorer ablation:  0.07272727272727272
 Submission-0 portfolio:      1.3756373256373253
 ```
 
-The improvement is dominated by `ft09`; see [`results/README.md`](results/README.md) and [`results/local_public_summary.json`](results/local_public_summary.json) for the claim ceiling and machine-readable score summary.
+The improvement is dominated by `ft09`; see [`results/README.md`](results/README.md) and [`results/local_public_summary.json`](results/local_public_summary.json) for the bounded comparison.
 
-## Kaggle notebook
+## Source of truth
 
-`notebooks/submission.ipynb` is **generated build output** from `agent/my_agent.py` using the official starter pattern. It is intentionally gitignored so source and notebook cannot drift.
+`agent/my_agent.py` remains the editable source. `notebooks/submission.ipynb` is the committed ready-to-run Kaggle artifact generated from that source by `scripts/build_notebook.py`.
 
-The generated notebook:
-
-- installs only from the competition's offline wheel directory;
-- has internet disabled;
-- uses the CPU accelerator;
-- copies the competition-provided agent framework into `/kaggle/working`;
-- registers `MyAgent` with a slim framework initializer;
-- lets the ARC gateway generate `submission.parquet` on competition rerun.
-
-Generate it with:
+If the agent changes, regenerate the notebook before committing:
 
 ```bash
-make notebook
+python3 scripts/build_notebook.py
 ```
 
-`make submit` always regenerates it before pushing to Kaggle.
+This regeneration step is for maintainers of the repo; it is **not required to submit the already-committed notebook from Kaggle**.
 
-## Local setup
+## Optional developer tooling
 
-Requires Python 3.12.
-
-```bash
-make setup
-make play-local GAME=ft09
-make play-local
-```
-
-The setup follows the official `arcprize/ARC-AGI-3-Kaggle-Starter` workflow.
-
-## Kaggle push
-
-Before the first push:
-
-```bash
-mkdir -p .kaggle
-# put the one-line Kaggle API token in .kaggle/access_token
-# replace REPLACE_WITH_YOUR_USERNAME in notebooks/kernel-metadata.json
-make submit
-make status
-```
-
-Pushing the notebook is not the same as spending a competition submission; after the Kaggle run completes, select the generated `submission.parquet` in the competition UI.
+The `Makefile`, local runner, and setup scripts remain for development and regression testing. They are not part of the Kaggle submission path.
 
 ## Submission-0 limits
 
@@ -100,17 +91,5 @@ Pushing the notebook is not the same as spending a competition submission; after
 - Public score is not a hidden-set estimate.
 - The `ft09` specialization is intentionally exploited in this score lane and must not be cited as evidence for the frozen research frontier.
 - No Kaggle leaderboard score is recorded here until an actual competition rerun is submitted.
-
-## Next score work
-
-The highest-value engineering work is now empirical and competition-only:
-
-```text
-public trajectory failures
--> game-family policy portfolio
--> fewer wasted actions
--> better cross-level transfer
--> package an offline multimodal/world-model component if it earns score
-```
 
 The research frontier remains frozen in `experiments/arc-reopening-lineage/FROZEN_FRONTIER.md`.
