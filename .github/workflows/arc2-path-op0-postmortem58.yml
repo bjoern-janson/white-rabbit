@@ -1,0 +1,22 @@
+name: ARC2 PATH-OP0 Postmortem58
+on:
+  push:
+    branches: [arc2-path-op0-postmortem58]
+permissions:
+  contents: read
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch ARC-AGI-1 source
+        run: git clone --depth 1 https://github.com/fchollet/ARC-AGI.git /tmp/ARC-AGI
+      - name: Install renderer dependency
+        run: python -m pip install --quiet pillow
+      - name: Render 58 read-only task sheets
+        run: python arc2-path-op0-run/render_postmortem58.py /tmp/ARC-AGI/data/evaluation arc2-path-op0-run/postmortem58_sheets
+      - uses: actions/upload-artifact@v4
+        with:
+          name: path-op0-postmortem58-sheets
+          path: arc2-path-op0-run/postmortem58_sheets
+          if-no-files-found: error
