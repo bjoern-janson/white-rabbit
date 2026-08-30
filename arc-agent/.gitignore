@@ -1,0 +1,8 @@
+.venv/
+vendor/
+environment_files/
+recordings/
+.kaggle/
+__pycache__/
+*.pyc
+notebooks/submission.ipynb

@@ -50,6 +50,19 @@ The original observation and its important runtime correction are preserved unde
 
 The correction matters: part of the apparent speedup was consistent with retained-prefix / KV reuse, while another runtime-performance shift remained unexplained. That is why the current project hunts the phenomenon first instead of assuming a mechanism.
 
+## Split program
+
+```text
+RESEARCH FRONTIER:  FROZEN
+COMPETITION AGENT:  SCORE-OPTIMIZING
+```
+
+The scientific record remains under [`experiments/`](experiments/). Its claim ceilings, negative controls, and frozen frontier are not modified by competition engineering.
+
+The ARC-AGI-3 score lane lives under [`arc-agent/`](arc-agent/). It is explicitly allowed to use heuristics, game-family specializations, stochastic fallbacks, and other score-seeking engineering without acquiring research authority.
+
+Current Submission-0 local public engineering score: `1.3756373256373253` on the 25 bundled public environments. This is not a Kaggle leaderboard score or a hidden-set estimate; see [`arc-agent/results/`](arc-agent/results/) for the bounded comparison.
+
 ## Preserved research lineages
 
 These records are kept under `experiments/` without changing the active phenomenon-first face of the repository:

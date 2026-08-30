@@ -1,0 +1,24 @@
+{
+  "scope": "local public engineering only; not Kaggle leaderboard or hidden-set evidence",
+  "environment_count": 25,
+  "arc_agi_version": "0.9.8",
+  "max_actions_per_game": 220,
+  "seed_policy": "stable per-game BLAKE2",
+  "conditions": {
+    "stochastic_control": {
+      "aggregate_score": 0.16005291005291003,
+      "salient_completed_levels": ["r11l:L1"]
+    },
+    "generic_explorer_ablation": {
+      "aggregate_score": 0.07272727272727272,
+      "salient_completed_levels": ["lf52:L1"],
+      "ft09_specialization": false
+    },
+    "submission0": {
+      "aggregate_score": 1.3756373256373253,
+      "salient_completed_levels": ["ft09:L1", "ft09:L2", "ft09:L3", "lf52:L1", "r11l:L1"],
+      "ft09_actions_by_level": [4, 7, 14]
+    }
+  },
+  "claim_ceiling": "The Submission-0 gain is dominated by the earned ft09 specialization. The generic explorer does not broadly outperform the stable stochastic control on this single public run."
+}
