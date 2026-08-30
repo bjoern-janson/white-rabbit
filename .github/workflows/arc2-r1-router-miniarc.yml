@@ -1,0 +1,37 @@
+name: ARC2 R1 Router MiniARC
+
+on:
+  push:
+    branches: [arc2-r1-router-miniarc-run]
+    paths:
+      - 'arc2-r1-run/ROUTER_MINIARC_PREREGISTRATION.md'
+      - 'arc2-r1-run/router_external_eval.py'
+      - '.github/workflows/arc2-r1-router-miniarc.yml'
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reconstruct frozen runner
+        run: |
+          cat arc2-r1-run/r1_minimal.b64.* > /tmp/r1.b64
+          base64 -d /tmp/r1.b64 > /tmp/r1.zip
+          mkdir -p /tmp/r1
+          unzip -q /tmp/r1.zip -d /tmp/r1
+      - name: Verify frozen solver hashes
+        run: |
+          test "$(sha256sum /tmp/r1/r1_solver/r0_b2_solver.py | cut -d' ' -f1)" = "92db3a4ec0f0484773b6b19f1e65e87b84fabf5a38ba1e6698888f332e678c66"
+          test "$(sha256sum /tmp/r1/r1_solver/r1_solver.py | cut -d' ' -f1)" = "7d61faa79c8989738f72df38dd6d74800c9b8ca25435f06f0d6fb473e493b42a"
+      - name: Fetch fresh Mini-ARC corpus
+        run: git clone --depth 1 https://github.com/KSB21ST/MINI-ARC.git /tmp/MINI-ARC
+      - name: Run preregistered fresh router comparison
+        run: |
+          python arc2-r1-run/router_external_eval.py /tmp/MINI-ARC/data/MiniARC --out arc2-r1-run/miniarc_router_results.json | tee arc2-r1-run/miniarc_router_stdout.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r1-router-miniarc-results
+          path: |
+            arc2-r1-run/ROUTER_MINIARC_PREREGISTRATION.md
+            arc2-r1-run/miniarc_router_results.json
+            arc2-r1-run/miniarc_router_stdout.txt
