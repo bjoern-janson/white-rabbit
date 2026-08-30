@@ -1,0 +1,38 @@
+name: ARC2 R1 ConceptARC
+
+on:
+  push:
+    branches: [arc2-r1-conceptarc-run]
+  workflow_dispatch:
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Reconstruct frozen runner
+        run: |
+          cat arc2-r1-run/r1_minimal.b64.* > /tmp/r1.b64
+          base64 -d /tmp/r1.b64 > /tmp/r1.zip
+          mkdir -p /tmp/r1
+          unzip -q /tmp/r1.zip -d /tmp/r1
+
+      - name: Verify frozen solver hashes
+        run: |
+          sha256sum /tmp/r1/r1_solver/r0_b2_solver.py
+          sha256sum /tmp/r1/r1_solver/r1_solver.py
+
+      - name: Fetch ConceptARC
+        run: git clone --depth 1 https://github.com/victorvikram/ConceptARC.git /tmp/ConceptARC
+
+      - name: Evaluate 160 main tasks
+        run: |
+          python /tmp/r1/evaluate_external.py /tmp/ConceptARC/corpus --out "$GITHUB_WORKSPACE/arc2-r1-run/conceptarc160_results.json" | tee "$GITHUB_WORKSPACE/arc2-r1-run/conceptarc160_stdout.txt"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: conceptarc160-results
+          path: |
+            arc2-r1-run/conceptarc160_results.json
+            arc2-r1-run/conceptarc160_stdout.txt
