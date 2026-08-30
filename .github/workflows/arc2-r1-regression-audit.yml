@@ -1,0 +1,34 @@
+name: ARC2 R1 Regression Audit
+
+on:
+  push:
+    branches: [arc2-r1-conceptarc-run]
+    paths:
+      - 'arc2-r1-run/regression_audit.py'
+      - '.github/workflows/arc2-r1-regression-audit.yml'
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reconstruct frozen runner
+        run: |
+          cat arc2-r1-run/r1_minimal.b64.* > /tmp/r1.b64
+          base64 -d /tmp/r1.b64 > /tmp/r1.zip
+          mkdir -p /tmp/r1
+          unzip -q /tmp/r1.zip -d /tmp/r1
+      - name: Verify frozen solver hashes
+        run: |
+          test "$(sha256sum /tmp/r1/r1_solver/r0_b2_solver.py | cut -d' ' -f1)" = "92db3a4ec0f0484773b6b19f1e65e87b84fabf5a38ba1e6698888f332e678c66"
+          test "$(sha256sum /tmp/r1/r1_solver/r1_solver.py | cut -d' ' -f1)" = "7d61faa79c8989738f72df38dd6d74800c9b8ca25435f06f0d6fb473e493b42a"
+      - name: Fetch ConceptARC
+        run: git clone --depth 1 https://github.com/victorvikram/ConceptARC.git /tmp/ConceptARC
+      - name: Run frozen regression audit
+        run: python arc2-r1-run/regression_audit.py /tmp/ConceptARC/corpus arc2-r1-run/r1_regression_audit.json | tee arc2-r1-run/r1_regression_audit_stdout.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r1-regression-audit
+          path: |
+            arc2-r1-run/r1_regression_audit.json
+            arc2-r1-run/r1_regression_audit_stdout.txt
