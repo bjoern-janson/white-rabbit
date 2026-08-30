@@ -1,0 +1,205 @@
+--- a/arc-agent/agent/my_agent.py
++++ b/arc-agent/agent/my_agent.py
+@@ -6,6 +6,7 @@
+ - persistent per-game transition model
+ - one-action closed loop
+ - predicted consequence classes checked after every action
++- context-scoped consequence authority with earned backoff
+ - local authority contraction on mismatch
+ - novelty / information-oriented exploration
+ - coordinate probes generated from pixels
+ - earned ft09 relational solver as a game-family specialization
+@@ -35,6 +36,7 @@
+         self.last_action_key: tuple | None = None
+         self.last_action: GameAction | None = None
+         self.last_prediction: str | None = None
++        self.last_prediction_scope: str | None = None
+         self.last_levels = 0
+         self.level_start_action = 0
+         self.last_progress_action = 0
+@@ -43,7 +45,11 @@
+         self.state_visits: Counter[str] = Counter()
+         self.tried: dict[str, set[tuple]] = defaultdict(set)
+         self.transitions: dict[tuple[str, tuple], tuple[str, str, int]] = {}
++        # Raw observations are retained for provenance/diagnostics, but S1 policy
++        # may use them only through the earned context hierarchy below.
+         self.action_outcomes: dict[tuple, Counter[str]] = defaultdict(Counter)
++        self.state_action_outcomes: dict[tuple[str, tuple], Counter[str]] = defaultdict(Counter)
++        self.level_state_dominants: dict[tuple[int, tuple], dict[str, str]] = defaultdict(dict)
+         self.defeated_predictions: list[dict[str, Any]] = []
+         self.effect_examples: dict[tuple, list[tuple[int, int]]] = defaultdict(list)
+         self.recent_states: deque[str] = deque(maxlen=24)
+@@ -51,7 +57,7 @@
+ 
+     @property
+     def name(self) -> str:
+-        return f"{super().name}.reopen-s0.{self.MAX_ACTIONS}"
++        return f"{super().name}.reopen-s1-scoped-authority.{self.MAX_ACTIONS}"
+ 
+     def is_done(self, frames: list[FrameData], latest_frame: FrameData) -> bool:
+         if latest_frame.state is GameState.WIN:
+@@ -94,11 +100,73 @@
+             return "local", n
+         return "global", n
+ 
+-    def _dominant_prediction(self, action_key: tuple) -> str:
+-        c = self.action_outcomes.get(action_key)
++    @staticmethod
++    def _dominant(c: Counter[str] | None) -> str:
+         if not c:
+             return "unknown"
+         return c.most_common(1)[0][0]
++
++    @staticmethod
++    def _context_level(state_key: str) -> int:
++        # state_key is fixed entirely from decision-time-visible level + frame.
++        return int(state_key.split(":", 1)[0])
++
++    def _level_promotion(self, level: int, action_key: tuple) -> tuple[str, int]:
++        """Return an outcome only when distinct states establish level invariance."""
++        doms = self.level_state_dominants.get((level, action_key), {})
++        if len(doms) < 2:
++            return "unknown", 0
++        values = set(doms.values())
++        if len(values) != 1:
++            return "unknown", 0
++        return next(iter(values)), len(doms)
++
++    def _global_promotion(self, action_key: tuple) -> tuple[str, int]:
++        """Return an outcome only when distinct levels establish invariance.
++
++        Any observed local contradiction in any level defeats the broader claim;
++        supporting local observations remain intact.
++        """
++        observed: dict[int, dict[str, str]] = {}
++        for (level, key), doms in self.level_state_dominants.items():
++            if key == action_key and doms:
++                observed[level] = doms
++
++        promoted: dict[int, str] = {}
++        for level in observed:
++            outcome, _ = self._level_promotion(level, action_key)
++            if outcome != "unknown":
++                promoted[level] = outcome
++        if len(promoted) < 2 or len(set(promoted.values())) != 1:
++            return "unknown", 0
++
++        candidate = next(iter(promoted.values()))
++        # A broader claim cannot survive a contrary local observation merely
++        # because that contrary level has not yet accumulated two states.
++        for doms in observed.values():
++            if any(outcome != candidate for outcome in doms.values()):
++                return "unknown", 0
++        return candidate, len(promoted)
++
++    def _scoped_outcomes(self, state_key: str, action_key: tuple) -> tuple[Counter[str], str]:
++        """Use the narrowest justified authority: state -> level -> global."""
++        local = self.state_action_outcomes.get((state_key, action_key))
++        if local:
++            return local, "local"
++
++        level = self._context_level(state_key)
++        outcome, support = self._level_promotion(level, action_key)
++        if outcome != "unknown":
++            return Counter({outcome: support}), "level"
++
++        outcome, support = self._global_promotion(action_key)
++        if outcome != "unknown":
++            return Counter({outcome: support}), "global"
++        return Counter(), "unknown"
++
++    def _dominant_prediction(self, state_key: str, action_key: tuple) -> tuple[str, str]:
++        c, scope = self._scoped_outcomes(state_key, action_key)
++        return self._dominant(c), scope
+ 
+     def _ingest_consequence(self, latest_frame: FrameData, cur: np.ndarray) -> None:
+         cur_key = self._state_key(cur, latest_frame.levels_completed)
+@@ -110,7 +178,11 @@
+             outcome, changed = self._outcome(self.last_frame, cur, dlevel, latest_frame.state)
+             self.transitions[(self.last_state_key, self.last_action_key)] = (cur_key, outcome, changed)
+             self.tried[self.last_state_key].add(self.last_action_key)
++            # S1: evidence is first local to the exact decision-time context.
+             self.action_outcomes[self.last_action_key].update([outcome])
++            local = self.state_action_outcomes[(self.last_state_key, self.last_action_key)]
++            local.update([outcome])
++            self.level_state_dominants[(self.last_levels, self.last_action_key)][self.last_state_key] = self._dominant(local)
+             self.effect_examples[self.last_action_key].append((changed, dlevel))
+             if len(self.effect_examples[self.last_action_key]) > 16:
+                 self.effect_examples[self.last_action_key] = self.effect_examples[self.last_action_key][-16:]
+@@ -119,7 +191,10 @@
+             if self.last_prediction not in (None, "unknown") and self.last_prediction != outcome:
+                 self.defeated_predictions.append({
+                     "at": self.action_counter,
++                    "context": self.last_state_key,
++                    "level": self.last_levels,
+                     "action": repr(self.last_action_key),
++                    "scope": self.last_prediction_scope,
+                     "predicted": self.last_prediction,
+                     "observed": outcome,
+                 })
+@@ -306,7 +381,7 @@
+         untried=[k for k in keys if k not in self.tried[state_key]]
+ 
+         def score(k: tuple) -> tuple[float,float,float]:
+-            outcomes=self.action_outcomes.get(k,Counter())
++            outcomes,_scope=self._scoped_outcomes(state_key,k)
+             total=sum(outcomes.values())
+             level=outcomes.get("level",0)
+             death=outcomes.get("death",0)
+@@ -351,7 +426,7 @@
+             # If every candidate in this exact state was tried, revisit the coordinate
+             # with the best historically observed effect class before falling back.
+             def prior(c):
+-                x,y,_=c; k=("complex",int(action.value),x,y); oc=self.action_outcomes.get(k,Counter())
++                x,y,_=c; k=("complex",int(action.value),x,y); oc,_scope=self._scoped_outcomes(state_key,k)
+                 return 8*oc.get("level",0)+2*oc.get("global",0)+oc.get("local",0)-4*oc.get("death",0)-oc.get("noop",0)
+             x,y,_=max(candidates,key=prior)
+         else:
+@@ -369,7 +444,7 @@
+         for a in actions:
+             if not a.is_complex():
+                 k=("simple",int(a.value))
+-                oc=self.action_outcomes.get(k,Counter()); total=sum(oc.values())
++                oc,_scope=self._scoped_outcomes(state_key,k); total=sum(oc.values())
+                 prior=8*oc.get("level",0)-5*oc.get("death",0)-1.5*oc.get("noop",0)+oc.get("local",0)+oc.get("global",0)
+                 novelty=5.0 if k not in tried else 0.0
+                 options.append((novelty+prior/max(1,total),k,a,None))
+@@ -377,7 +452,7 @@
+                 # Only expose a small salient coordinate frontier per exact state.
+                 for rank,(x,y,sal) in enumerate(self._coord_candidates(arr)[:4]):
+                     k=("complex",int(a.value),int(x),int(y))
+-                    oc=self.action_outcomes.get(k,Counter()); total=sum(oc.values())
++                    oc,_scope=self._scoped_outcomes(state_key,k); total=sum(oc.values())
+                     prior=8*oc.get("level",0)-5*oc.get("death",0)-1.5*oc.get("noop",0)+oc.get("local",0)+oc.get("global",0)
+                     novelty=4.5 if k not in tried else 0.0
+                     options.append((novelty+0.3*sal+prior/max(1,total)-0.05*rank,k,a,(x,y)))
+@@ -401,6 +476,7 @@
+             self.last_action = GameAction.RESET
+             self.last_action_key=("reset",0)
+             self.last_prediction="unknown"
++            self.last_prediction_scope="unknown"
+             return GameAction.RESET
+ 
+         cur=self._arr(latest_frame)
+@@ -411,6 +487,7 @@
+             self.last_action = GameAction.RESET
+             self.last_action_key=("reset",0)
+             self.last_prediction="unknown"
++            self.last_prediction_scope="unknown"
+             return GameAction.RESET
+ 
+         state_key=self.last_state_key or self._state_key(cur,latest_frame.levels_completed)
+@@ -450,10 +527,11 @@
+                 self.last_action_key=("simple",int(action.value))
+ 
+         self.last_action=action
+-        self.last_prediction=self._dominant_prediction(self.last_action_key)
++        self.last_prediction,self.last_prediction_scope=self._dominant_prediction(state_key,self.last_action_key)
+         action.reasoning={
+-            "policy":"reopen_submission0",
++            "policy":"reopen_submission1_scoped_authority",
+             "predicted_consequence":self.last_prediction,
++            "prediction_scope":self.last_prediction_scope,
+             "state_visits":int(self.state_visits[state_key]),
+             "defeated_commitments":len(self.defeated_predictions),
+         }
