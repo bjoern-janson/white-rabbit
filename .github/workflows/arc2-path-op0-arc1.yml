@@ -1,0 +1,48 @@
+name: ARC2 PATH-OP0 ARC1 Fresh Eval
+
+on:
+  push:
+    branches: [arc2-path-op0-arc1-eval]
+    paths:
+      - 'arc2-path-op0-run/PREREGISTRATION.md'
+      - 'arc2-path-op0-run/path_op0.py'
+      - 'arc2-path-op0-run/eval_path_op0_arc1.py'
+      - '.github/workflows/arc2-path-op0-arc1.yml'
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reconstruct frozen R1 runner
+        run: |
+          cat arc2-r1-run/r1_minimal.b64.* > /tmp/r1.b64
+          base64 -d /tmp/r1.b64 > /tmp/r1.zip
+          mkdir -p /tmp/r1
+          unzip -q /tmp/r1.zip -d /tmp/r1
+      - name: Verify all frozen hashes before corpus access
+        run: |
+          test "$(sha256sum /tmp/r1/r1_solver/r0_b2_solver.py | cut -d' ' -f1)" = "92db3a4ec0f0484773b6b19f1e65e87b84fabf5a38ba1e6698888f332e678c66"
+          test "$(sha256sum /tmp/r1/r1_solver/r1_solver.py | cut -d' ' -f1)" = "7d61faa79c8989738f72df38dd6d74800c9b8ca25435f06f0d6fb473e493b42a"
+          test "$(sha256sum arc2-path-op0-run/path_op0.py | cut -d' ' -f1)" = "40d3fea73b7c2c27cc5b5188e4c0fda0079ba40bbc9ee3a9b32e56501e7b29c0"
+          test "$(sha256sum arc2-path-op0-run/PREREGISTRATION.md | cut -d' ' -f1)" = "023f9a0d8eac6a5d67b988cf7a494d1637fa3fd199e9d5b965450bc49eaa25ce"
+          test "$(sha256sum arc2-path-op0-run/eval_path_op0_arc1.py | cut -d' ' -f1)" = "812048917bfefff6f441ae89508b69a2426e8ad69b0ce6a2085374056928c272"
+      - name: Fetch fresh ARC-AGI-1 corpus only after freeze verification
+        run: |
+          git clone --depth 1 https://github.com/fchollet/ARC-AGI.git /tmp/ARC-AGI-1
+          test "$(find /tmp/ARC-AGI-1/data/evaluation -maxdepth 1 -name '*.json' | wc -l)" = "400"
+      - name: Run preregistered PATH-OP0 evaluation once
+        env:
+          PYTHONPATH: /tmp/r1:arc2-path-op0-run
+        run: |
+          python arc2-path-op0-run/eval_path_op0_arc1.py /tmp/ARC-AGI-1/data/evaluation --out arc2-path-op0-run/arc1_path_op0_results.json | tee arc2-path-op0-run/arc1_path_op0_stdout.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: path-op0-arc1-results
+          path: |
+            arc2-path-op0-run/PREREGISTRATION.md
+            arc2-path-op0-run/path_op0.py
+            arc2-path-op0-run/eval_path_op0_arc1.py
+            arc2-path-op0-run/arc1_path_op0_results.json
+            arc2-path-op0-run/arc1_path_op0_stdout.txt
