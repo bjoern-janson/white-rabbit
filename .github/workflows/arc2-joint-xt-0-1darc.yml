@@ -1,0 +1,54 @@
+name: ARC2 JOINT-XT-0 1D-ARC Fresh Test
+
+on:
+  push:
+    branches: [arc2-joint-xt-0-1darc]
+    paths:
+      - '.github/workflows/arc2-joint-xt-0-1darc.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Reconstruct frozen R0/R1 runner
+        run: |
+          cat arc2-r1-run/r1_minimal.b64.* > /tmp/r1.b64
+          base64 -d /tmp/r1.b64 > /tmp/r1.zip
+          mkdir -p /tmp/r1
+          unzip -q /tmp/r1.zip -d /tmp/r1
+          mkdir -p arc2_competition_router_candidate
+          cp -r /tmp/r1/r1_solver arc2_competition_router_candidate/r1_solver
+          touch arc2_competition_router_candidate/__init__.py
+
+      - name: Verify frozen code hashes
+        run: |
+          test "$(sha256sum arc2_competition_router_candidate/r1_solver/r0_b2_solver.py | cut -d' ' -f1)" = "92db3a4ec0f0484773b6b19f1e65e87b84fabf5a38ba1e6698888f332e678c66"
+          test "$(sha256sum arc2_competition_router_candidate/r1_solver/r1_solver.py | cut -d' ' -f1)" = "7d61faa79c8989738f72df38dd6d74800c9b8ca25435f06f0d6fb473e493b42a"
+          test "$(sha256sum joint_xt_scorer.py | cut -d' ' -f1)" = "524ef54095f94fc0132de8d320ab0280d7a05761adc1b9dfddf937c73aae86bb"
+
+      - name: Fetch and pin fresh 1D-ARC corpus
+        run: |
+          git clone --quiet https://github.com/khalil-research/1D-ARC.git /tmp/1D-ARC
+          git -C /tmp/1D-ARC checkout --quiet 1e74dc4cb4c58d8160e1fbd0ba638eb745f37147
+          test "$(find /tmp/1D-ARC/dataset -type f -name '*.json' | wc -l)" = "900"
+          test "$(find /tmp/1D-ARC/dataset -mindepth 1 -maxdepth 1 -type d | wc -l)" = "18"
+
+      - name: Run frozen prospective comparison
+        run: |
+          python arc2-joint-xt-run/eval_joint_xt_1darc.py /tmp/1D-ARC/dataset --out arc2-joint-xt-run/joint_xt_1darc_results.json | tee arc2-joint-xt-run/joint_xt_1darc_stdout.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: joint-xt-0-1darc-results
+          path: |
+            joint_xt_scorer.py
+            arc2-joint-xt-run/eval_joint_xt_1darc.py
+            arc2-joint-xt-run/joint_xt_1darc_results.json
+            arc2-joint-xt-run/joint_xt_1darc_stdout.txt
+          if-no-files-found: error
