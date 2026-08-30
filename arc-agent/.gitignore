@@ -5,4 +5,3 @@ recordings/
 .kaggle/
 __pycache__/
 *.pyc
-notebooks/submission.ipynb
