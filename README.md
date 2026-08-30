@@ -61,6 +61,8 @@ The scientific record remains under [`experiments/`](experiments/). Its claim ce
 
 The ARC-AGI-3 score lane lives under [`arc-agent/`](arc-agent/). It is explicitly allowed to use heuristics, game-family specializations, stochastic fallbacks, and other score-seeking engineering without acquiring research authority.
 
+**Ready Kaggle artifact:** [`arc-agent/notebooks/submission.ipynb`](arc-agent/notebooks/submission.ipynb) — import it into Kaggle, Save Version / Run All, then submit to the competition. No local setup is required.
+
 Current Submission-0 local public engineering score: `1.3756373256373253` on the 25 bundled public environments. This is not a Kaggle leaderboard score or a hidden-set estimate; see [`arc-agent/results/`](arc-agent/results/) for the bounded comparison.
 
 ## Preserved research lineages
