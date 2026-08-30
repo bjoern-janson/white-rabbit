@@ -50,6 +50,15 @@ The original observation and its important runtime correction are preserved unde
 
 The correction matters: part of the apparent speedup was consistent with retained-prefix / KV reuse, while another runtime-performance shift remained unexplained. That is why the current project hunts the phenomenon first instead of assuming a mechanism.
 
+## Preserved research lineages
+
+These records are kept under `experiments/` without changing the active phenomenon-first face of the repository:
+
+- [`capability-correction-separation/`](experiments/capability-correction-separation/) — frozen synthetic lineage on selective future correction cost, learned abstraction, dormant recoverability, and operation-relative adequacy.
+- [`arc-reopening-lineage/`](experiments/arc-reopening-lineage/) — synthetic reopening instruments followed by real ARC pressure tests, ending at the current upstream state-construction boundary exposed by an untouched prospective transfer failure.
+
+The second lineage deliberately preserves positive controls, contaminated development results, and prospective negatives as different authority classes.
+
 ## Rule of thumb
 
 **Find where the machine suddenly stops having to struggle.**
