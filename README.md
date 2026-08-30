@@ -56,6 +56,7 @@ These records are kept under `experiments/` without changing the active phenomen
 
 - [`capability-correction-separation/`](experiments/capability-correction-separation/) — frozen synthetic lineage on selective future correction cost, learned abstraction, dormant recoverability, and operation-relative adequacy.
 - [`arc-reopening-lineage/`](experiments/arc-reopening-lineage/) — synthetic reopening instruments followed by real ARC pressure tests, ending at the current upstream state-construction boundary exposed by an untouched prospective transfer failure.
+  - [`FROZEN_FRONTIER.md`](experiments/arc-reopening-lineage/FROZEN_FRONTIER.md) — final separation of selection, reachability, and construction-capability change, including the dormant-constructor null hypotheses required for any future positive.
 
 The second lineage deliberately preserves positive controls, contaminated development results, and prospective negatives as different authority classes.
 
