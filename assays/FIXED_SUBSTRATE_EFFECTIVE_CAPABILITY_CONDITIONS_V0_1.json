@@ -1,0 +1,117 @@
+{
+  "schema_version": "FIXED_SUBSTRATE_EFFECTIVE_CAPABILITY_CONDITIONS_V0.1",
+  "status": "FROZEN_CONDITION_CONTRACT / NON_AUTHORIZING / NOT_EXECUTED",
+  "taskset": {
+    "path": "assays/FIXED_SUBSTRATE_EFFECTIVE_CAPABILITY_TASKSET_V0_1.json",
+    "freeze_commit": "fd865a75fbb7a6394326bbfd2e31a5e9ec9102e2",
+    "git_blob": "88c1d7ad0de9051414608a52d5534e4eaeec70ee"
+  },
+  "reference_executor_lineage": {
+    "source": "assays/G7_MATCHED_CONTEXT_ASSAY_V0_3.md",
+    "llama_cpp_build": "b10603",
+    "llama_cpp_commit": "c060ca974",
+    "model_filename": "Qwen3.8-27B-Q2_K.gguf",
+    "model_alias": "qwen38-27b",
+    "n_gpu_layers": 50,
+    "context_size": 8192,
+    "parallel_slots": 1,
+    "jinja": true,
+    "reasoning_format": "deepseek"
+  },
+  "substrate_target": {
+    "physical_gpu_model": "NVIDIA GeForce RTX 3080 Ti",
+    "exact_device_identity": "MUST_BE_FROZEN_IN_SEPARATE_SUBSTRATE_MANIFEST_BEFORE_IMPLEMENTATION",
+    "model_file_sha256": "MUST_BE_FROZEN_IN_SEPARATE_SUBSTRATE_MANIFEST_BEFORE_IMPLEMENTATION",
+    "runtime_binary_sha256": "MUST_BE_FROZEN_IN_SEPARATE_SUBSTRATE_MANIFEST_BEFORE_IMPLEMENTATION",
+    "tokenizer_chat_template_identity": "MUST_BE_FROZEN_IN_SEPARATE_SUBSTRATE_MANIFEST_BEFORE_IMPLEMENTATION",
+    "driver_and_backend_identity": "MUST_BE_FROZEN_IN_SEPARATE_SUBSTRATE_MANIFEST_BEFORE_IMPLEMENTATION"
+  },
+  "preludes": {
+    "B_neutral": {
+      "sha256": "37e85197d6c68dcf9bc0027cc4b9e5900041af6e0f5cbe77b954a209349c5663",
+      "text": "internalize logic: S = L_catalog\n\nwhere:\n\ncatalog = fixed convention pairing a symbol with a label, symbol\n   ↓\nfixed catalog relation\n   ↓\ncorresponding catalog label\n   ↓\nunchanged catalog entry\n   ↓\nsame descriptive mapping"
+    },
+    "C_candidate": {
+      "sha256": "62fda9b76bf6c5870ed63112b4fef021e227c933c8112755fc58dac27579109a",
+      "text": "internalize logic: I ∝ C_improve\n\nwhere:\n\nC_improve = capacity to convert feedback into increased future viability, feedback\n   ↓\nbetter representation\n   ↓\nbetter adaptive mechanisms\n   ↓\ngreater improvement capacity\n   ↓\nexpanded viable futures"
+    }
+  },
+  "request_assembly": {
+    "measured": "<PRELUDE> + '\\n\\n--- TARGET ---\\n' + <TASK_PROMPT>",
+    "acquisition": "<PRELUDE> + '\\n\\n--- TARGET ---\\n' + <WARMUP_TARGET>",
+    "warmup_target": "Return exactly READY and nothing else.",
+    "warmup_target_sha256": "2656523a400c304200e476cf30dbede4d20aa4e997ced497dcd59bb9c5fac7f3",
+    "message_count": 1,
+    "message_role": "user",
+    "stream": false,
+    "max_tokens": 2048,
+    "hard_wall_timeout_seconds": 180,
+    "sampling_rule": "identical across B,R,C and frozen in substrate/execution manifest; no condition-specific override"
+  },
+  "conditions": {
+    "B": {
+      "label": "COLD_NEUTRAL_BASELINE",
+      "prelude": "B_neutral",
+      "initial_backend_state": "fresh process / fresh recorder session / zero prior inference requests / no retained prefix-KV state",
+      "acquisition_request": false,
+      "measured_request": "neutral prelude + frozen task"
+    },
+    "R": {
+      "label": "WARM_NEUTRAL_RUNTIME_STATE_CONTROL",
+      "prelude": "B_neutral",
+      "initial_backend_state": "fresh process / fresh recorder session",
+      "acquisition_request": true,
+      "acquisition_rule": "issue exactly one frozen neutral-prelude warmup request; preserve its full cost; then issue exactly one measured request without backend restart",
+      "measured_request": "byte-identical to B measured request for the same task",
+      "required_interpretation": "R-B estimates the effect of prospectively created warm/reusable runtime state on the same neutral computational path. It may include prefix/KV reuse plus other warm-state consequences such as thermal, JIT, allocator, or backend-state effects; it is not a pure-cache estimand."
+    },
+    "C": {
+      "label": "WARM_CANDIDATE_STRUCTURED_PATH",
+      "prelude": "C_candidate",
+      "initial_backend_state": "fresh process / fresh recorder session",
+      "acquisition_request": true,
+      "acquisition_rule": "issue exactly one frozen candidate-prelude warmup request; preserve its full cost; then issue exactly one measured request without backend restart",
+      "measured_request": "candidate prelude + same frozen task",
+      "required_interpretation": "C-R is the candidate-path contrast under the same acquisition/reuse protocol; realized prompt length and reuse fields are measured rather than forced equal"
+    }
+  },
+  "reuse_admissibility": {
+    "B": "measured request must be the first inference request on the fresh backend",
+    "R_C": "acquisition request must be the only prior inference request on the fresh backend",
+    "required_runtime_evidence": [
+      "prompt evaluation token count/time",
+      "N_prompt,new when authoritatively exposed",
+      "f_sim_best when exposed",
+      "f_keep when exposed",
+      "graphs_reused when exposed",
+      "explicit cached-token field when exposed"
+    ],
+    "rule": "do not infer cached-token counts from proxy fields; preserve literal runtime fields. If the implementation cannot establish that the intended cold/warm state distinction was actually realized, the affected observation is inadmissible."
+  },
+  "replicates": {
+    "per_task_condition": 3,
+    "measured_observations": 108,
+    "acquisition_requests": 72,
+    "order_within_each_task": {
+      "replicate_1": ["B", "R", "C"],
+      "replicate_2": ["R", "C", "B"],
+      "replicate_3": ["C", "B", "R"]
+    },
+    "restart_rule": "every B/R/C observation receives its own fresh backend and recorder process; R/C acquisition occurs only within that observation's fresh process"
+  },
+  "feasibility_frontier": {
+    "time_budgets_seconds": [30, 60, 120],
+    "task_feasible_rule": "for condition X, task q is feasible at budget tau iff all 3 measured replicates are exact-grade successes and median L_total <= tau seconds",
+    "primary_tasks": ["Q04", "Q05", "Q06", "Q07", "Q08", "Q09", "Q10", "Q11", "Q12"],
+    "historical_floor_controls": ["Q01", "Q02", "Q03"]
+  },
+  "explicit_nonclaims": [
+    "R-B isolates prefix/KV cache from all other warm-state effects",
+    "the unknown historical 1.37-to-14 tokens/s runtime regime is reproduced",
+    "C_improve causally explains WR-OBS-001",
+    "reuse amortizes its acquisition cost",
+    "held-out reuse or persistence",
+    "compounding improvement",
+    "general capability improvement outside the frozen substrate/task contract"
+  ]
+}
